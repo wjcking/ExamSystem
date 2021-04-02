@@ -1,0 +1,76 @@
+﻿
+
+选择类型题目总数：<%= selectionCount %> 个
+判断类型题目总数：<%= judgementCount %> 个
+填空类型题目总数：<%= fillCount%> 个
+简答论述类型题目总数：<%= questionCount %> 个
+ var  IsExistImageBackupPath = <%=  IsExistImageBackupPath%>;      
+      var  IsExistImageEFDPath = <%= IsExistImageEFDPath %>;
+        function valid() {
+
+            if (document.getElementById("txtEfdTitle").value == "") {
+                document.getElementById("txtEfdTitle").focus();
+                return false;
+            }
+
+           if (IsExistImageBackupPath == 0) {
+
+            alert("图片备份路径不存在，请配置web.config");
+            return false;
+           }
+
+           if (IsExistImageEFDPath == 0) {
+            alert("试题图片测试路径不存在，请配置web.config");
+            return false;
+           }
+           return true;
+        }
+
+		
+            //File.Copy(drpDatabase.SelectedValue, DataBaseDebugPath + "EasyFound.dll", true);
+            //File.Copy(drpDatabase.SelectedValue, DataBaseEFDPath + "EasyFound.dll", true);
+
+
+			<script type="text/javascript">
+    function OrganizeChoices()
+    {
+        var txtChoices = document.getElementById("<%=txtSelection.ClientID %>");
+      //  txtChoices.value = "";
+        var letterPoint1 = "A.,B.,C.,D.,E.,F.,G.,H.,I.,J.,K.,L.,M.,N.,O.,P.,Q.,R.,S.,T.,U.,V.,W.,X.,Y.,Z.";
+        var letterPoint2 = "A．,B．,C．,D．,E．,F．,G．,H．,I．,J．,K．,L．,M．,N．,O．,P．,Q．,R．,S．,T．,U．,V．,W．,X．,Y．,Z．";
+        
+        var split1 = letterPoint1.split(",");
+        var split2 = letterPoint2.split(",");
+        
+//        for (var i = 0; i < split1.length; i++)
+//        {
+//            //txtChoices.value = txtChoices.value.replace(split1[i], split1[i]+"\r\n");
+//           // txtChoices.value = txtChoices.value.replace(split2[i], "\r\n" + split2[i]);
+//           var s = txtChoices.value.replace(split2[i], "\r\n" + split2[i]);
+//           alert(s);
+//         }
+//   var s = txtChoices.value.replace("B．", "[a]B．");
+//  var r, re;                      // 声明变量。
+//   var ss = "The rain in Spain falls mainly in the plain.";
+//   re = /(\S+)(\s+)(\S+)/g;        // 创建正则表达式模式。
+//   r = ss.replace(re, "$3$2$1");   // 交换每一对单词。
+//   alert(r);
+
+   //  txtChoices.value =   txtChoices.value.replace("．", ".");
+ //  alert(txtChoices.value);
+    }
+    
+    //var squarebrackets = "A.,B.,C.,D.,E.,F.,G.,H.,I.,J.,K.,L.,M.,N.,O.,P.,Q.,R.,S.,T.,U.,V.,W.,X.,Y.[Z]";
+//    var chk = document.getElementById("<%= chkChoiceType.ClientID %>");
+//    var divs = document.getElementsByTagName("div");
+//             
+//    for (var i=0; i<divs.length; i++)
+//    {
+//      if (chk.checked)
+//      (divs[i].className == "");  
+//    }
+    
+    //var div =document.getElementById(id);
+    
+    //div.style.display = (div.style.display == "none") ? "" : "none";
+    </script>

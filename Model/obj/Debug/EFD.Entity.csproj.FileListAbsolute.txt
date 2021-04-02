@@ -1,0 +1,15 @@
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Model\bin\Debug\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Model\bin\Debug\Model.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Model\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Model\obj\Debug\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Model\obj\Debug\Model.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Model\bin\Debug\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Model\bin\Debug\Model.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Model\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Model\obj\Debug\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Model\obj\Debug\Model.pdb
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Model\bin\Debug\Model.dll
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Model\bin\Debug\Model.pdb
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Model\obj\Debug\ResolveAssemblyReference.cache
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Model\obj\Debug\Model.dll
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Model\obj\Debug\Model.pdb

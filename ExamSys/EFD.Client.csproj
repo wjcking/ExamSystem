@@ -1,0 +1,447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{510EF4BB-FDFB-4D4B-A63F-ED141BEC546D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExamSys</RootNamespace>
+    <AssemblyName>ExamSys</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>efd.ICO</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\ExamSys.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Work\Vs2010\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Work\Vs2010\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\ExamSys.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Work\Vs2010\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Work\Vs2010\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x86|AnyCPU'">
+    <OutputPath>bin\x86\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x86|x86'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Chartlet, Version=0.9.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Chartlet.dll</HintPath>
+    </Reference>
+    <Reference Include="IrisSkin2, Version=2006.3.22.45, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\IrisSkin2.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Net20, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Newtonsoft.Json.Net20.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Options\NetSet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Options\NetSet.Designer.cs">
+      <DependentUpon>NetSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Submit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Submit.Designer.cs">
+      <DependentUpon>Submit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\ColorParser.cs" />
+    <Compile Include="Delegation\CheckOutDelegate.cs" />
+    <Compile Include="Component\CategoryPicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Component\CategoryPicker.Designer.cs">
+      <DependentUpon>CategoryPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Component\ComboAdvanced.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Component\ComboAdvanced.Designer.cs">
+      <DependentUpon>ComboAdvanced.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Delegation\SkinDelegate.cs" />
+    <Compile Include="EFDBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EFDBrowser.Designer.cs">
+      <DependentUpon>EFDBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Component\ListBoxAdvanced.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Component\ListBoxAdvanced.Designer.cs">
+      <DependentUpon>ListBoxAdvanced.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options\FileFolder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Options\FileFolder.Designer.cs">
+      <DependentUpon>FileFolder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options\Misc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Options\Misc.Designer.cs">
+      <DependentUpon>Misc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options\PlatformStyle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Options\PlatformStyle.Designer.cs">
+      <DependentUpon>PlatformStyle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options\ResetExam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Options\ResetExam.Designer.cs">
+      <DependentUpon>ResetExam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Options\Score.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Options\Score.Designer.cs">
+      <DependentUpon>Score.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Regroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Regroup.Designer.cs">
+      <DependentUpon>Regroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Component\SubjectNumberPicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Component\SubjectNumberPicker.Designer.cs">
+      <DependentUpon>SubjectNumberPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\EFDDocument.cs" />
+    <Compile Include="CheckOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckOut.Designer.cs">
+      <DependentUpon>CheckOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\Decorater.cs" />
+    <Compile Include="Util\Pagination.cs" />
+    <Compile Include="Util\CssStyle.cs" />
+    <Compile Include="EasyChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EasyChart.Designer.cs">
+      <DependentUpon>EasyChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HandIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HandIn.Designer.cs">
+      <DependentUpon>HandIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainCategory.Designer.cs">
+      <DependentUpon>MainCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CorrectSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CorrectSubject.Designer.cs">
+      <DependentUpon>CorrectSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\PopulateNode.cs" />
+    <Compile Include="Copyright.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Copyright.Designer.cs">
+      <DependentUpon>Copyright.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchTask.Designer.cs">
+      <DependentUpon>SearchTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\WavePlayer.cs" />
+    <Compile Include="Util\SysConfig.cs" />
+    <Compile Include="Platform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Platform.Designer.cs">
+      <DependentUpon>Platform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="History.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="History.Designer.cs">
+      <DependentUpon>History.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Keyword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Keyword.Designer.cs">
+      <DependentUpon>Keyword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\Valid.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Util\Network.cs" />
+    <Content Include="bin\template\images\oneapp.png" />
+    <Content Include="bin\template\images\time.png" />
+    <Content Include="bin\template\Remote.htm" />
+    <Content Include="Library\Chartlet.dll" />
+    <Content Include="Library\IrisSkin2.dll" />
+    <Content Include="Library\Newtonsoft.Json.Net20.dll" />
+    <Content Include="TextFile1.txt" />
+    <Content Include="副本 Valid.txt" />
+    <EmbeddedResource Include="CheckOut.resx">
+      <DependentUpon>CheckOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Component\CategoryPicker.resx">
+      <DependentUpon>CategoryPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Component\ListBoxAdvanced.resx">
+      <DependentUpon>ListBoxAdvanced.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Component\SubjectNumberPicker.resx">
+      <DependentUpon>SubjectNumberPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EasyChart.resx">
+      <DependentUpon>EasyChart.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EFDBrowser.resx">
+      <DependentUpon>EFDBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HandIn.resx">
+      <DependentUpon>HandIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainCategory.resx">
+      <DependentUpon>MainCategory.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CorrectSubject.resx">
+      <DependentUpon>CorrectSubject.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Options\FileFolder.resx">
+      <DependentUpon>FileFolder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Options\Misc.resx">
+      <DependentUpon>Misc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Options\NetSet.resx">
+      <DependentUpon>NetSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Options\PlatformStyle.resx">
+      <DependentUpon>PlatformStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Options\ResetExam.resx">
+      <DependentUpon>ResetExam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Options\Score.resx">
+      <DependentUpon>Score.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Platform.resx">
+      <DependentUpon>Platform.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Copyright.resx">
+      <DependentUpon>Copyright.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Regroup.resx">
+      <DependentUpon>Regroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchTask.resx">
+      <DependentUpon>SearchTask.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="History.resx">
+      <DependentUpon>History.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Keyword.resx">
+      <DependentUpon>Keyword.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Submit.resx">
+      <DependentUpon>Submit.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Util\Hardware.cs" />
+    <Compile Include="Util\SysData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ExamInfo.txt" />
+    <Content Include="efd.ICO" />
+    <Content Include="替换.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cts\EFD.CTS.csproj">
+      <Project>{297792DB-E51C-491C-A760-DB732384F4E5}</Project>
+      <Name>EFD.CTS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataUtility\EFD.DataUtility.csproj">
+      <Project>{4F051933-A6C2-4533-9952-50776EFC0E51}</Project>
+      <Name>EFD.DataUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\EFD.Entity.csproj">
+      <Project>{5DA8DD3F-DD7D-4FEF-9A03-D4D8B08E6E3F}</Project>
+      <Name>EFD.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

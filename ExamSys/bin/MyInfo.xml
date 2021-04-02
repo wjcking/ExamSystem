@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="gb2312"?>
+<CustomerInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Address>东城区</Address>
+  <Birthday />
+  <Cellphone>13717552078</Cellphone>
+  <City>131100</City>
+  <CustomerName>吴金春</CustomerName>
+  <Dealtime>0</Dealtime>
+  <Email>wjcking@hotmail.com</Email>
+  <Freeze>0</Freeze>
+  <Gender>男</Gender>
+  <ID>1</ID>
+  <Idcard>13110219840328041X</Idcard>
+  <Intro />
+  <Job>娱乐/体育/休闲</Job>
+  <LastLogin />
+  <Level />
+  <LoginTime>1</LoginTime>
+  <Machineid>20652F2C8BB43</Machineid>
+  <Nickname>wjcking</Nickname>
+  <Password>1984328</Password>
+  <Phone>010-58206481</Phone>
+  <ProductTotal>0</ProductTotal>
+  <Province>130000</Province>
+  <QQ>36520234</QQ>
+  <RegisterTime />
+  <Area>131102</Area>
+</CustomerInfo>

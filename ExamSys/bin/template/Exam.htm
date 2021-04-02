@@ -1,0 +1,145 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="json/html; charset=gb2312" />
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+
+    <script type="text/javascript" src="js/taffy.js"></script>
+
+    <script type="text/javascript" src="js/json2.js"></script>
+
+    <script type="text/javascript" src="js/cache.js"></script>
+
+    <script type="text/javascript" src="js/treeview.js"></script>
+    
+    <link href="style/ExamPage.css" rel="stylesheet" type="text/css" />
+
+    
+    <title></title>
+</head>
+<body >
+    <input type="hidden" id="hidTestway" value="1" />
+    <input type="hidden" id="hidDisplayStyle" value="0" />
+    <input type="hidden" id="hidLimitedTime" />
+    <div id="left">
+        <div class="titleBar" id="divAllExam" style="cursor: pointer;">
+            <img src="images/category.gif" />
+             试题分类 
+        </div>
+        <div id="tree" style="overflow-y:auto;">
+        </div>
+    </div>
+    <div id="right">
+        <div class="titleBar" id="divTitleBar">
+            <span style="float: left;" id="spanExamList">
+                <img src="images/examList.gif" alt="折叠左侧导航栏" onclick="$('#left').toggle()" />
+                <span id="spanExamCategory">试题列表</span>
+                </span> 
+                <span style="float: right;" id="spanOption">
+                <img src="images/option.gif" alt="点击鼠标右键切换考试选项" id="imgOption"/>点击鼠标右键切换考试选项 
+                <span id="spanTestWay"> </span>
+                <span id="spanFilter"></span>
+                <span id="spanDisplayStyle"></span>
+                </span>
+        </div>
+        <div class="floatLayer" id="divOption">
+            <fieldset>
+                <legend>考试类型设置</legend>
+                <br />
+                <input id="testway1" name="TestWay" type="radio" value="1" checked="checked" />
+                <label for="testway1">
+                    试题学习</label>
+                <div class="optionDetail">
+                    该类型适合自由复习，随意作答，记忆试题用不限制显示答案和分析等功能。
+                </div>
+                <input id="testway3" name="TestWay" type="radio" value="3" />
+                <label for="testway3" style="color: maroon">
+                    正式考试</label>
+                             <div class="optionDetail">
+                    不可以显示答案，分析等，但没有限制时间。</div> 
+                <input id="testway2" name="TestWay" type="radio" value="2" />
+                <label for="testway2" style="color: maroon">
+                    计时测试</label>
+  <div class="optionDetail">
+                    不可以显示答案，分析等，并且限制时间（时间长短可在配置-杂项里设置）。</div>
+                <input id="testway4" name="TestWay" type="radio" value="4" />
+                <label for="testway4">
+                    随机抽题</label>
+                <div class="optionDetail">
+                    打乱试题顺序，来出题，给考生增加难度，可以显示答案和分析</div>
+                <input id="testway5" name="TestWay" type="radio" value="5" />
+                <label for="testway5">
+                    我的收藏</label>
+                <div class="optionDetail">
+                    从选中试卷下抽取考生收藏的试题进行测试。可以显示答案和分析</div>
+                <input id="testway6" name="TestWay" type="radio" value="6" />
+                <label for="testway6">
+                    错题重做</label>
+                <div class="optionDetail">
+                    从选中试卷下抽取考生做错的试题进行测试。可以显示答案和分析</div>
+                <br />
+                <br />
+            </fieldset>
+            <fieldset>
+                <legend>试题过滤</legend>
+                <input type="checkbox" id="chkIsSelection" checked="checked" name="chkFilter" />
+                <label for="chkIsSelection">
+                    选择类型题</label>
+                <input type="checkbox" id="chkIsJudge" checked="checked" name="chkFilter" />
+                <label for="chkIsJudge">
+                    判断类型题</label>
+                <input type="checkbox" id="chkIsFill" checked="checked" name="chkFilter" />
+                <label for="chkIsFill">
+                    填空类型题</label>
+                <input type="checkbox" id="chkIsQuestion" checked="checked" name="chkFilter" />
+                <label for="chkIsQuestion">
+                    简答或论述类型题</label>
+                <br />
+            </fieldset>
+            <fieldset>
+                <legend>显示方式</legend>
+                <input id="rbDisplayStyle0" name="rbDisplayStyle" type="radio" value="0" />
+                <label for="rbDisplayStyle0">
+                    列表模式</label>
+                <input id="rbDisplayStyle1" name="rbDisplayStyle" type="radio" value="1" />
+                <label for="rbDisplayStyle1">
+                    逐个模式(人机对话模式,鼠标右键换下一题)</label>
+            </fieldset>
+        </div>
+        <table id="tbTitle" class="gridtabletop" >
+            <tr>
+                <td style="width:5%;">
+                </td>
+                <td>
+                   [试卷编号]试卷标题
+                </td>
+                <td style="width: 15%;">
+                    最后测试时间
+                </td>  
+                    <td style="width: 15%;">
+                    测试次数
+                </td>
+                <td style="width:10%">
+                    进度
+                </td>
+            </tr>
+        </table>
+        <div id="divExamContent">
+            <table id="" class="gridtable">
+                <tbody id="tbExamList">
+                </tbody>
+            </table>
+        </div>
+    </div>
+   
+    <div style="clear: both;  ">
+    </div>
+    
+    <script type="text/javascript" src="js/util.js"></script>
+    <script type="text/javascript" src="js/exampage.js"> </script>
+    
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Web.master.cs" Inherits="Publish.Web" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server" id="header">
+    <title>易方德考试管理中心</title>
+    <link href="styles/default.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/js/exam.js"></script>
+    <script src="Js/Common.js" type="text/javascript"></script>
+    <script src="Js/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="heading1">
+        <div style="padding-left: 10px; float: left;" runat="server" id="divTitle">
+        </div>
+        <div class="menu" style="padding-right: 0; color: gray; float: right;" runat="server"
+            id="typeMenu">
+       <%= GetGuideList() %>
+        </div>
+    </div>
+    <asp:ContentPlaceHolder ID="body" runat="server">
+    </asp:ContentPlaceHolder>
+    <div style="clear:both;"></div>
+    </form>
+
+    <div style="border-bottom-color:#EE0000; border-bottom-width:1px; border-bottom-style:dashed;" ></div>
+    <script type="text/javascript">
+      var examInfoID = '<%= Request.QueryString["ExamInfoID"] %>';
+      var mid = '<%= Request.QueryString["Mid"] %>';
+
+      if (examInfoID == "") {
+          $("#drpGuide").hide();
+      }
+
+      function guide() {
+          var guideValue = $("#drpGuide").val();
+
+            switch (guideValue) {
+                case "":
+                    return;
+                case "0":
+                    location = "default.aspx?ExamInfoID=" + examInfoID;
+                    break;
+                case "1":
+                    location = "EditMainSubject.aspx?ExamInfoID=" + examInfoID;
+                    break;
+                case "2":
+                    location = "Export.aspx?ExamInfoID=" + examInfoID;
+                    break;
+                default:
+                    location = guideValue + "&ExamInfoID=" + examInfoID;
+                    break;
+            }
+        }
+
+        function IsDisplayDiv(id) {
+            var divs = document.getElementsByTagName("div");
+
+            for (var i = 0; i < divs.length; i++) {
+                if (divs[i].id.indexOf("div_Panel") > -1)
+                    divs[i].style.display = "none";
+            }
+
+            var div = document.getElementById(id);
+
+            div.style.display = (div.style.display == "none") ? "" : "none";
+        }
+
+        //load the background image  accordingly
+        function LoadBackGround() {
+            var sonPage = "<%=sonPageName %>";
+
+            if (sonPage == "")
+                return;
+
+            if (sonPage == "default")
+                document.body.style.backgroundImage = null;
+
+            document.body.style.backgroundImage = "url(" + "/images/" + sonPage + ".gif" + ")";
+        }
+        // initialize css styles of input elements
+        function SetInputAttributes() {
+            var input = document.getElementsByTagName("input");
+
+            for (var i = 0; i < input.length; i++) {
+                if (input[i].type == "button" || input[i].type == "submit" || input[i].type == "reset")
+                    input[i].className = "TextButton";
+
+                if (input[i].type == "text") {
+                    input[i].className = "selectedTextbox";
+                    // input[i].onmouseover = function()  {  this.select(); } 
+                    //input[i].onmouseover = function()  {  this.select(); } 
+                    //add an IsNan function on input text controls 
+                    if (input[i].maxLength == 65535) {
+                        input[i].onblur = input[i].onkeyup = function () { if (isNaN(this.value)) this.value = 1 }
+                    }
+                }
+            }
+        }
+
+        function ResetInputText() {
+            var input = document.getElementsByTagName("input");
+
+
+            for (var i = 0; i < input.length; i++) {
+                if (input[i].type == "text") {
+                    if (input[i].maxLength == 65535)
+                        continue;        //         input[i].value="";
+                }
+            }
+        }
+
+        // go to urls
+        //<input type="button" value="定位" onclick="LocateModel()" />
+        function LocateModel() {
+            var mid = document.getElementById("ctl00_body_drpMainSubject").value;
+
+            location = '?ExamInfoID=<%= Request["ExamInfoID"] %>&Mid=' + mid;
+        }
+
+        function ChangePlace(limitNumber) {
+            var checkboxList = document.getElementsByTagName("input");
+            var checkedCount = 0;
+            for (var i = 0; i < checkboxList.length; i++) {
+                if (!checkboxList[i].disabled && (checkboxList[i].name.indexOf("chk") >= 0)) {
+
+                    if (checkboxList[i].checked)
+                        checkedCount++;
+                }
+            }
+            if (checkedCount < limitNumber) {
+                alert("您必须选择 " + limitNumber + " 项进行操作");
+                return false;
+            }
+            if (checkedCount > limitNumber) {
+                alert("您只能选择 " + limitNumber + " 项进行操作");
+                return false;
+            }
+
+            return true;
+        } 
+        SetInputAttributes(); 
+    </script>
+
+    <asp:ContentPlaceHolder ID="foot" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <div style="font-family:Arial; font-size:9px; font-weight:bold; text-align:right; color:Black;">Powered by ASP.NET, WJCKING'TECH</div>
+</body>
+</html>

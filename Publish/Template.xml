@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ExamSys>
+  <ExamInfo>
+    <Item>
+    <!---The material's name-->
+    <Name></Name>
+    <!-- The exam time-->
+    <Time></Time>
+    <Score></Score>
+    <Content></Content>
+     <PublishDate></PublishDate>
+    <LastTestTime></LastTestTime>
+    <LastTestScore></LastTestScore>
+    </Item>
+  </ExamInfo>
+  
+  <!-- MainSubject -->
+
+  <MainSubject>
+    <Item>
+      <ID></ID>
+      <Subject></Subject>
+      <LimitTime></LimitTime>
+      <LastTestScore></LastTestScore>
+      <Score></Score>
+      <Type></Type>
+      <EachPoint></EachPoint>
+      <Count></Count>
+      <Content><![CDATA[]]></Content><!-- The main content of the current subject-->
+      <Note><![CDATA[]]></Note><!-- For the use of recording candidates' notes-->
+      <Analysis><![CDATA[]]></Analysis>
+    </Item>
+  </MainSubject>
+  
+  <!-- Choices -->
+  
+  <Selection>
+    <Item>
+      <MainSubject></MainSubject>
+      <Subject><![CDATA[]]></Subject>
+      <Choice><![CDATA[]]></Choice>
+      <Multiple></Multiple>
+      <BreakType></BreakType>
+      <Answer></Answer>
+      <Key></Key>
+    </Item>
+  </Selection>
+
+  <!-- Judgement -->
+  <Judgement>
+    <Item>
+      <MainSubject></MainSubject>
+      <Subject><![CDATA[]]></Subject>
+      <Answer></Answer>
+      <key></key>
+    </Item>
+  </Judgement>
+  
+   <!-- Filling blanks -->
+  
+  <Fill>
+    <Item>
+      <MainSubject></MainSubject>
+      <Subject><![CDATA[]]></Subject>
+      <Key></Key>
+      <Answer></Answer>
+    </Item>
+  </Fill>
+  
+  <!-- Question -->
+  <Question>
+  <Item>
+    <MainSubject></MainSubject>
+    <Subject><![CDATA[]]></Subject>
+    <Answer></Answer>
+    <Key></Key>
+  </Item>
+ </Question >
+</ExamSys>
+

@@ -1,0 +1,260 @@
+﻿     #banner
+        {
+            height: 50px;
+            color: White;
+            width: 100%;
+            vertical-align: bottom baseline; 
+        }
+        img
+        {
+            cursor: pointer;
+        }
+        body
+        {
+            cursor: default;
+            font-family: 黑体;
+            font-size: 11pt;
+            margin: 0 auto;
+        }
+        #left
+        {
+            width: 250px;
+            background: rgb(234,234,234);
+            padding: 15px 10px 10px 15px;
+            float: left;
+            height: 100%;
+            line-height: 1.60em;
+            border-right: 1px solid rgb(204,204,204);
+        }
+        #right
+        {
+            height: 100%;
+            background: rgb(234,234,234);
+            scrollbar-face-color: rgb(234,234,234);
+            scrollbar-arrow-color: gray;
+            scrollbar-track-color: rgb(234,234,234);
+            scrollbar-highlight-color: #C0C0C0;
+            scrollbar-3dlight-color: rgb(234,234,234);
+            scrollbar-shadow-color: #C0C0C0;
+            scrollbar-darkshadow-color: #000000;
+            padding: 15px 10px 10px 15px;
+            float: left;
+        }
+        .titleBar
+        {
+            height: 20px;
+            border-bottom: 1px solid rgb(204,204,204);
+            margin: 0 0 15px 0;
+            font-size: 14px;
+        }
+        .edit
+        {
+            padding: 10px 10px 10px 10px;
+        }
+        .leftmenu li
+        {
+            list-style-type: none;
+        }
+        #divExamContent
+        {
+            overflow-y: hidden; /*   */
+        }
+        .list1 li
+        {
+            list-style-type: none;
+            padding: 0 0 5px 0;
+            line-height: 1.43em;
+            width: 100%;
+            overflow: hidden;
+            vertical-align: top;
+        }
+        .Node
+        {
+        }
+        .Node span
+        {
+            cursor: default;
+            margin-left: 3px;
+            height: 25px;
+            width: 1px;
+        }
+        .Node span a
+        {
+            padding: 4 4;
+            width: 100%;
+            height: 100%;
+        }
+        .Node-unselect
+        {
+            border: 0px solid #EAEAEA;
+            background-color: transparent;
+            color: windowText;
+        }
+        .Node-selected
+        {
+            text-decoration: none;
+            background-color: HighLight;
+            color: HighLightText;
+        }
+        .Node-unselect a
+        {
+            text-decoration: none;
+            color: windowtext;
+        }
+        .Node-unselect a:hover
+        {
+            color: #3366cc;
+        }
+        .Node-selected a
+        {
+            color: #FFFFFF;
+            text-decoration: none;
+            width: 100%;
+            height: 100%;
+        }
+        .Node-selected a:hover
+        {
+            color: HighLightText;
+            text-decoration: none;
+        }
+        .option
+        {
+            color: rgb(62, 109, 142);
+            background-color: rgb(224, 234, 241);
+            border-bottom: 1px solid rgb(62, 109, 142);
+            border-right: 1px solid rgb(127, 159, 182);
+            padding: 3px 4px;
+            margin: 2px 2px 2px 0px;
+            text-decoration: none;
+            font-size: 90%;
+            line-height: 2.4;
+            white-space: nowrap;
+        }
+        .optionSelected
+        {
+            background-color: rgb(62, 109, 142);
+            color: white;
+            border-bottom: 1px solid rgb(62, 109, 142);
+            border-right: 1px solid rgb(127, 159, 182);
+            padding: 3px 4px;
+            margin: 2px 2px 2px 0px;
+            text-decoration: none;
+            font-size: 90%;
+            line-height: 2.4;
+            white-space: nowrap;
+        }
+        .floatLayer
+        {
+            text-align: left;
+            border: 0px solid gray;
+            display: none;
+        }
+        table.gridtabletop
+        {
+            width: 100%;
+            font-family: 黑体;
+            font-size: 11pt;
+            color: #333333;
+            background: rgb(234,234,234);
+            border-width: 1px;
+            border-top-width:1px;
+            border-top-style:solid;
+            border-top-color: rgb(204,204,204);
+             border-right-width:1px;
+            border-right-style:solid;
+            border-right-color: rgb(204,204,204);
+
+            border-left-width:1px;
+            border-left-style:solid;
+            border-left-color: rgb(204,204,204);
+        }
+         table.gridtable
+        {
+            width: 100%;
+            font-family: 黑体;
+            font-size: 11pt;
+            color: #333333;
+            background: rgb(234,234,234);
+            border-width: 1px;
+            border-collapse: collapse;
+            border-style: solid;
+            border-color: rgb(204,204,204);
+             border-bottom:0px;
+        }
+        table.gridtable th
+        {
+            border-width: 1px;
+            padding: 4px;
+            border-style: dashed;
+            border-color: rgb(204, 204, 204);
+            background-color: #dedede;
+        }
+        table.gridtable td
+        {
+            background: rgb(234,234,234);
+            border-width: 1px;
+            padding: 2px;
+            border-bottom-style: dotted;
+            border-bottom-color: rgb(204, 204, 204);
+        }
+        
+        /*绝对定位 + z-index */ 
+
+.progressbar_3{ 
+
+    background-color:#eee; 
+    color:#222; 
+    height:19px; 
+    width:150px; 
+    border:1px solid #bbb; 
+    text-align:center; 
+    position:relative; 
+} 
+
+.progressbar_3 .bar { 
+
+    background-color:#6CAF00; 
+    height:16px; 
+    width:0; 
+    position:absolute; 
+    left:0; 
+    top:0; 
+    z-index:10; 
+
+} 
+
+.progressbar_3 .text { 
+
+    height:16px; 
+    position:absolute; 
+    left:0;
+    top:0; 
+    width:100%; 
+    line-height:16px; 
+    z-index:100; 
+} 
+
+
+ 
+        .item
+        {
+            text-align:left;
+            cursor: pointer;
+        }
+        .optionDetail
+        {
+            font-size:13px;
+          color:Gray;
+            margin: 3px 0 3px 25px;
+            padding: 1px 0 5px 1px;
+        }
+        fieldset
+        {
+            margin-bottom: 2px;
+            border-width: 1px;
+            background: rgb(234,234,234);
+            border-style: solid;
+            border-color: rgb(204,204,204);
+            padding: 15px 15px 5px 5px;
+            
+        }

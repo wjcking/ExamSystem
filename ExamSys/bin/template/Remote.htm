@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title></title>
+    <link href="style/remote.css" rel="stylesheet" type="text/css" />
+    <link href="style/apps.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/json2.js"></script>
+    <script type="text/javascript" src="js/init.js"></script>
+</head>
+<body>
+    <div style="vertical-align: middle;">
+        <div class="appcenter-logo">
+            易方得网络 (EFD Network)
+        </div>
+    </div>
+    <div class="div-table full-size" style="float: left;">
+        <div class="tab-box">
+            <div id="tab-init" class="tab rel-web-apps-box selected" title="起始页">
+                <div>
+                    起始页</div>
+            </div>
+            <div class="separator">
+            </div>
+            <div id="tab-result" class="tab rel-apps-history-box" title="考试结果对比">
+                <div>
+                    各地考试结果</div>
+            </div>
+            <div class="separator">
+            </div>
+           <!-- <div id="tab-local" class="tab rel-local-apps-box" title="我收藏的应用">
+                <div>
+                    </div>
+            </div>-->
+        </div>
+    </div>
+    <div class="content-box" id="content-box" style="float: left;">
+    <iframe src="NetInit.htm" id="frame"  frameborder="0" width="100%" height="100%" >
+    </iframe>
+    </div>
+    <div id="tab-mask1">
+        <div class="left">
+        </div>
+        <div class="center">
+            <div class="top-right">
+            </div>
+            <div class="middle-right">
+            </div>
+            <div class="bottom-right">
+            </div>
+        </div>
+        <div class="right">
+        </div>
+    </div>
+    <script type="text/javascript">
+        window.onresize = function () { resize(); }
+
+        function resize() {
+
+            var height = document.documentElement.clientHeight;
+            var width = document.documentElement.clientWidth;
+            $("#content-box").height(height-90);
+            $("#content-box").width(width - 230);
+
+        }
+
+        $("#tab-init").click(function () {
+            $("#frame").attr("src", "NetInit.htm");
+        }); 
+        
+        $("#tab-result").click(function () {
+            $("#frame").attr("src", "NetResult.htm");
+        });
+    </script>
+</body>
+</html>

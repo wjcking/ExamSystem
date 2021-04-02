@@ -1,0 +1,297 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        body
+        {
+            letter-spacing: 1px;
+            font-family: ,宋体, Arial;
+            font-size: 14px;
+        }
+        input
+        {
+            /*  font-size: 14px; line-height: 35px; */
+            vertical-align: middle;
+        }
+        select
+        {
+            background-color: maroon;
+            color: White;
+        }
+        .titleOption
+        {
+            /*   text-decoration:underline;    	font-family: 微软雅黑,宋体, Arial;*/
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .line
+        {
+            border-bottom: 1px solid;
+            padding: 10px 0 10px 25px;
+            vertical-align: text-top;
+        }
+        img
+        {
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .button
+        {
+            border: 1px dotted;
+            background-color: maroon;
+            color: White;
+            padding: 2px 1px 2px 1px;
+        }
+        .tdResultClass
+        {
+            color: White;
+            height: 160px;
+            vertical-align: top;
+            clear: both;
+        }
+        td
+        {
+            font-size: 14px;
+        }
+        .lineRound
+        {  
+        border-left: 1px solid;
+        border-right: 1px solid;
+            padding: 10px 0 10px 25px;
+            vertical-align: text-top;
+        }
+     
+    </style>
+</head>
+<body>
+    <!--option-->
+    <div id="divOption">
+        <table style="width: 98%">
+            <tr>
+                <!--上次考试 -->
+                <td class="line" colspan="2">
+                    <dl>
+                        <dt style="float: left;">
+                            <img src="efdt1.png" />
+                        </dt>
+                        <dd style="font-size: 14px; padding: 15px; font-weight: bold;" id="spanSysInfo">
+                            试卷选择
+                            <br />
+                            尊敬的考生, 请您选择左侧的试题列表进行考试。
+                        </dd>
+                    </dl>
+                </td>
+            </tr>
+            <!--测试类型-->
+            <tr>
+                <td class="line" onmouseover="">
+                    <div class="titleOption">
+                        <img src="efdt2.png" />
+                        测试类型
+                    </div>
+                    <br />
+                    <input id="testway1"   name="TestWay" type="radio" value="1" onclick="ChangeTestWay(this.value)" />
+                    <label for="testway1">
+                        试题学习</label>
+                    <br />
+                    <input id="testway3" name="TestWay" type="radio" value="3" onclick="ChangeTestWay(this.value)" /><label
+                        for="testway3">
+                        正式考试</label>
+                    <br />
+                    <input id="testway2" name="TestWay" type="radio" value="2" onclick="ChangeTestWay(this.value)" />
+                    <label for="testway2">
+                        计时测试</label>
+                    <br />
+                    <input id="testway4" name="TestWay" type="radio" value="4" onclick="ChangeTestWay(this.value)" /><label
+                        for="testway4">
+                        随机抽题
+                        <br />
+                    </label>
+                    <input id="testway5" name="TestWay" type="radio" value="5" onclick="ChangeTestWay(this.value)" /><label
+                        for="testway5">
+                        我的收藏</label>
+                    <br />
+                    <input id="testway6" name="TestWay" type="radio" value="6" onclick="ChangeTestWay(this.value)" /><label
+                        for="testway6">
+                        错题重做</label>
+                    <input type="hidden" id="hidTestWay" value="1" onclick="$('hidTestWay').value = this.value" />
+                </td>
+                <!--试卷样式-->
+                <td class="line" style="vertical-align: top;">
+                    <div class="titleOption">
+                        <img src="efdt4.png" />试题显示 试卷样式</div>
+                    <br />
+                    <input id="drpDisplayStyle" type="hidden" value="0" />
+                    <input id="drpPlatformStyle" type="hidden" value="customs" />
+                    <input id="rdoDisplayStyle1" name="rdoDisplayStyle" type="radio" value="0" onclick="$('drpDisplayStyle').value = this.value;"
+                        checked="checked" /><label for="rdoDisplayStyle1">列表显示，方便答题<br />
+                        </label>
+                    <input id="rdoDisplayStyle2" name="rdoDisplayStyle" type="radio" value="1" onclick="$('drpDisplayStyle').value = this.value;" /><label
+                        for="rdoDisplayStyle2">逐个显示，利于记忆</label>
+                    <br />
+                    <br />
+                    <br />
+                    <input id="rdoPlatformStyle1" name="rdoPlatformStyle" type="radio" value="customs"
+                        onclick="$('drpPlatformStyle').value = this.value;" checked="checked" /><label for="rdoPlatformStyle1">默认样式</label>
+
+                </td>
+            </tr>
+            <tr>
+                <!--限制时间-->
+                <td class="line">
+                    <div class="titleOption">
+                        <img src="efdt3.png" />
+                        限制时间<br />
+                    </div>
+                    <br />
+                    <label for="isLimitedTime">
+                        选中限制时间：</label>
+                    <input type="checkbox" id="isLimitedTime" />
+                    <br />
+                    输入考试时间：
+                    <input id="txtTime" type="text" value="120" size="3" maxlength="3" style="color: White;"
+                        onkeyup="verifyTime(this);" />
+                </td>
+                <!--试题筛选-->
+                <td class="line">
+                    <div class="titleOption">
+                        <img src="efdt5.png" />
+                        试题筛选
+                        <br />
+                    </div>
+                    <input type="checkbox" id="chkIsSelection" checked="checked" />
+                    <label for="chkIsSelection">
+                        选择类型题<br />
+                    </label>
+                    <input type="checkbox" id="chkIsJudge" checked="checked" />
+                    <label for="chkIsJudge">
+                        判断类型题<br />
+                    </label>
+                    <input type="checkbox" id="chkIsFill" checked="checked" />
+                    <label for="chkIsFill">
+                        填空类型题</label>
+                    <br />
+                    <input type="checkbox" id="chkIsQuestion" checked="checked" />
+                    <label for="chkIsQuestion">
+                        简答或论述类型题</label>
+                </td>
+            </tr>
+        </table>
+        <div style="text-align: right; padding: 40px 0px 0 0;">
+            <input type="button" class="button" value="帮助文档" onclick="window.external.ActiveScriptMethod('help')"
+                style="display: none;" />
+            <input type="button" class="button" value="考试历史" onclick="changeTab('divHistory')" />
+            <input type="button" class="button" value="清空收藏" onclick="window.external.ActiveScriptMethod('refreshfav')" />
+            <input type="button" class="button" value="清空做错数量" onclick="window.external.ActiveScriptMethod('refreshincorrect')" />
+            <input type="button" class="button" value="清空作答记录" onclick="window.external.ActiveScriptMethod('refreshanswer')" />
+            <input type="button" class="button" value="记忆试题" onclick="window.external.ActiveScriptMethod('memo')" style="display:none;"/>
+            <input type="button" class="button" value="进入考卷" onclick="window.external.ActiveScriptMethod('enterexampaper')"/>
+        </div>
+    </div>
+    <!--history-->
+    <div id="divHistory" style="display: none;">
+        <div id="divContainer">
+        </div>
+        <div style="text-align: right;">
+            <input type="button" class="button" value="查看考试选项" onclick="changeTab('divOption')" />
+            <input type="button" class="button" value="清空所有考试历史记录" onclick="window.external.ActiveScriptMethod('clearhistory')" />
+        </div>
+    </div>
+    <script type="text/javascript">
+           document.oncontextmenu = new Function("event.returnValue=false;");
+           document.onselectstart = new Function("event.returnValue=false;");
+
+        Request = { QueryString: function (item) {
+            var svalue = location.search.match(new RegExp("[\?\&]" + item + "=([^\&]*)(\&?)", "i"));
+            return svalue ? svalue[1] : svalue;
+        }
+        }
+        var color = Request.QueryString("color");
+        function $(id) {
+            return document.getElementById(id);
+        }
+        function ChangeTestWay(wayValue) {
+            $('hidTestWay').value = wayValue;
+
+            if (wayValue == 2)
+                $('isLimitedTime').checked = true;
+        }
+
+        function verifyTime(t) {
+
+            if (isNaN(t.value))
+                t.value = 120;
+            else if (t.value > 24 * 60)
+                t.value = 120;
+            else
+                return t.value;
+        }
+
+        function changeTab(divName) {
+
+
+            var divOption = $("divOption");
+            var divHistory = $("divHistory");
+
+            divOption.style.display = "none";
+            divHistory.style.display = "none";
+
+
+            if (divName == "divHistory")
+                window.external.ActiveScriptMethod("examresult");
+            else
+                window.external.ActiveScriptMethod("examinfo");
+
+            $(divName).style.display = "";
+
+        }
+
+        function fillExamResult(html) {
+            $("divContainer").innerHTML = html;
+        }
+        function fillResult(seed, testTime, html) {
+            $("divResult" + seed).innerHTML = html;
+            $("spanTestTime" + seed).innerHTML = testTime;
+
+            $("tdResult" + seed).style.display = "";
+            $("tdResult" + seed).style.backgroundColor = color;
+
+        }
+        function setColor() {
+
+            document.body.setAttribute("scrollbar-arrow-color", color);
+            $("drpPlatformStyle").style.backgroundColor = color;
+            $("drpDisplayStyle").style.backgroundColor = color;
+            $("txtTime").style.backgroundColor = color;
+
+            var elements = document.getElementsByTagName("span")
+
+            for (var i = 0; i < elements.length; i++) {
+                if (elements[i].className == "titleOption")
+                    elements[i].style.color = color;
+            }
+
+            var inputs = document.getElementsByTagName("input")
+
+            for (var b = 0; b < inputs.length; b++) {
+                if (inputs[b].className == "button")
+                    inputs[b].style.backgroundColor = color;
+            }
+
+            var divs = document.getElementsByTagName("div")
+
+            for (var d = 0; d < divs.length; d++) {
+                if (divs[d].className == "line") {
+                    divs[d].style.borderColor = color;
+                    divs[d].style.borderBottomColor = color;
+
+                }
+            }
+        }
+        window.onload = function () {
+            setColor();
+        };
+    </script>
+</body>
+</html>

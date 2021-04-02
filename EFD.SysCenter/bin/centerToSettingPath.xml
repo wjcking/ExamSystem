@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CTS>
+  <ExamSys>
+    <LibraryPath></LibraryPath>
+    <Google>http://www.google.com.hk/search?q=</Google>
+    <Baidu>http://www.baidu.com/s?wd=</Baidu>
+    <AddThreadUrl>http://www.easyfound.cn/AddThread.aspx</AddThreadUrl>
+    <RegisterUrl>http://www.easyfound.cn/Register.aspx</RegisterUrl>
+    <HomePage>http://www.easyfound.cn</HomePage>
+    <LastExamSubject></LastExamSubject>
+    <PlatformFontFamily>黑体</PlatformFontFamily>
+    <PlatformForeColor>0,0,0</PlatformForeColor>
+    <PlatformBackColor>234,234,234</PlatformBackColor>
+    <PlatformFontSize>15.0</PlatformFontSize>
+    <PlatformFontWeight>normal</PlatformFontWeight>
+    <PlatformOptionColor>255,0,0</PlatformOptionColor>
+    <OutlineFontFamily>黑体</OutlineFontFamily>
+    <OutlineForeColor>0,0,0</OutlineForeColor>
+    <OutlineBackColor>234,234,234</OutlineBackColor>
+    <OutlineFontSize>15.5</OutlineFontSize>
+    <OutlineFontWeight>normal</OutlineFontWeight>
+    <MemoFontFamily>宋体</MemoFontFamily>
+    <MemoForeColor>0,0,0</MemoForeColor>
+    <MemoBackColor>234,234,234</MemoBackColor>
+    <MemoFontSize>12.5</MemoFontSize>
+    <MemoFontWeight>normal</MemoFontWeight>
+    <MemoHighlightStyle>Underline</MemoHighlightStyle>
+    <MyFileFontFamily>Academy Engraved LET</MyFileFontFamily>
+    <MyFileForeColor>ff4fdf2b</MyFileForeColor>
+    <MyFileBackColor>ff141414</MyFileBackColor>
+    <MyFileFontSize>25</MyFileFontSize>
+    <ExamItemLocationStyle>False</ExamItemLocationStyle>
+    <RecordResult>true</RecordResult>
+    <RecordUserAnswer>true</RecordUserAnswer>
+    <RecordIncorrect>true</RecordIncorrect>
+    <OutlineIndex>220</OutlineIndex>
+    <IsShowSplash>true</IsShowSplash>
+    <ExamResultCount>10000</ExamResultCount>
+    <IsShowSystemCreator>false</IsShowSystemCreator>
+    <DropItemWidth>800</DropItemWidth>
+    <CategoryColor>Maroon</CategoryColor>
+    <Skin>default.ssk</Skin>
+    <MyFileDirect>htm,html,xml,jpg,png,jpeg,bmp,gif,swf,xslt,xsl,ico,htt,mht,pht,pdf,doc,txt,css,log,lrc,url</MyFileDirect>
+    <MyFileText></MyFileText>
+    <MyFileMedia>mp3,mp4,wav,mid,mpeg,wma,wmv,mid,mkv,avi,mpg,csf</MyFileMedia>
+    <LimitedTime>120</LimitedTime>
+    <IsInitialized>false</IsInitialized>
+    <EnabledSound>true</EnabledSound>
+    <RequestPage>http://www.easyfound.cn/Param.aspx</RequestPage>
+   
+  </ExamSys>
+</CTS>

@@ -1,0 +1,588 @@
+﻿//public static string GetScript(string fileName)
+        //{
+        //    StringBuilder ep = new StringBuilder();
+
+        //    ExamSys examsys = new ExamSys(fileName);
+        //    ExamInfo examInfo = examsys.GetExamInfo();
+
+        //    MainSubject ms = new MainSubject(fileName);
+        //    List<MainSubjectInfo> msList = ms.GetList();
+
+        //    int index = 0;
+
+        //    foreach (MainSubjectInfo mi in msList)
+        //    {
+        //        ep.AppendFormat("    \r\n    // {0}", mi.Subject);
+        //        ep.AppendFormat("    \r\n    mainSubject[{0}] = \"{1}\";", index, mi.Subject);
+        //        ep.AppendFormat("    \r\n    mainSubjectID[{0}] = \"{1}\";", index, mi.CurrentID);
+        //        ep.AppendFormat("    \r\n    typeID[{0}] = \"{1}\";", index, mi.Type);
+        //        ep.AppendFormat("    \r\n    mainSubjectCount[{0}] = \"{1}\";", index, mi.Count);
+        //        ep.AppendFormat("    \r\n    eachPoint[{0}] = \"{1}\";", index, mi.EachPoint);
+        //        ep.AppendFormat("    \r\n    resultsArray[{0}] ={1};", index, 0);
+
+        //       ep.AppendFormat("    \r\n    subjectIDArray[{0}] = '{1}';", index, "");
+                
+        //       index++;
+        //    }
+        //    return ep.ToString();
+        //}
+
+        //public static string BuildByXml(TemplateInfo temp)
+        //{
+        //    ExamSys examsys = new ExamSys(temp.FileName);
+        //    ExamInfo examInfo = examsys.GetExamInfo();
+
+        //    if (examInfo == null)
+        //        return string.Empty;
+
+        //    //cts
+        //     string template = File.ReadAllText(temp.TemplatPath + "pts.htm", System.Text.Encoding.Default);
+        //    string templateCheckoutTable = File.ReadAllText(temp.TemplatPath + "checkout.htm", System.Text.Encoding.Default);
+        //    string templateResultTable =  File.ReadAllText(temp.TemplatPath + "result.htm", System.Text.Encoding.Default);
+
+        //    MainSubject ms = new MainSubject(temp.FileName);
+
+        //    List<MainSubjectInfo> msList = ms.GetList();
+        //    StringBuilder ep = new StringBuilder();
+
+        //    //for script variants
+        //    int svi = 0;
+        //    string[] elementIDs = new string[ms.Count] ;
+        //    StringBuilder checkOutTable = new StringBuilder();
+        //     StringBuilder resultTable = new StringBuilder();
+        //    int currentSubjectNo =1;
+        //    string locate;
+        //    //initialize static variants for javascript.
+        //    scriptVariants = "";
+        //    htmlCheckOutPanel = "";
+        //    string htmlResultPanel = "";
+              
+        //    //panels for each subjects
+
+        //    foreach (MainSubjectInfo mi in msList)
+        //    {
+
+        //        resultTable.Append("<tr>");
+        //        resultTable.AppendFormat("<td>{0} （{1} point） </td>",mi.Subject, mi.EachPoint);
+        //        resultTable.AppendFormat("<td>{0}</td>", mi.Count);
+        //        resultTable.AppendFormat("<td id='trCorrectNo{0}'></td>", mi.CurrentID);
+        //        resultTable.AppendFormat("<td id='trScore{0}'></td>",  mi.CurrentID);
+        //        resultTable.Append("</tr>");
+
+        //        ep.Append("\r\n<div style=\"font-weight:bold;font-size:14px; \">\r\n");
+        //        //main subject anchors
+        //       // ep.AppendFormat("\r\n<a href=\"#an_{0}\" id=\"an_{0}\"></a>", mi.CurrentID);
+        //        ep.Append("\r\n</div>\r\n");
+
+        //        if (mi.Type == 0)
+        //            continue;
+
+        //        ConstInfo.QuestionType qt = (ConstInfo.QuestionType)mi.Type;
+
+        //        //==============================================CHOICE==========================================       
+        //        if (qt == ConstInfo.QuestionType.Selection)
+        //        {
+        //            Selection select = new Selection(temp.FileName);
+        //            List<SelectionInfo> slist = (temp.TestWay == ConstInfo.TestWay.随机抽题)?select.GetListByRandom(): select.GetList();
+        //            int index;
+
+        //            ep.AppendFormat("\r\n<div id=\"divPanel{0}\" style=\"display:none\">", mi.CurrentID);
+                 
+        //            ep.AppendFormat("\r\n<div>{0}</div>", mi.Subject);
+        //            ep.AppendFormat("\r\n<p style='color:gray; font-weight:normal'>{0}</p>", StrTool.StrToHtm(mi.Content));
+
+        //            foreach (SelectionInfo si in slist)
+        //            {
+        //                if (si.MainSubject != mi.CurrentID)
+        //                {
+        //                    continue;
+        //                 }
+
+        //                index = si.Index;
+        //                //initialize javascript variants
+        //                elementIDs[svi] += mi.CurrentID + index.ToString() + ",";
+
+        //                //create checkout table
+
+        //              //class
+        //                string classSubjectPanel = String.Format("ClassSubjectPanel{0}", mi.CurrentID);
+        //                string classSubject= String.Format("ClassSubject{0}", mi.CurrentID); 
+        //                string classAnswer = String.Format("ClassAnswer{0}", mi.CurrentID);
+        //                string classMark = String.Format("ClassMark{0}", mi.CurrentID);
+        //                string classAnchor = String.Format("ClassAnchor{0}", mi.CurrentID);
+        //                //id
+        //                string subjectId = String.Format("subject{0}{1}", mi.CurrentID, index);
+        //                string divKey = string.Format("divKey{0}{1}", mi.CurrentID, index);
+        //                string userAnswerID = String.Format("userAnswerID{0}{1}", mi.CurrentID, index);
+        //                string divSubjectPanelID = string.Format("subjectPanel{0}{1}", mi.CurrentID, index);//panels for each  subject
+        //                string classKey = "ClassKey" + mi.CurrentID;
+        //                string anchorID = "an" + mi.CurrentID + index.ToString();
+
+        //                ep.AppendFormat("<div id=\"{0}\" style=\"display:{1}\" class='{2}'>", divSubjectPanelID, (temp.DisplayStyle == ConstInfo.DisplayStyle.逐个) ? "none" : "normal", classSubjectPanel);
+        //                //Anchors
+        //                ep.AppendFormat("\r\n<a href='' name=\"an{0}{1}\" id=\"an{0}{1}\" class='{2}' style='display:none'>{3}</a>", mi.CurrentID, index, classAnchor, index);
+        //                //for each subject in  divs
+        //                //marks
+        //                ep.AppendFormat("<input type='checkbox' title='标记此题'  id='Mark{0}{1}' class='{2}'/>", mi.CurrentID, index, classMark);
+        //                //subjects
+        //                ep.AppendFormat("<span id=\"{0}\" class='{1}'>{2}</span>", subjectId, classSubject, si.Subject);
+        //                ep.AppendFormat("\r\n<span id='{0}' style=\"font-weight: bold;\" class='{1}'></span>　\r\n", userAnswerID, classAnswer);
+
+
+        //                if (temp.TestWay == ConstInfo.TestWay.试题学习)
+        //                {
+        //                    //search
+        //                    // ep.Append(" <a href='###' onclick=\"Javascript:GotoSearchEngine()\"><img title='搜索选中的内容' src='images/search.gif' style='border:0px;'/></a>");
+        //                    //key
+        //                    ep.AppendFormat(" <img title='答案' src='images/key.gif' style='border:0px;width:15px;height:16px' onclick=\"Javascript:document.getElementById('{0}').style.display=''\"/>", divKey);
+        //                    //note
+        //                    ep.AppendFormat(" <a href=\"Javascript:window.external.Note(document.getElementById('{0}').innerText, {1},{2})\"><img title='笔记' src='images/note.gif' style='border:0px'/></a>", subjectId, (int)ConstInfo.QuestionType.Selection, index);
+        //                }
+
+
+        //                if (si.Subject.Trim().Length > 4 && si.BreakType == 0)
+        //                    ep.Append("\r\n<br/>\r\n");
+
+
+        //                ep.Append(Selection.GenerateChoices(si));
+        //                ep.Append("\r\n<br/>\r\n");
+        //                //SI.INDEX
+        //                string hidID = String.Format("hidChoice_{0}_{1}", mi.CurrentID, index);
+        //                string hidName = hidID;
+
+        //                ep.AppendFormat("\r\n<input type=\"hidden\" name=\"{0}\" id=\"{0}\" />\r\n", hidName, hidID);
+
+        //                //  ep.Append(" <a href=\"#\"><img title='顶端' src='images/top.gif' style='border:0px'/></a>");
+
+        //                //key
+        //                //"正确答案
+                        
+        //                ep.AppendFormat("\r\n<span id=\"{0}\" style=\"display:none;\" class='{1}'>{2}</span>\r\n", divKey, classKey, si.Key);
+
+        //                //close subjectPanelID div
+        //                ep.Append("\r\n</div>");
+
+        //                ////checkOutTable
+        //                checkOutTable.Append("<tr>");
+                       
+        //                 if (temp.DisplayStyle == ConstInfo.DisplayStyle.逐个)
+        //                    locate = string.Format("Javascript:LocateSubjectPanelByDiv('{0}','{1}')", mi.CurrentID, divSubjectPanelID);
+        //                else
+        //                    locate = string.Format("Javascript:LocateSubjectPanelByAnchor('{0}','#{1}')", mi.CurrentID, anchorID);
+
+        //                checkOutTable.AppendFormat("<td><a href='###' onclick=\"{0}\">#{1}</a></td>", locate, currentSubjectNo);
+
+        //                checkOutTable.AppendFormat("<td style='color:blue' id=\"trMark{0}{1}\"></td>", mi.CurrentID, index);
+        //                checkOutTable.AppendFormat("<td >{0}</td>", si.Subject);
+        //                checkOutTable.AppendFormat("<td id='tr{0}'></td>", userAnswerID);
+        //                checkOutTable.AppendFormat("<td id='tr{0}' style='color:black;'></td>", divKey);
+        //                checkOutTable.AppendFormat("<td ><img title='添加收藏' src='images/fav.gif' style='border:0px;width:16px;height:16px'/>{0}</td>", "");
+        //                checkOutTable.Append("</tr>");
+        //                currentSubjectNo++;
+        //            }
+            
+        //            ep.Append("\r\n</div>");
+         
+        //        }
+        //        //==============================================JUDGEMENT==========================================     
+        //        else if (qt == ConstInfo.QuestionType.Judgement)
+        //        {
+
+        //            Judgement judge = new Judgement(temp.FileName);
+        //            List<JudgementInfo> jiList = (temp.TestWay == ConstInfo.TestWay.随机抽题) ? judge.GetListByRandom() : judge.GetList();
+        //            int index;
+
+        //            ep.AppendFormat("\r\n<div id=\"divPanel{0}\" style=\"display:none\">", mi.CurrentID);
+        //            ep.AppendFormat("\r\n<div>{0}</div>", mi.Subject);
+        //            ep.AppendFormat("\r\n<p style='color:gray; font-weight:normal'>{0}</p>", StrTool.StrToHtm(mi.Content));
+
+        //            foreach (JudgementInfo ji in jiList)
+        //            {
+
+        //                if (ji.MainSubject != mi.CurrentID)
+        //                    continue;
+
+        //                index = ji.Index;
+        //                elementIDs[svi] += mi.CurrentID + index.ToString() + ",";
+        //                //class
+        //                string classSubjectPanel = String.Format("ClassSubjectPanel{0}", mi.CurrentID);
+        //                string classSubject = String.Format("ClassSubject{0}", mi.CurrentID);
+        //                string classAnswer = String.Format("ClassAnswer{0}", mi.CurrentID);
+        //                string classMark = String.Format("ClassMark{0}", mi.CurrentID);
+        //                string classKey = "ClassKey" + mi.CurrentID;
+        //                string classAnchor = String.Format("ClassAnchor{0}", mi.CurrentID);
+        //                //id
+        //                string divSubjectPanelID = string.Format("subjectPanel{0}{1}", mi.CurrentID, index);
+
+        //                string subjectId = String.Format("subject{0}{1}", mi.CurrentID, index);
+        //                string divKey = string.Format("divKey{0}{1}", mi.CurrentID, index);
+        //                string anchorID = "an" + mi.CurrentID + index.ToString();
+        //                //panels for each choice subject
+        //                ep.AppendFormat("<div id=\"{0}\" style=\"display:{1}\" class='{2}'>", divSubjectPanelID, (temp.TestWay == ConstInfo.TestWay.正式考试) ? "none" : "normal", classSubjectPanel);
+
+        //                //Anchors
+        //                ep.AppendFormat("\r\n<a name=\"an{0}{1}\" id=\"an{0}{1}\" class='{2}' style='display:none'>{3}</a>", mi.CurrentID, index, classAnchor, index);
+
+        //                //"√" : "×";
+        //                string key = ji.Key.ToLower() == "true" ? "√" : "×";
+
+
+        //                string rdoName = string.Format("chkJudge_{0}_{1}", ji.MainSubject, index);
+        //                string keyJudge = string.Format("keyJudge_{0}_{1}", ji.MainSubject, index);
+        //                string userAnswerID = "userAnswerID" + mi.CurrentID + index;
+
+        //                // to save users' answers into a hidden span.
+        //                string scriptGetUserJudgeAnswer = string.Format("GetUserJudgeAnswer('{0}','{1}')", rdoName, userAnswerID);
+
+        //                ep.AppendFormat("\r\n<input type=\"radio\" name=\"{0}\" value=\"√\"  onclick=\"{1}\"/>\r\n", rdoName, scriptGetUserJudgeAnswer);
+        //                ep.Append("√");
+        //                ep.AppendFormat("\r\n<input type=\"radio\" name=\"{0}\" value=\"×\"  onclick=\"{1}\"/>\r\n", rdoName, scriptGetUserJudgeAnswer);
+        //                ep.Append("×");
+
+
+        //                //for each subject in   divs
+        //                //marks
+        //                ep.AppendFormat("<input type='checkbox' title='标记此题' id='Mark{0}{1}' class='{2}'/>　", mi.CurrentID, index, classMark);
+        //                //subjects
+        //                ep.AppendFormat("<span id=\"{0}\" class='{1}'>{2}</span>", subjectId, classSubject, ji.Subject);
+
+
+        //                if (temp.TestWay == ConstInfo.TestWay.试题学习)
+        //                {
+        //                  ep.AppendFormat(" <a href='###' onclick=\"Javascript:document.getElementById('{0}').style.display=''\"><img title='答案' src='images/key.gif' style='border:0px;width:15px;height:16px'/></a>", divKey);
+        //               ep.AppendFormat("　<a href=\"Javascript:window.external.Note(document.getElementById('{0}').innerText, {1},{2})\"><img title='笔记' src='images/note.gif' style='border:0px'/></a>", subjectId, (int)ConstInfo.QuestionType.Judgement, index);
+        //             }
+                           
+        //                //the users' anwsers
+        //                ep.AppendFormat("\r\n<span type=\"hidden\" id=\"userAnswerID{0}{1}\" style='' class='{2}'></span>\r\n", ji.MainSubject, index, classAnswer);
+        //                //display keys on these divs
+        //                ep.AppendFormat("\r\n<span id=\"{0}\" style=\"color:green;display:none;\" class='{1}'>{2}</span>\r\n", divKey, classKey, key);
+        //                // //keys
+        //                ep.AppendFormat("\r\n<input type=\"hidden\" id=\"hidJudge_{0}_{1}\" name=\"hidJudge_{0}_{1}\" value=\"{2}\"/>\r\n", ji.MainSubject, index, ji.Key);
+
+        //                ep.Append("\r\n<br />\r\n");
+
+        //                ep.Append("\r\n</div>");
+
+        //                //checkOutTable
+        //                checkOutTable.Append("<tr>");
+        //                 if (temp.DisplayStyle == ConstInfo.DisplayStyle.逐个)
+        //                    locate = string.Format("Javascript:LocateSubjectPanelByDiv('{0}','{1}')", mi.CurrentID, divSubjectPanelID);
+        //                else
+        //                    locate = string.Format("Javascript:LocateSubjectPanelByAnchor('{0}','#{1}')", mi.CurrentID, anchorID);
+
+        //                checkOutTable.AppendFormat("<td><a href='###' onclick=\"{0}\">#{1} </a></td>", locate, currentSubjectNo);
+
+        //                checkOutTable.AppendFormat("<td style='color:blue' id=\"trMark{0}{1}\"></td>", mi.CurrentID, index);
+        //                checkOutTable.AppendFormat("<td >{0}</td>", ji.Subject);
+        //                checkOutTable.AppendFormat("<td id='tr{0}'></td>", userAnswerID);
+        //                checkOutTable.AppendFormat("<td id='tr{0}'></td>", divKey);
+        //                checkOutTable.AppendFormat("<td ><img title='添加收藏' src='images/fav.gif' style='border:0px;width:16px;height:16px'/>{0}</td>", "");
+        //                checkOutTable.Append("</tr>");
+        //                currentSubjectNo++;
+        //            }
+        //            ep.Append("\r\n</div>");
+        //        }
+        //        //==============================================FILL==========================================     
+        //        else if (qt == ConstInfo.QuestionType.Fill)
+        //        {
+        //            Fill fill = new Fill(temp.FileName);
+        //            List<FillInfo> fiList = fill.GetList();
+
+        //            int index;
+        //            ep.AppendFormat("\r\n<div id=\"divPanel{0}\" style=\"display:none\">", mi.CurrentID);
+              
+        //            ep.AppendFormat("\r\n<div>{0}</div>", mi.Subject);
+
+        //            ep.AppendFormat("\r\n<p style='color:gray; font-weight:normal'>{0}</p>", StrTool.StrToHtm(mi.Content));
+
+        //            foreach (FillInfo fi in fiList)
+        //            {
+        //                if (fi.MainSubject != mi.CurrentID)
+        //                    continue;
+
+        //                index = fi.Index;
+        //                elementIDs[svi] += mi.CurrentID + index.ToString() + ",";
+        //                string subjectId = String.Format("subject{0}{1}", mi.CurrentID, index);
+        //                string divKey = string.Format("divKey{0}{1}", mi.CurrentID, index);
+        //                string userAnswerID = "userAnswerID" + mi.CurrentID + index.ToString();
+        //                string anchorID = "an" + mi.CurrentID + index.ToString();
+        //                //id
+        //                string divSubjectPanelID = string.Format("subjectPanel{0}{1}", mi.CurrentID, index);
+
+        //                //panels for each choice subject
+        //                ep.AppendFormat("<div id=\"{0}\" style=\"display:{1}\" >", divSubjectPanelID, (temp.DisplayStyle == ConstInfo.DisplayStyle.逐个) ? "none" : "normal");
+
+        //                //Anchors
+        //                ep.AppendFormat("\r\n<a name=\"an{0}{1}\" id=\"an{0}{1}\"  style='display:none'>{2}</a>", mi.CurrentID, index,  index);
+
+                      
+        //                //marks
+        //                ep.AppendFormat("<input type='checkbox' title='标记此题' id='Mark{0}{1}'/>　", mi.CurrentID, index);
+        //                ep.AppendFormat("<span id=\"{0}\">{1}</span>", subjectId, fi.Subject);
+
+        //                if (temp.TestWay == ConstInfo.TestWay.试题学习)
+        //                {
+        //                    ep.AppendFormat(" <a href='###' onclick=\"Javascript:document.getElementById('{0}').style.display=''\"><img title='答案' src='images/key.gif' style='border:0px;width:15px;height:16px'/></a>", divKey);
+        //                    ep.AppendFormat("　<a href=\"Javascript:window.external.Note(document.getElementById('{0}').innerText, {1},{2})\"><img title='笔记' src='images/note.gif' style='border:0px'/></a>", subjectId, (int)ConstInfo.QuestionType.Fill, index);
+        //                }
+        //                ep.AppendFormat("\r\n<input type=\"text\" id=\"userAnswerID{0}{1}\"  />\r\n", fi.MainSubject, index);
+        //                ep.Append("\r\n<br/>\r\n");
+
+        //                //key
+        //                ep.AppendFormat("\r\n<div id=\"divKey{0}{1}\" style=\"color:green;display:none;\">{2}</div>\r\n", fi.MainSubject, index, fi.Key);
+
+
+        //                ep.Append("\r\n</div>");
+
+        //                //checkOutTable
+        //                checkOutTable.Append("<tr>");
+        //                 if (temp.DisplayStyle == ConstInfo.DisplayStyle.逐个)
+        //                    locate = string.Format("Javascript:LocateSubjectPanelByDiv('{0}','{1}')", mi.CurrentID, divSubjectPanelID);
+        //                else
+        //                    locate = string.Format("Javascript:LocateSubjectPanelByAnchor('{0}','#{1}')", mi.CurrentID, anchorID);
+
+        //                checkOutTable.AppendFormat("<td><a href='###' onclick=\"{0}\">#{1} </a></td>", locate, currentSubjectNo);
+
+        //                checkOutTable.AppendFormat("<td style='color:blue' id=\"trMark{0}{1}\"></td>", mi.CurrentID, index);
+        //                checkOutTable.AppendFormat("<td>{0}</td>", fi.Subject);
+        //                checkOutTable.AppendFormat("<td id='tr{0}'></td>", userAnswerID);
+        //                checkOutTable.AppendFormat("<td id='tr{0}' ></td>", divKey);
+        //                checkOutTable.AppendFormat("<td ><img title='添加收藏' src='images/fav.gif' style='border:0px;width:16px;height:16px'/>{0}</td>", "");
+        //                checkOutTable.Append("</tr>");
+        //                currentSubjectNo++;
+        //            }
+        //            ep.Append("\r\n</div>");
+
+        //        }
+        //        //==============================================QUESTION==========================================     
+        //        else if (qt == ConstInfo.QuestionType.Question)
+        //        {
+
+        //            Question question = new Question(temp.FileName);
+        //            List<QuestionInfo> qiList = question.GetList();
+
+        //            int index;
+        //            ep.AppendFormat("\r\n<div id=\"divPanel{0}\" style=\"display:none\">", mi.CurrentID);
+
+        //            ep.AppendFormat("\r\n<div>{0}</div>", mi.Subject);
+
+        //            ep.AppendFormat("\r\n<p style='color:gray; font-weight:normal'>{0}</p>", StrTool.StrToHtm(mi.Content));
+
+        //            foreach (QuestionInfo qi in qiList)
+        //            {
+        //                if (qi.MainSubject != mi.CurrentID)
+        //                    continue;
+
+        //                index = qi.Index;
+        //                elementIDs[svi] += mi.CurrentID + index.ToString() + ",";
+
+        //                string subjectId = String.Format("subject{0}{1}", mi.CurrentID, index);
+        //                string divKey = string.Format("divKey{0}{1}", mi.CurrentID, index);
+        //                string userAnswerID = "userAnswerID" + mi.CurrentID + index.ToString();
+        //                string anchorID = "an" + mi.CurrentID + index.ToString();
+        //                //id
+        //                string divSubjectPanelID = string.Format("subjectPanel{0}{1}", mi.CurrentID, index);
+
+        //                //panels for each choice subject
+        //                ep.AppendFormat("<div id=\"{0}\" style=\"display:{1}\" >", divSubjectPanelID, (temp.DisplayStyle == ConstInfo.DisplayStyle.逐个) ? "none" : "normal");
+
+        //                //Anchors
+        //                ep.AppendFormat("\r\n<a name=\"an{0}{1}\" id=\"an{0}{1}\"  style='display:none'>{2}</a>", mi.CurrentID, index, index);
+ 
+        //                //marks
+        //                ep.AppendFormat("<input type='checkbox' title='标记此题' id='Mark{0}{1}'/>", mi.CurrentID, index);
+
+        //                ep.AppendFormat("<span id=\"{0}\">{1}</span>", subjectId, qi.Subject);
+        //                if (temp.TestWay == ConstInfo.TestWay.试题学习)
+        //                {
+        //                    ep.AppendFormat(" <a href='###' onclick=\"Javascript:document.getElementById('{0}').style.display=''\"><img title='答案' src='images/key.gif' style='border:0px;width:15px;height:16px'/></a>", divKey);
+        //                    ep.AppendFormat("<a href='###' onclick=\"Javascript:setQuestionKey(document.getElementById('{0}').innerText, document.getElementById('{1}').innerText, {2})\">逐字显示</a>", subjectId, divKey, 100);
+        //                    ep.AppendFormat("　<a href=\"Javascript:window.external.Note(document.getElementById('{0}').innerText, {1},{2})\"><img title='笔记' src='images/note.gif' style='border:0px'/></a>", subjectId, (int)ConstInfo.QuestionType.Question, index);
+                          
+        //                }
+
+        //                 ep.Append("\r\n<br/>\r\n");
+        //                 ep.AppendFormat("\r\n　 <textarea   id=\"userAnswerID{0}{1}\" style='width:70%;height:100px' ></textarea>\r\n", qi.MainSubject, index);
+        //                ep.Append("\r\n<br/>\r\n");
+        //                ep.Append("\r\n<br/>\r\n");
+        //                //key
+        //                ep.AppendFormat("\r\n<div id=\"divKey{0}{1}\" style=\"color:green;display:none; padding:10px 30px 20px 30px\">{2}</div>\r\n", qi.MainSubject, index, StrTool.StrToHtm(qi.Key));
+
+
+        //                ep.Append("\r\n</div>");
+
+        //                //checkOutTable
+        //                checkOutTable.Append("<tr>");
+        //                if (temp.DisplayStyle == ConstInfo.DisplayStyle.逐个)
+        //                    locate = string.Format("Javascript:LocateSubjectPanelByDiv('{0}','{1}')", mi.CurrentID, divSubjectPanelID);
+        //                else
+        //                    locate = string.Format("Javascript:LocateSubjectPanelByAnchor('{0}','#{1}')", mi.CurrentID, anchorID);
+
+        //                checkOutTable.AppendFormat("<td><a href='###' onclick=\"{0}\">#{1} </a></td>", locate, currentSubjectNo);
+
+        //                checkOutTable.AppendFormat("<td style='color:blue' id=\"trMark{0}{1}\"></td>", mi.CurrentID, index);
+        //                checkOutTable.AppendFormat("<td title=\"{0}\">{1}</td>", qi.Subject, qi.Subject.Substring(0, (qi.Subject.Length < 60) ? qi.Subject.Length : 60));
+        //                checkOutTable.AppendFormat("<td id='tr{0}'></td>", userAnswerID);
+        //                checkOutTable.AppendFormat("<td id='tr{0}'></td>", divKey);
+        //                checkOutTable.AppendFormat("<td ><img title='添加收藏' src='images/fav.gif' style='border:0px;width:16px;height:16px'/>{0}</td>", "");
+        //                checkOutTable.Append("</tr>");
+        //                currentSubjectNo++;
+        //            }
+        //            ep.Append("\r\n</div>");
+                   
+        //        }
+        //            //iterative script variants
+        //        svi++;
+
+        //        htmlCheckOutPanel += templateCheckoutTable.Replace("{#tableCheckOut.CheckingOut#}", checkOutTable.ToString()).Replace("{#tableCheckOut.MainSubject#}", mi.Subject);
+             
+        //        checkOutTable.Remove(0, checkOutTable.Length);
+        //     //   resultTable.Remove(0, resultTable.Length);
+        //    }
+
+        //    resultTable.Append("<tr style='height:100px'>");
+        //    resultTable.Append("<td style='font-style:italic;' id='finalResult'>最后结果</td>");
+        //    resultTable.Append("<td id='trCorrectTotal'></td>");
+        //    resultTable.Append("<td id='trTotalScore'></td>");
+        //    resultTable.Append("</tr>");
+
+        //      htmlResultPanel += templateResultTable.Replace("{#Result#}",  resultTable.ToString());
+
+        //    //script
+        //     for (int i=0; i< elementIDs.Length;i++)
+        //            scriptVariants += string.Format("subjectIDArray[{0}] =\"{1}\"; \r\n", i,  elementIDs[i].Substring(0,elementIDs[i].LastIndexOf(",")));
+           
+        //  //  string controlPanel = File.ReadAllText(temp.TemplatPath + "control.htm");
+        //    string examArea = ep.ToString();
+
+        //    template = template.Replace("{#temp.Name#}", examInfo.Name);
+        //    template = template.Replace("{#temp.Time#}", examInfo.Time.ToString());
+        //    template = template.Replace("{#temp.Score#}", examInfo.Score.ToString());
+        //    template = template.Replace("{#temp.Content#}", StrTool.StrToHtm(examInfo.Content));
+
+        //   // template = template.Replace("{#temp.ControlPanel#}", controlPanel);
+        //    template = template.Replace("{#temp.ExamArea#}", examArea);
+
+        //    template = template.Replace("{#temp.LastTestScore#}", examInfo.LastTestScore.ToString());
+        //    template = template.Replace("{#temp.LastTestTime#}", examInfo.LastTestTime);
+        //    template = template.Replace("{#temp.PublishDate#}", examInfo.PublishDate);
+        //    template = template.Replace("{#temp.CheckOut#}", htmlCheckOutPanel);
+        //    template = template.Replace("{#temp.ExamResult#}", htmlResultPanel);
+
+        //    return template;
+        //}
+        
+        
+            //public static string Import(TemplateInfo temp)
+        //{
+        //    ExamSys examsys = new ExamSys(temp.FileName);
+        //    ExamInfo examInfo = examsys.GetExamInfo();
+
+        //    if (examInfo == null)
+        //        return string.Empty;
+
+        //    //cts
+        //    MainSubject ms = new MainSubject(temp.FileName);
+
+        //    List<MainSubjectInfo> msList = ms.GetList();
+        //    StringBuilder ep = new StringBuilder();
+
+        //    foreach (MainSubjectInfo mi in msList)
+        //    {
+        //        if (mi.Type == 0)
+        //            continue;
+
+        //        ConstInfo.QuestionType qt = (ConstInfo.QuestionType)mi.Type;
+
+        //        ep.Append(mi.Subject);
+        //        ep.Append("\r\n");
+
+        //        if (qt == ConstInfo.QuestionType.Selection)
+        //        {
+        //            Selection select = new Selection(temp.FileName);
+
+        //            List<SelectionInfo> slist = select.GetList();
+
+        //            DataUtility.Select sel = new DataUtility.Select();
+
+        //            foreach (SelectionInfo si in slist)
+        //            {
+                       
+        //                ////ep.Append(si.Subject);
+        //                ////ep.Append(si.Key);
+        //                ////ep.Append(si.Choice);
+                        
+        //                //si.ExamInfoID = 24;
+        //                //si.MainSubjectID = 10000;
+                        
+        //                //sel.Add(si);
+        //                ep.Append("\r\n");
+        //            }
+        //        }
+
+        //        else if (qt == ConstInfo.QuestionType.Judgement)
+        //        {
+        //            Judgement judge = new Judgement(temp.FileName);
+        //            List<JudgementInfo> jiList = judge.GetList();
+
+        //            foreach (JudgementInfo ji in jiList)
+        //            {
+        //                ////ep.Append(ji.Subject); ep.Append("\r\n");
+        //                ////ep.Append(ji.Key);
+        //                ////ep.Append("\r\n");
+        //            }
+        //        }
+
+        //        else if (qt == ConstInfo.QuestionType.Fill)
+        //        {
+        //            Fill fill = new Fill(temp.FileName);
+        //            List<FillInfo> fiList = fill.GetList();
+
+        //            DataUtility.FillBlank fillBlank = new DataUtility.FillBlank();
+
+        //            foreach (FillInfo fi in fiList)
+        //            {
+        //                ////ep.Append(fi.Subject); ep.Append("\r\n");
+        //                ////ep.Append(fi.Key);
+        //                ////ep.Append("\r\n");
+
+        //                //si.ExamInfoID = 24;
+        //                //si.MainSubjectID = 10000;
+
+        //                //fi.ExamInfoID = 24;
+        //                //fi.MainSubjectID = 10003;
+        //                //string cutstring = fi.Subject.Replace(fi.Index + ".", "");
+        //                //fi.Subject = cutstring;
+        //                //fillBlank.Add(fi);
+        //            }
+        //        }
+
+        //        else if (qt == ConstInfo.QuestionType.Question)
+        //        {
+        //            Question question = new Question(temp.FileName);
+        //            List<QuestionInfo> qiList = question.GetList();
+
+        //            DataUtility.Quest quest = new DataUtility.Quest();
+
+        //            foreach (QuestionInfo qi in qiList)
+        //            {
+        //                ////ep.Append(qi.Subject); ep.Append("\r\n");
+        //                ////ep.Append(qi.Key);
+        //                ////ep.Append("\r\n");
+
+        //                qi.ExamInfoID = 24;
+        //                qi.MainSubjectID = 10006;
+        //                int dot = qi.Subject.IndexOf(".")+1;
+
+        //                string cutstring = qi.Subject.Substring(dot, (qi.Subject.Length-dot));
+
+        //                qi.Subject = cutstring;
+        //                ep.Append(cutstring);
+
+        //                quest.Add(qi);
+        //            }
+        //        }
+        //    }
+        //    return ep.ToString() ;
+        //}

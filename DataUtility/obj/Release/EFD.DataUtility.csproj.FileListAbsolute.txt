@@ -1,0 +1,10 @@
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\DataUtility\bin\Release\DataUtility.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\DataUtility\bin\Release\DataUtility.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\DataUtility\bin\Release\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\DataUtility\bin\Release\Model.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\DataUtility\obj\Release\ResolveAssemblyReference.cache
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\DataUtility\obj\Release\DataUtility.Properties.Resources.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\DataUtility\obj\Release\GenerateResource-ResGen.read.1.tlog
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\DataUtility\obj\Release\GenerateResource-ResGen.write.1.tlog
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\DataUtility\obj\Release\DataUtility.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\DataUtility\obj\Release\DataUtility.pdb

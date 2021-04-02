@@ -1,0 +1,100 @@
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\ExamSys.exe.config
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\ExamSys.exe
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\ExamSys.pdb
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\Cts.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\DataUtility.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\Cts.pdb
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\DataUtility.pdb
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\Model.pdb
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.CheckOut.resources
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.EasyChart.resources
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.EFDBrowser.resources
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.EFDNode.resources
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.HandIn.resources
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.MainCategory.resources
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.CorrectSubject.resources
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.Platform.resources
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.Properties.Resources.resources
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.RegisterInfo.resources
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.SearchTask.resources
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.Settings.resources
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.Splash.resources
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.History.resources
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.Register.resources
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.Memorization.resources
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.Keyword.resources
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.exe
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\ExamSys.exe.config
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.exe
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\ExamSys.exe
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\ExamSys.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\Cts.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\DataUtility.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\Cts.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\DataUtility.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\bin\Debug\Model.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.CheckOut.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.EasyChart.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.EFDBrowser.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.HandIn.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.MainCategory.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.CorrectSubject.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.Platform.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.Properties.Resources.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.RegisterInfo.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.SearchTask.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.Settings.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.Splash.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.History.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.Register.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.Memorization.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\ExamSys.Keyword.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\ExamSys\obj\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\bin\Debug\ExamSys.exe.config
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\obj\Debug\ExamSys.exe
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\obj\Debug\ExamSys.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\bin\Debug\ExamSys.exe
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\bin\Debug\ExamSys.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\bin\Debug\Cts.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\bin\Debug\DataUtility.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\bin\Debug\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\bin\Debug\Cts.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\bin\Debug\DataUtility.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\bin\Debug\Model.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\obj\Debug\ExamSys.CheckOut.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\obj\Debug\ExamSys.EasyChart.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\obj\Debug\ExamSys.EFDBrowser.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\obj\Debug\ExamSys.HandIn.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\obj\Debug\ExamSys.MainCategory.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\obj\Debug\ExamSys.CorrectSubject.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\obj\Debug\ExamSys.Platform.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\obj\Debug\ExamSys.Properties.Resources.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\obj\Debug\ExamSys.RegisterInfo.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\obj\Debug\ExamSys.SearchTask.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\obj\Debug\ExamSys.Settings.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\obj\Debug\ExamSys.Splash.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\obj\Debug\ExamSys.History.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\obj\Debug\ExamSys.Register.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\obj\Debug\ExamSys.Memorization.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\obj\Debug\ExamSys.Keyword.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\ExamSys\obj\Debug\GenerateResource-ResGen.write.1.tlog

@@ -1,0 +1,54 @@
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Cts\bin\Debug\Cts.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Cts\bin\Debug\Cts.pdb
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Cts\bin\Debug\DataUtility.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Cts\bin\Debug\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Cts\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Cts\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Cts\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Cts\bin\Debug\DataUtility.pdb
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Cts\bin\Debug\Model.pdb
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Cts\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Cts\obj\Debug\Cts.Properties.Resources.resources
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Cts\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Cts\obj\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Cts\obj\Debug\Cts.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Cts\obj\Debug\Cts.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Cts\bin\Debug\Cts.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Cts\bin\Debug\Cts.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Cts\bin\Debug\DataUtility.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Cts\bin\Debug\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Cts\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Cts\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Cts\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Cts\bin\Debug\DataUtility.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Cts\bin\Debug\Model.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Cts\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Cts\obj\Debug\Cts.Properties.Resources.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Cts\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Cts\obj\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Cts\obj\Debug\Cts.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Cts\obj\Debug\Cts.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\bin\Debug\Cts.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\bin\Debug\Cts.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\bin\Debug\DataUtility.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\bin\Debug\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\bin\Debug\DataUtility.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\bin\Debug\Model.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\obj\Debug\Cts.Properties.Resources.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\obj\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\obj\Debug\Cts.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\obj\Debug\Cts.pdb
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\bin\Debug\Cts.dll
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\bin\Debug\Cts.pdb
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\bin\Debug\DataUtility.dll
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\bin\Debug\Model.dll
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\bin\Debug\DataUtility.pdb
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\bin\Debug\Model.pdb
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\obj\Debug\ResolveAssemblyReference.cache
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\obj\Debug\Cts.Properties.Resources.resources
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\obj\Debug\GenerateResource-ResGen.read.1.tlog
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\obj\Debug\GenerateResource-ResGen.write.1.tlog
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\obj\Debug\Cts.dll
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Cts\obj\Debug\Cts.pdb

@@ -1,0 +1,110 @@
+﻿*
+{
+	margin: 0;
+	padding: 0;
+	word-break: break-all;
+}
+*html
+{
+	overflow-x: hidden;
+}
+body
+{
+	font-family: arial, Verdana,snas-serif;
+	color: #666;
+	 font-size:12px;
+	background-color: #fff;
+	margin: 0px 0px;
+}
+h1, h2, h3, h4, h5
+{
+	font-size: 12px;
+}
+img
+{
+	vertical-align:middle;
+	border-style: none;
+	border-color: inherit;
+	border-width: 0;
+	width: 16px;
+	height: 16px;
+}
+select option
+{
+	font-family: MS Sans Serif;
+	padding-left: 4px;
+}
+ul, li
+{
+	list-style: none;
+}
+a
+{
+	color: #036;
+	text-decoration: none;
+}
+a:hover
+{
+	color: #258DC9;
+	text-decoration: underline;
+}
+em, cite, strong, th
+{
+	font-style: normal;
+	font-weight: normal;
+}
+table
+{
+	empty-cells: show;
+	border-collapse: collapse;
+}
+#td { border:1px solid;}
+#warper
+{
+	width: 100%;
+	margin: 0 auto;
+	min-width: 778px;
+}
+
+
+/********** *******/
+p
+{
+	padding-top: 20px;
+}
+.materialLeft
+{
+	padding: 10px 15px 15px 15px;
+	float: left;
+}
+
+.materialRight
+{
+ 
+	padding: 10px 15px 15px 15px;
+	float: right;
+	text-align: left;
+}
+
+.heading1
+{
+	color: white;
+	font-size: 14px;
+	padding-top: 5px;
+	background-color:  #990000;
+	height: 25px;
+	width: 100%;
+	font-weight:bold;
+}
+
+.intro
+{
+	padding: 15px 15px 0 15px;
+}
+.question
+{
+	color: black;
+	font-size: 12px;
+	padding: 10px 15px 15px 15px;
+}
+ 

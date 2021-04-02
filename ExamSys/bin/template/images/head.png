@@ -1,0 +1,76 @@
+﻿var mainSubject = new Array();
+var mainSubjectID = new Array();
+var mainSubjectCount = new Array();
+var eachPoint = new Array();
+var typeID = new Array();
+var resultsArray = new Array();
+var subjectIDArray = new Array();
+var mainSubjectExist = new Array();
+
+var divExamArea = document.getElementById("examArea"); 
+var btnKeyword = document.getElementById("btnKeyword"); 
+var btnShowkey = document.getElementById("btnShowkey");
+var btnExam = document.getElementById("btnExam");
+var btnCol = document.getElementById("btnCol");
+var  btnExp = document.getElementById("btnExp");
+var btnToggleInput =   document.getElementById("btnToggleInput");
+var btnNext = document.getElementById("btnNext");
+var btnPrev = document.getElementById("btnPrev");
+
+var drpSubject = document.getElementById("drpSubject");
+var drpSubjectPanelIdList = document.getElementById("drpSubjectPanelIdList");
+
+function GetSingleSelected(keySingleName, currentInput) {
+
+    for (var i = 0; i < document.getElementsByName(keySingleName).length; i++) {
+        if (document.getElementsByName(keySingleName).item(i).checked) {
+
+            var current = document.getElementsByName(keySingleName).item(i).value;
+
+            var labelID = "Label_" + document.getElementsByName(keySingleName).item(i).id;
+            var label = document.getElementById(labelID);
+					
+			document.getElementById("userAnswerID" + currentInput).setAttribute("innerText",  current );
+				    
+        }
+    }
+}
+
+function GetMultipleSelected(keyMultiName, currentInput) {
+
+    var temp = "";
+
+    for (var i = 0; i < document.getElementsByName(keyMultiName).length; i++) {
+
+        if (document.getElementsByName(keyMultiName).item(i).checked) {
+            var current = document.getElementsByName(keyMultiName).item(i).value;
+
+            temp += current;
+        }
+    }
+	document.getElementById("userAnswerID" + currentInput).setAttribute("innerText", temp); 
+}
+
+function GetSelectedKey(keyName, currentInput, isMulti) {
+	//选项声音
+	window.external.Play('playoption');
+			 
+    if (isMulti == "False")
+        GetSingleSelected(keyName, currentInput);
+    else
+        GetMultipleSelected(keyName, currentInput);
+}
+
+
+function GetUserJudgeAnswer(currentInputName, userAnswerID) {
+	//选项声音
+	window.external.Play('playoption');
+
+    var userJudgeAnswers = document.getElementsByName(currentInputName);
+
+    for (var cj = 0; cj < userJudgeAnswers.length; cj++) {
+
+        if (userJudgeAnswers.item(cj).checked)
+			document.getElementById(userAnswerID).innerText = userJudgeAnswers.item(cj).value;
+    }
+}

@@ -1,0 +1,310 @@
+﻿
+var wmp = document.getElementById("wmp");
+//如果正在播放的是当前文件则暂停，否则从头开始播放另一个媒体文件
+var playingMedia = "";
+//模板路径
+var templatePath = $("#spanTempPath").text(); 
+//播放音频
+function playMedia(mediaFile) {
+
+		if (mediaFile != playingMedia) {
+			wmp.URL = templatePath + "MediaLib\\" + mediaFile;
+		}
+		playingMedia = mediaFile;
+		wmp.controls.play();
+}
+//ESC键暂停视频
+$("body").keyup(function(e) {
+	if (e.keyCode == 27) {
+		wmp.controls.pause();
+	}
+});
+//停止视频
+$(".pauseMedia").click(function() {
+	
+	wmp.controls.pause();
+});
+
+//$(".playMedia").attr("src",templatePath + "Images\\playMedia.png");
+//$(".pauseMedia").attr("src",templatePath + "Images\\pauseMedia.png");
+
+
+
+document.body.onunload =function () {
+    wmp.controls.stop();
+};
+
+if (drpSubjectPanelIdList.length < 0)
+    btnNext.style.display = "none";
+
+
+//随机抽题 = 4,
+switch (testWay) {
+    case 1: //试题学习 = 1,
+    case 5: //我的收藏 = 5,
+    case 6: //错题重做 = 6
+
+        btnKeyword.style.display = "";
+        btnShowkey.style.display = "";
+        break;
+    case 2: //计时考试 = 2,
+    case 3: //正式考试 = 3,
+
+        btnShowkey.style.display = "none";
+        btnKeyword.style.display = "none";
+        break;
+    default:
+        btnShowkey.style.display = "";
+        btnKeyword.style.display = "";
+        break;
+}
+
+if (displayStyle == 1)
+    document.getElementById("controlRegion").style.display = "";
+
+//初始化方法
+
+//绑定大题到下拉框 
+bindDrpMainSubject();
+//显示大题div
+showMainSubjectPanel();
+//如果是逐个显示则初始化题目下拉框
+if (displayStyle == 1) {
+    document.body.onmousedown = function () {
+        if (window.event.button == 2)
+
+            controlSubject(1);
+    };
+    initSubjectPanelStyle();
+    showSubjectPanel();
+}
+
+
+//计算窗口和考试区域的高度，并适应
+window.onresize = function resizeWindow() {
+
+    DifferHeight = 180;
+
+    if (document.documentElement.clientHeight <= DifferHeight)
+        return;
+
+    divExamArea.style.height = document.documentElement.clientHeight - DifferHeight;
+}
+//倒计时
+var interval = 0;
+
+function CountDown() {
+
+    if (maxtime >= 0) {
+        minutes = Math.floor(maxtime / 60);
+        seconds = Math.floor(maxtime % 60);
+        msg = "距离交卷还有：" + minutes + ":" + seconds;
+        document.getElementById("timer").innerHTML = msg;
+        if (maxtime == 10 * 60)
+            alert('您还有10分钟做题时间!');
+        --maxtime;
+    } else {
+        clearInterval(interval);
+        alert("时间到，考试结束!");
+        window.external.HandleFromScript('handin');
+    }
+}
+if (maxtime != 0)
+    interval = setInterval("CountDown()", 1000);
+
+
+//返回为试题id数组
+function getGeneralID(msid, elementIDPrefix) {
+    var ids = new Array();
+    var split;
+
+    for (var i = 0; i < mainSubjectID.length; i++) {
+        if (mainSubjectID[i] != msid)
+            continue;
+
+        split = subjectIDArray[i].split(",");
+
+        for (var s = 0; s < split.length; s++)
+            ids[s] = document.getElementById(elementIDPrefix + split[s]);
+        break;
+
+    }
+    return ids;
+}
+
+//subjectPanel
+function clsSubjectPanel(msid) {
+    return getGeneralID(msid, "subjectPanel");
+}
+
+
+function bindDrpMainSubject() {
+    if (mainSubjectID.length < 0)
+        return;
+	if (mainSubjectID.length == 1)
+		drpSubject.style.display = "none";
+
+    //clear all options from drpSubjectPanelIdList
+    for (var d = drpSubject.childNodes.length - 1; d >= 0; d--) {
+        var oChild = drpSubject.childNodes(d);
+        drpSubject.removeChild(oChild);
+    }
+
+    for (var s = 0; s < mainSubjectID.length; s++) {
+        //does the mainsubject exist
+        if (subjectIDArray[s] == "")
+            continue;
+
+        var oOption = document.createElement("OPTION");
+
+        oOption.text = mainSubject[s];
+        oOption.value = mainSubjectID[s];
+
+        drpSubject.options.add(oOption);
+    }
+}
+
+// choice question divs.
+function bindDrpSubject(mainSubjectID) {
+    //clear all options of drpSubjectPanelIdList
+    for (var d = drpSubjectPanelIdList.childNodes.length - 1; d >= 0; d--) {
+        var oChild = drpSubjectPanelIdList.childNodes(d);
+        drpSubjectPanelIdList.removeChild(oChild);
+    }
+
+    var classSubjectPanel = clsSubjectPanel(mainSubjectID);
+
+    for (var c = 0; c < classSubjectPanel.length; c++) {
+        var oOption = document.createElement("OPTION");
+        var current = c + 1;
+        oOption.text = "编号：#" + current + "个题目";
+        oOption.value = classSubjectPanel[c].id;
+        drpSubjectPanelIdList.options.add(oOption);
+    }
+}
+
+function showMainSubjectPanel() {
+
+    //controll checkout panel.
+    divExamArea.style.display = "";
+
+    //initializing all the divs of main subjects 
+    for (var i = 0; i < mainSubjectID.length; i++)
+        document.getElementById("divPanel" + mainSubjectID[i]).style.display = "none";
+
+    document.getElementById("divPanel" + drpSubject.value).style.display = "inline";
+
+    // is offical examination?
+    if (displayStyle == 1) {
+        bindDrpSubject(drpSubject.value);
+        controlSubject(0);
+    }
+    else
+        drpSubjectPanelIdList.style.display = "none";
+}
+
+function showSubjectPanel() {
+    var classSubjectPanels = clsSubjectPanel(drpSubject.value);
+
+    for (var c = 0; c < classSubjectPanels.length; c++)
+        classSubjectPanels[c].style.display = "none";
+
+    document.getElementById(drpSubjectPanelIdList.value).style.display = "";
+
+}
+
+//逐个模式面板样式
+function initSubjectPanelStyle() {
+    for (var i = 0; i < mainSubjectID.length; i++) {
+        //does the mainsubject exist
+        if (subjectIDArray[i] == "")
+            continue;
+
+        var classSubjectPanels = clsSubjectPanel(mainSubjectID[i]);
+
+        for (var c = 0; c < classSubjectPanels.length; c++) {
+            if (typeID[i] == 1)
+                classSubjectPanels[c].style.paddingTop = "30px";
+            else
+                classSubjectPanels[c].style.paddingTop = "50px";
+
+            classSubjectPanels[c].style.fontSize = "26px";
+        }
+    }
+}
+//下拉列表，翻题
+function controlSubject(currentNo) {
+
+    //声音
+    window.external.Play("playtoggle");
+
+    var selectedIndex = drpSubjectPanelIdList.selectedIndex + currentNo;
+
+    if (selectedIndex == drpSubjectPanelIdList.options.length)
+        return;
+    btnPrev.style.display = (selectedIndex != 0) ? "" : "none";
+    btnNext.style.display = (selectedIndex == (drpSubjectPanelIdList.length - 1)) ? "none" : "";
+
+    drpSubjectPanelIdList.value = drpSubjectPanelIdList.options[selectedIndex].value;
+    showSubjectPanel();
+}
+//定位试题
+function LocateSubjectPanelByAnchor(mainSubjectID, anchor) {
+    drpSubject.value = mainSubjectID;
+    showMainSubjectPanel();
+    location.href = anchor;
+}
+//定位逐个模式div
+function LocateSubjectPanelByDiv(mainSubjectID, divPanelID) {
+    drpSubject.value = mainSubjectID;
+    showMainSubjectPanel();
+
+    drpSubjectPanelIdList.value = divPanelID;
+    //    showSubjectPanel();
+    controlSubject(0);
+}
+//显示答案
+function getKey(subjectid, isPlaySound) {
+    //显示答案声音
+    if (isPlaySound == null)
+        window.external.Play('playshowkey');
+
+    if (document.getElementById("divTip" + subjectid) == null)
+        return;
+
+    if (document.getElementById("spanAnalysisTip" + subjectid) == null)
+        return;
+
+    document.getElementById("spanKeyTip" + subjectid).style.display = "inline";
+    document.getElementById("divKey" + subjectid).style.display = "inline";
+
+    if (document.getElementById("divAnalysis" + subjectid).innerText == "")
+        return;
+
+    document.getElementById("spanAnalysisTip" + subjectid).style.display = "inline";
+    document.getElementById("divAnalysis" + subjectid).style.display = "inline";
+}
+
+
+
+
+
+//改变字体样式
+function changeStyle(fontFamily, fontSize, fontWeight, foreColor, backColor) {
+    document.body.style.fontFamily = fontFamily;
+    document.body.style.fontSize = fontSize + "px";
+    document.body.style.fontWeight = fontWeight;
+    document.body.style.color = foreColor;
+    //document.body.style.backgroundColor = backColor;
+}
+
+//折叠input textarea
+function toggleInputs() {
+    //声音
+    window.external.Play("playtoggle");
+
+    $("input[type='radio']").toggle();
+    $("input[type='checkbox']").toggle();
+    $("input[type='text']").toggle();
+    $("textarea").toggle();
+}

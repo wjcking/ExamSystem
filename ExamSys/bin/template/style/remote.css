@@ -1,0 +1,298 @@
+
+html, body {
+ margin:0px;
+}
+
+body {
+    color: #000000;background-color: #DAE7F8;
+}
+
+/**** styles for layout ****/
+div#layout {
+	
+}
+
+div#layout > div:first-child {
+	height: 60px;
+	background: -moz-linear-gradient(center top , #E7EEF8, #DAE7F8) repeat scroll 0 0 transparent;
+}
+
+div.tab-box {
+	width: 225px;
+	vertical-align: top;
+	background-color: #DAE6F4;
+	font-family:ºÚÌå;
+}
+
+div.tab-box > div.tab {
+	padding: 5px 5px 5px 85px;
+	-moz-border-radius: 5px 0 0 5px;
+	border-radius: 5px 0 0 5px;
+	border: none;
+	cursor: pointer;
+	-moz-user-select: none;
+	z-index: 98;
+}
+
+div.tab-box > div.tab > div {
+	line-height: 40px;
+	height: 40px;
+	overflow: hidden;
+	font-size: 14px;
+}
+
+div.tab-box > div.tab:first-child {
+	margin-top: 10px;
+}
+
+div.tab-box > div.selected {
+	z-index: 100;
+
+}
+
+#tab-local {
+	background: url("../images/tab-local.png") no-repeat scroll 35px center transparent;
+}
+
+#tab-result {
+	background: url("../images/tab-history.png") no-repeat scroll 35px center transparent;
+}
+
+#tab-init {
+	background: url("../images/tab-apponline.png") no-repeat scroll 35px center transparent;
+}
+
+div.tab-box > div.separator {
+	background-color: #D2DFF4;
+    height: 1px;
+    margin: 6px 0;
+    box-shadow: 0 1px 0px rgba(255, 255, 255, 0.2);
+}
+
+div.content-box {
+	height: 100%;
+	 
+	border-width: 1px 0 0 1px;
+	border-style: solid;
+	border-color: #CFDBEB;
+	-moz-border-radius: 5px 0 0 0;
+	border-radius: 5px 0 0 0;
+	background-color: #E7EBF4;
+	overflow: hidden;	
+}
+
+ 
+div.content-box div#apps-history-box {
+	overflow-y: auto;
+}
+
+div.appcenter-logo {
+	color: #4C70AE;
+	text-shadow: 0 1px 1px #FFF;
+	 font-family:ºÚÌå;
+	font-weight: bold;
+    padding-left: 35px;
+    vertical-align: middle;
+    -moz-user-select: none;
+    line-height: 60px;
+    height: 60px;
+    overflow: hidden;
+}
+
+#tab-mask {
+	position: absolute;
+	top: 70px;
+	left: 0px;
+	width: 206px;
+	height: 50px;
+	background-color: #E9EDF6;
+	margin-left: 20px;
+	-moz-transition-property: top, left;
+	-moz-transition-duration: .5s;
+	-moz-border-radius: 5px 0 0 5px;
+	border-radius: 5px 0 0 5px;
+}
+
+#tab-mask div {
+	z-index: 101;
+}
+
+#tab-mask > div:first-child {
+	float: left;
+	height: 100%;
+	width: 5px;
+	-moz-border-radius: 5px 0 0 5px;
+	border-radius: 5px 0 0 5px;
+	border-width: 1px 0 1px 1px;
+	border-style: solid;
+	border-color: #C3CFDF;
+}
+
+#tab-mask > div.center {
+	float: left;
+	height: 100%;
+	width: 200px;
+}
+
+#tab-mask > div.center > div.top-right {
+	height: 1px;
+	border-width: 1px 0 0 0;
+	border-color: #C3CFDF;
+	border-style: solid;
+}
+
+#tab-mask > div.center > div.middle-right {
+	height: 48px;
+}
+
+#tab-mask > div.center > div.bottom-right {
+	height: 1px;
+	border-width: 0 0 1px 0;
+	border-color: #C3CFDF;
+	border-style: solid;
+	z-index: 101;
+}
+
+#tab-mask > div.right {
+	float: left;
+	width: 1px;
+	border-width: 0 1px 0 0;
+	border-color: #E7EEF5;
+	border-style: solid;
+	height: 100%;
+}
+/*** end ***/
+
+/*** buttons ***/
+/* copy from chrome://mozapps/skin/extensions/extensions.css */ 
+.addon-control {
+  -moz-appearance: none;
+  color: black;
+  padding: 0 5px;
+  background-color: rgba(151,152,153,.05);
+  background-image: -moz-linear-gradient(rgba(251, 252, 253, 0.95), rgba(246, 247, 248, 0.47) 49%, 
+                                         rgba(231, 232, 233, 0.45) 51%, rgba(225, 226, 229, 0.3));
+  background-clip: padding-box;
+  border-radius: 3px;
+  border: 1px solid;
+  border-color: rgba(0, 0, 0, 0.12) rgba(0, 0, 0, 0.19) rgba(0, 0, 0, 0.38);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3) inset,
+              0 0 0 2px rgba(255, 255, 255, 0.1) inset;
+}
+
+.addon-control:not(:active):hover {
+  background-color: hsla(190, 60%, 70%, 0.5);
+  border-color: hsla(190, 50%, 65%, 0.8) hsla(190, 50%, 50%, 0.8) hsla(190, 50%, 40%, 0.8);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3) inset,
+              0 0 0 1.5px rgba(255, 255, 255, 0.1) inset,
+              0 1px 0 rgba(0, 0, 0, 0.1),
+              0 0 3.5px hsl(190, 90%, 80%);
+  -moz-transition: background-color .4s ease-in,
+                   border-color .3s ease-in,
+                   box-shadow .3s ease-in
+}
+
+.addon-control:active:hover {
+  background-color: transparent;
+  border-color: rgba(0, 0, 0, 0.65) rgba(0, 0, 0, 0.55) rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 6.5px rgba(0, 0, 0, 0.4) inset,
+              0 0 2px rgba(0, 0, 0, 0.4) inset,
+              0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.addon-control .button-box {
+  padding: 1px;
+}
+
+.addon-control[disabled="true"] {
+  display: none;
+}
+
+.button-link {
+  -moz-appearance: none;
+  background: transparent;
+  border: none;
+  text-decoration: underline;
+  color: #0066CC;
+  cursor: pointer;
+  min-width: 0;
+  margin: 0 6px;
+}
+
+.text-link {
+  color: #3386D5;
+}
+
+.button-link:hover,
+.text-link:hover {
+  color: #3DA1FF;
+}
+
+.header-button {
+  -moz-appearance: none;
+  margin: 0;
+  background: rgba(151,152,153,.05)
+              -moz-linear-gradient(rgba(251, 252, 253, 0.95), rgba(246, 247, 248, 0.47) 49%, 
+                                   rgba(231, 232, 233, 0.45) 51%, rgba(225, 226, 229, 0.3));
+  background-clip: padding-box;
+  border-radius: 4.5px;
+  border: 1px solid;
+  border-color: rgba(0, 0, 0, 0.12) rgba(0, 0, 0, 0.19) rgba(0, 0, 0, 0.38);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3) inset,
+              0 0 0 2px rgba(255, 255, 255, 0.1) inset;
+}
+
+.header-button[disabled="true"] {
+  -moz-border-top-colors: rgba(0, 0, 0, 0.12) !important;
+  -moz-border-left-colors: rgba(0, 0, 0, 0.19) !important;
+  -moz-border-right-colors: rgba(0, 0, 0, 0.19) !important;
+  -moz-border-bottom-colors: rgba(0, 0, 0, 0.38) !important;
+  opacity: 0.8;
+}
+
+.nav-button[disabled="true"] .toolbarbutton-icon {
+  opacity: 0.4;
+}
+
+.header-button:not([open="true"]):not([disabled="true"]):not(:active):hover {
+  background-color: hsla(190, 60%, 70%, 0.5);
+  border-color: hsla(190, 50%, 65%, 0.8) hsla(190, 50%, 50%, 0.8) hsla(190, 50%, 40%, 0.8);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3) inset,
+              0 0 0 1.5px rgba(255, 255, 255, 0.1) inset,
+              0 1px 0 rgba(0, 0, 0, 0.1),
+              0 0 3.5px hsl(190, 90%, 80%);
+  -moz-transition: background-color .4s ease-in,
+                   border-color .3s ease-in,
+                   box-shadow .3s ease-in
+}
+
+.header-button:not([disabled="true"]):active:hover,
+.header-button[open="true"] {
+  background-color: transparent;
+  border-color: rgba(0, 0, 0, 0.65) rgba(0, 0, 0, 0.55) rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 6.5px rgba(0, 0, 0, 0.4) inset,
+              0 0 2px rgba(0, 0, 0, 0.4) inset;
+}
+
+.header-button .toolbarbutton-text {
+  display: none;
+}
+/************* end *****************/
+
+@media (max-width: 800px) {
+	div.tab-box {
+		width: 95px;
+	}
+	
+	div.tab-box > div.tab > div {
+		width: 0px;
+	}
+	
+	#tab-mask {
+		width: 76px;
+	}
+	
+	#tab-mask > div.center {
+		width: 70px;
+	}
+}

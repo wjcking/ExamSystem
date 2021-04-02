@@ -1,0 +1,5 @@
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Model\bin\Release\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Model\bin\Release\Model.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Model\obj\Release\ResolveAssemblyReference.cache
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Model\obj\Release\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Model\obj\Release\Model.pdb

@@ -1,0 +1,51 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <script type="text/javascript" src ="js/jquery.js"></script>
+    <title></title>
+    <style type="text/css">
+        body
+        {
+            width:100%;
+            height:100%;
+            margin:0;
+        }
+       
+        #media
+        {
+            width:1000px;
+            height:1000px;
+        }   
+        
+    </style>
+</head>
+<body >
+ 	<object classid="clsid:6BF52A52-394A-11D3-B153-00C04F79FAA6" id="wmp" style="width:100%;height:97%">
+    <param name="URL" value="" />                 
+    <param name="rate" value="1" />
+    <param name="balance" value="0" />            
+    <param name="currentPosition" value="0" />
+    <param name="playCount" value="1" />          
+    <param name="autoStart" value="0" />         
+    <param name="currentMarker" value="0" />
+    <param name="invokeURLs" value="-1" />
+    <param name="volume" value="50" />            
+    <param name="mute" value="0" />');            
+    <param name="uiMode" value="full" />          
+    <param name="stretchToFit" value="0" />
+    <param name="windowlessVideo" value="0" />
+    <param name="enabled" value="-1" />');
+    <param name="enableContextMenu" value="-1" />
+    <param name="fullScreen" value="0" />');      
+    <param name="enableErrorDialogs" value="-1" />
+    </object>
+    <script type="text/javascript">
+        function play(url) {
+            document.getElementById("wmp").URL = url;
+            document.getElementById("wmp").controls.play();
+        }
+    </script>
+   
+
+</body>
+</html>

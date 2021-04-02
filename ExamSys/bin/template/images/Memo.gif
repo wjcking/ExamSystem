@@ -1,0 +1,483 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <link href="[#temp.PlatformStyle#]" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+        
+        [#temp.custStyle#]
+        
+         .buttonRectangle
+        {
+            font-family:Arial  ,宋体;
+            font-size: 12px; 
+         
+            color:[#temp.ForeColor#];
+            background-color: [#temp.BackColor#]; 
+            border: 1px solid [#temp.ForeColor#];
+        }
+        
+        select
+        {
+        	font-size:12px;
+            color:[#temp.ForeColor#];
+            background-color: [#temp.BackColor#]; 
+        }
+        
+        .wrongSubject 
+        {
+        	text-decoration: underline overline;
+        }
+        /*[#temp.OptionColor#]*/
+    </style>
+    <title>[#temp.Name#]</title>
+    <script type="text/javascript">
+
+        //初始化存储的关键字 
+        var maxFontSize = 26;
+        function $(id) {
+            return document.getElementById(id);
+        }
+     
+  
+    </script>
+</head>
+<body>
+    <form id="easyFoundForm">
+    <!-- topBar -->
+    <div id="topBar">
+       <br />
+    </div>
+    <!--content-->
+    <div id="content">
+        <div id="header">
+        </div>
+        <div id="bar">
+        </div>
+        <div id="mainTitle">
+            <span style="text-align:center; font-size: 20px; padding-top: 15px;" id="paperName">
+            [#temp.Name#]
+            </span>
+            <span style="float: right; font-weight: normal; padding-top: 25px; font-size: 12px;">
+                <img style="display: none;" src="images\hint.gif" title='点击显示/关闭试题说明' onclick="document.getElementById('examContent').style.display=(document.getElementById('examContent').style.display == '') ?'none' : '' " />
+				
+				<!--时间设置-->
+                <span id="timer"></span>
+                <!--      试题总分：[#temp.Score#]-->
+            </span>
+            <!--分割线-->
+            <hr style="height: 1px; border: none; border-top: 1px solid  [#temp.ForeColor#]; clear: both;" />
+            <div>
+                <div id="examContent" style="display: none; font-weight: normal; color: Gray; padding: 10px 20px 10px 30px">
+                    [#temp.Content#]
+                </div>
+                <div style="float: right;" id="controlPanel">
+				<!--字体大小设置-->
+				<!--控制面板--> 
+                    <input type="button" class="buttonRectangle" value="关键字" id="btnKeyword" onclick="window.external.HandleFromScript('keyword');" />
+                    <input type="button" class="buttonRectangle" value="标注" id="btnRefresh" onclick="window.external.HandleFromScript('remark');" /> 
+                    <input type="button" class="buttonRectangle" value="刷新" id="btnRebuild" onclick="window.external.HandleFromScript('rebuild');" /> 
+                    <input type="button" class="buttonRectangle" value="设置" id="btnSettings" onclick="window.external.HandleFromScript('settings');" /> 
+                 
+                  <!--  <input type="button" class="buttonRectangle" value="字体+" id="btnBigFont" onclick="resizeFont(1)" />
+                    <input type="button" class="buttonRectangle" value="字体-" id="btnSmallFont" onclick="resizeFont(-1)" /> -->
+                    <!--checkingOut();-->
+                    <select id="drpSubject" onchange="showMainSubjectPanel();">
+                    </select>
+                    <select id="drpSubjectPanelIdList" onchange="controlSubject(0)">
+                    </select>
+                </div>
+                <div style="clear: both">
+                </div>
+            </div>
+        </div>
+        <!--examArea-->
+        <div id="examArea">
+            [#temp.ExamArea#]
+            <div id="controlRegion" style="padding-right: 20px; text-align: right; display: none;">
+                <input type="button" class="buttonRectangle" value="上一题" id="btnPrev" style="display: none;"
+                    onclick="controlSubject(-1)" />
+                <input type="button" class="buttonRectangle" value="下一题" id="btnNext" onclick="controlSubject(1)" />
+            </div>
+        </div>
+        <!--checkOut-->
+    </div>
+    <!--typistPad-->
+    <div id="typistPad" style="display: none;">
+        <div style="text-align: right; vertical-align: bottom;">
+            <img src="images/close.gif" onclick="clearQuestionKey()" />
+        </div>
+        <div id="padTitle" style="color: white;">
+        </div>
+        <!--   <span onclick="setQuestionKey(padTitle.innerText, typist.innerText, 140)" style="color:White;">【重播】</span>-->
+        <div id="typist" class="PlayKey">
+        </div>
+    </div>
+    <script type="text/javascript">
+
+     var next = 1;
+    var text = "";
+    var intervalID = 0;
+    var typist = document.getElementById("divContent");
+    var typistPad = document.getElementById("divContent"); 
+
+    function displayQuestionKey() {
+        typistPad.style.display = "";
+
+        if (next != text.length) {
+            next++
+            typist.innerHTML = text.substring(0, next);
+            typist.scrollTop = typist.scrollHeight
+        }
+        else
+            return;
+    }
+
+    function setQuestionKey(str, time) {
+        clearQuestionKey();
+  
+        text = str;
+        intervalID = setInterval("displayQuestionKey()", time);
+
+    }
+
+    function clearQuestionKey() {
+        typistPad.style.display = "none";
+        clearInterval(intervalID);
+        text = "";
+        next = 1;
+        padTitle.innerText = "";
+        typist.innerText = "";
+    }
+
+    var mainSubject = new Array();
+    var mainSubjectID = new Array();
+    var mainSubjectCount = new Array();
+    var eachPoint = new Array();
+    var typeID = new Array();
+    var resultsArray = new Array();
+    var subjectIDArray = new Array();
+    var mainSubjectExist = new Array();
+  //variants div
+    var divExamArea = document.getElementById("examArea"); 
+    
+    //var btnShowkey = document.getElementById("btnShowkey");
+    var btnExam = document.getElementById("btnExam");
+    var btnCol = document.getElementById("btnCol");
+    var  btnExp = document.getElementById("btnExp");
+    
+    var btnNext = document.getElementById("btnNext");
+    var btnPrev = document.getElementById("btnPrev");
+
+     <%= disablePlatform %>
+     
+     <%= epVariants %>
+    
+    <%= scriptVariants %>
+    
+    var testWay = <%= TestWay %>;
+    var displayStyle = <%= DisplayStyle %>;
+    
+    //**** bind current main subject ids to a dropdownlist
+    
+    var drpSubject = document.getElementById("drpSubject");
+    var drpSubjectPanelIdList = document.getElementById("drpSubjectPanelIdList");
+    
+  
+    if (drpSubjectPanelIdList.length <0)
+            btnNext.style.display="none"; 
+    
+       if (displayStyle == 1)
+       {
+          $("controlRegion").style.display="";
+        }
+
+    //常量
+    examAreaHeight = "540px";
+    contentHeight = "710px";
+    maxContentHeight =(screen.height -50) + "px";
+
+    //字体缩放
+    function resizeFont(size) { 
+        
+    }
+    
+    var IsNormalState = true;
+    function resizeWindow() {
+    
+        if (IsNormalState) {       
+            window.external.HandleFromScript('normax');
+            divExamArea.style.height = (screen.height - 200) + "px";
+           $("content").style.height = maxContentHeight;
+            IsNormalState = false;
+        } else {
+            IsNormalState = true;
+            window.external.HandleFromScript('normax');
+            divExamArea.style.height = examAreaHeight;
+            $("content").style.height = contentHeight;
+        }
+    } 
+    
+        function cls(classid)
+        {
+            return document.getElementsByClassName(classid);
+        }
+        
+        function getGeneralID(msid, elementIDPrefix)
+        {
+            var ids  = new Array();
+            var split;
+            
+            for (var i=0; i < mainSubjectID.length;i++)
+            { 
+                if (mainSubjectID[i] != msid)
+                    continue;
+                    
+             split = subjectIDArray[i].split(",");
+
+                for (var s = 0; s < split.length; s++)
+                    ids[s] =$(elementIDPrefix+split[s]);
+                 break;
+                
+            }
+            return ids;
+        }
+        //userAnswerID
+       function clsAnswer(msid)
+       {
+             return getGeneralID(msid, "userAnswerID");
+       }
+       //divkey
+       function clsKey(msid)
+       {
+           return getGeneralID(msid, "divkey");
+       }
+       
+       //subject
+       function clsSubject(msid)
+       {
+            return getGeneralID(msid, "subject");
+       }
+       //subjectPanel
+        function clsSubjectPanel(msid)
+       {
+           return getGeneralID(msid, "subjectPanel");
+       }
+       //mark
+        function clsMark(msid)
+       {
+              return getGeneralID(msid, "Mark");
+       }
+     
+       //an
+       function clsAnchor(msid)
+       {
+            return getGeneralID(msid, "an");
+       }
+   
+   function  bindDrpMainSubject() {
+        if (mainSubjectID.length < 0)
+            return;
+            
+         //clear all options from drpSubjectPanelIdList
+         for (var d =drpSubject.childNodes.length-1; d >= 0 ; d--)
+          {
+                var oChild=drpSubject.childNodes(d);
+                   drpSubject.removeChild(oChild);
+          }
+          
+        for (var s = 0; s < mainSubjectID.length;s++)
+        {
+            //does the mainsubject exist
+            if (subjectIDArray[s] == "")
+                continue;
+                
+            var oOption = document.createElement("OPTION");
+            
+            oOption.text= mainSubject[s];
+            oOption.value= mainSubjectID[s];
+            
+            drpSubject.options.add(oOption);
+         }
+  }
+  
+  // choice question divs.
+    function bindDrpSubject(mainSubjectID)
+    {
+            //clear all options of drpSubjectPanelIdList
+             for (var d =drpSubjectPanelIdList.childNodes.length-1; d >= 0 ; d--)
+              {
+                    var oChild=drpSubjectPanelIdList.childNodes(d);
+                       drpSubjectPanelIdList.removeChild(oChild);
+              } 
+       
+            var classSubjectPanel = clsSubjectPanel(mainSubjectID);
+            
+            for (var c=0; c<classSubjectPanel.length;c++)
+            {
+                var oOption = document.createElement("OPTION");
+                var current = c+1;
+                oOption.text= "编号：#" + current +"个题目";
+                 oOption.value= classSubjectPanel[c].id;
+                 drpSubjectPanelIdList.options.add(oOption);
+             }
+    }
+    
+
+
+    function showMainSubjectPanel() {
+        
+        //controll checkout panel.
+        divExamArea.style.display="";
+
+        //initializing all the divs of main subjects 
+        for (var i = 0; i < mainSubjectID.length;i++)
+           $("divPanel"+mainSubjectID[i]).style.display="none";
+
+        $("divPanel"+drpSubject.value).style.display="";
+        
+        // is offical examination?
+        if (displayStyle == 1)
+        {
+            bindDrpSubject(drpSubject.value);
+            controlSubject(0);
+         }
+        else
+            drpSubjectPanelIdList.style.display="none";
+    }
+    
+    function showSubjectPanel() {
+        var classSubjectPanels = clsSubjectPanel(drpSubject.value);
+       
+       for (var c =0; c < classSubjectPanels.length;c++)
+            classSubjectPanels[c].style.display="none";
+
+            $(drpSubjectPanelIdList.value).style.display="";
+        //to control the guide buttons' display attributes
+    }
+
+        // for the use of offical examination options.
+    function initSubjectPanelStyle()  {
+        for (var i = 0; i < mainSubjectID.length;i++)
+        {
+            //does the mainsubject exist
+            if (subjectIDArray[i] == "")
+                continue;
+        
+           var classSubjectPanels = clsSubjectPanel(mainSubjectID[i]);
+     
+            for (var c=0; c <classSubjectPanels.length;c++)
+            {
+                    if (typeID[i] ==1)
+                        classSubjectPanels[c].style.paddingTop = "30px";
+                    else
+                        classSubjectPanels[c].style.paddingTop = "50px";
+                 classSubjectPanels[c] .style.fontSize = "26px";
+            }
+        }
+   }
+
+    function controlSubject(currentNo)  {
+        var selectedIndex = drpSubjectPanelIdList.selectedIndex + currentNo;
+       
+        btnPrev.style.display= (selectedIndex != 0) ? "" : "none";
+        btnNext.style.display =  (selectedIndex == (drpSubjectPanelIdList.length-1)) ? "none" : "";
+        
+        drpSubjectPanelIdList.value = drpSubjectPanelIdList.options[selectedIndex].value;
+        showSubjectPanel();
+    }
+    //LocateSubjectPanelByAnchor
+    function LocateSubjectPanelByAnchor(mainSubjectID, anchor) {
+        drpSubject.value = mainSubjectID;
+        showMainSubjectPanel();
+        location = anchor;
+    }
+    //LocateSubjectPanelByDiv
+    function LocateSubjectPanelByDiv(mainSubjectID, divPanelID) {
+        drpSubject.value = mainSubjectID;
+        showMainSubjectPanel();
+        
+        drpSubjectPanelIdList.value = divPanelID;
+    //    showSubjectPanel();
+        controlSubject(0);
+    } 
+    function getKey(subjectid) {
+ 
+         if ($("divTip"+subjectid) == null)
+            return;
+
+        if ($("spanAnalysisTip"+subjectid) == null)
+            return;
+
+            
+		$("divTip"+subjectid).style.borderStyle = "dotted";
+        $("divTip"+subjectid).style.borderColor = "[#temp.ForeColor#]";
+        $("divTip"+subjectid).style.borderWidth = "1px";
+            
+        $("spanKeyTip"+subjectid).style.display = "";
+        $("divKey"+subjectid).style.display = "";
+
+        if ( $("divAnalysis" + subjectid).innerText == "")
+            return;
+
+        $("spanAnalysisTip"+subjectid).style.display = "";
+        $("divAnalysis" + subjectid).style.display = "";
+    }
+    //initailizing 
+     bindDrpMainSubject();
+     showMainSubjectPanel();
+
+
+     if (displayStyle == 1) {
+        initSubjectPanelStyle();
+        showSubjectPanel();
+     }
+ 
+ 
+	//计算窗口和考试区域的高度，并适应
+     window.onresize =function resizeWindow() {
+ 
+		DifferHeight = 240;
+
+		if (window.screen.height <= DifferHeight)
+			return;
+		divExamArea.style.height =window.screen.height - DifferHeight;  
+    }
+function highword(nWord, highlightStyle)
+	{
+        if (nWord.length < 2) {
+            //alert("关键字不少于2个字符");
+            return;
+         }          
+        nWord = nWord + " ";
+		//用空格区分查找多关键字 也可用符号等
+		var array = nWord.split(" "); 
+		
+		for(var i=0;i<array.length;i++)
+		{ 
+			var word = array[i];
+          
+            if(word!=''){
+			    var keyword = document.body.createTextRange(); 
+                try {
+			    while(keyword.findText(word)) {
+                    
+                   // if (word.text.length < 2)
+                  //      continue; 
+
+   
+					keyword.pasteHTML("<span style='background-Color:darkblue; color:white;'>" + keyword.text + "</span>");
+              
+				    keyword.moveStart('character',1); 
+			    }
+            } catch(e) {
+
+            }
+		 }
+		} 
+	} 
+   
+    </script>
+    </form>
+</body>
+</html>

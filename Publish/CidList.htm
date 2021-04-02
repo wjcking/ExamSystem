@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Cid</title>
+</head>
+<body>
+<form>
+    <b>CID PAGE NO. 1</b> <br> 
+ <input type="text" name="txtProductID" id="txtProductID11" value="11" size="6" />
+ <input type="text" name="txtProductTitle" id="txtProductTitle11" value="人力资源开发与管理考试系统" size="30" />
+ <input type="text" name="txtCategory" id="txtCategory11" value="自考人力资源管理" size="20" />
+ <input type="text" name="txtCid" id="txtCid11" value="100001" size="6" />
+<input  onclick="getCategory(11);" value="选择" type="button" /><br />
+
+ <input type="text" name="txtProductID" id="txtProductID10" value="10" size="6" />
+ <input type="text" name="txtProductTitle" id="txtProductTitle10" value="工作分析考试系统" size="30" />
+ <input type="text" name="txtCategory" id="txtCategory10" value="自考人力资源管理" size="20" />
+ <input type="text" name="txtCid" id="txtCid10" value="100001" size="6" />
+<input  onclick="getCategory(10);" value="选择" type="button" /><br />
+
+ <input type="text" name="txtProductID" id="txtProductID9" value="9" size="6" />
+ <input type="text" name="txtProductTitle" id="txtProductTitle9" value="薪酬管理考试系统" size="30" />
+ <input type="text" name="txtCategory" id="txtCategory9" value="自考人力资源管理" size="20" />
+ <input type="text" name="txtCid" id="txtCid9" value="100001" size="6" />
+<input  onclick="getCategory(9);" value="选择" type="button" /><br />
+
+ <input type="text" name="txtProductID" id="txtProductID8" value="8" size="6" />
+ <input type="text" name="txtProductTitle" id="txtProductTitle8" value="人员素质测评理论与方法考试系统" size="30" />
+ <input type="text" name="txtCategory" id="txtCategory8" value="自考人力资源管理" size="20" />
+ <input type="text" name="txtCid" id="txtCid8" value="100001" size="6" />
+<input  onclick="getCategory(8);" value="选择" type="button" /><br />
+
+ <input type="text" name="txtProductID" id="txtProductID7" value="7" size="6" />
+ <input type="text" name="txtProductTitle" id="txtProductTitle7" value="劳动关系与劳动法考试系统" size="30" />
+ <input type="text" name="txtCategory" id="txtCategory7" value="自考人力资源管理" size="20" />
+ <input type="text" name="txtCid" id="txtCid7" value="100001" size="6" />
+<input  onclick="getCategory(7);" value="选择" type="button" /><br />
+
+ <input type="text" name="txtProductID" id="txtProductID6" value="6" size="6" />
+ <input type="text" name="txtProductTitle" id="txtProductTitle6" value="管理思想史考试系统" size="30" />
+ <input type="text" name="txtCategory" id="txtCategory6" value="自考人力资源管理" size="20" />
+ <input type="text" name="txtCid" id="txtCid6" value="100001" size="6" />
+<input  onclick="getCategory(6);" value="选择" type="button" /><br />
+
+ <input type="text" name="txtProductID" id="txtProductID5" value="5" size="6" />
+ <input type="text" name="txtProductTitle" id="txtProductTitle5" value="基础会计学考试系统" size="30" />
+ <input type="text" name="txtCategory" id="txtCategory5" value="自考公共课" size="20" />
+ <input type="text" name="txtCid" id="txtCid5" value="100002" size="6" />
+<input  onclick="getCategory(5);" value="选择" type="button" /><br />
+
+ <input type="text" name="txtProductID" id="txtProductID4" value="4" size="6" />
+ <input type="text" name="txtProductTitle" id="txtProductTitle4" value="管理学原理考试系统" size="30" />
+ <input type="text" name="txtCategory" id="txtCategory4" value="自考公共课" size="20" />
+ <input type="text" name="txtCid" id="txtCid4" value="100002" size="6" />
+<input  onclick="getCategory(4);" value="选择" type="button" /><br />
+
+ <input type="text" name="txtProductID" id="txtProductID3" value="3" size="6" />
+ <input type="text" name="txtProductTitle" id="txtProductTitle3" value="经济学考试系统" size="30" />
+ <input type="text" name="txtCategory" id="txtCategory3" value="自考人力资源管理" size="20" />
+ <input type="text" name="txtCid" id="txtCid3" value="100001" size="6" />
+<input  onclick="getCategory(3);" value="选择" type="button" /><br />
+
+ <input type="text" name="txtProductID" id="txtProductID2" value="2" size="6" />
+ <input type="text" name="txtProductTitle" id="txtProductTitle2" value="公共关系学" size="30" />
+ <input type="text" name="txtCategory" id="txtCategory2" value="自考公共课" size="20" />
+ <input type="text" name="txtCid" id="txtCid2" value="100002" size="6" />
+<input  onclick="getCategory(2);" value="选择" type="button" /><br />
+
+ <input type="text" name="txtProductID" id="txtProductID1" value="1" size="6" />
+ <input type="text" name="txtProductTitle" id="txtProductTitle1" value="中国近代史纲要" size="30" />
+ <input type="text" name="txtCategory" id="txtCategory1" value="自考公共课" size="20" />
+ <input type="text" name="txtCid" id="txtCid1" value="100002" size="6" />
+<input  onclick="getCategory(1);" value="选择" type="button" /><br />
+
+<div id="divCategory">
+
+<input type="hidden" name="hidProductID" id="hidProductID" value=""  />
+ <input type="hidden" name="hidProductTitle" id="hidProductTitle" value=""/>
+ <input type="hidden" name="hidCategory" id="hidCategory" value="" />
+ <input type="hidden" name="hidCid" id="hidCid" value="" />
+     </div>
+ </form>
+</body>
+<script type="text/javascript">
+
+    function getCategory(pid) {
+
+        var txtProductID = document.getElementById("txtProductID" + pid);
+        var txtProductTitle = document.getElementById("txtProductTitle" + pid);
+        var txtCategory = document.getElementById("txtCategory" + pid);
+        var txtCid = document.getElementById("txtCid" + pid);
+
+        document.getElementById("hidProductID").value = txtProductID.value;
+        document.getElementById("hidProductTitle").value = txtProductTitle.value;
+        document.getElementById("hidCategory").value = txtCategory.value;
+        document.getElementById("hidCid").value = txtCid.value;
+
+        window.returnValue = document.getElementById("divCategory").innerHTML;
+
+        close();
+
+    }
+</script>
+
+</html>

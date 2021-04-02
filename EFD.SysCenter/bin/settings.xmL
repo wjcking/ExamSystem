@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CTS>
+  <ExamSys>
+    <DatabasePath>F:\易方得\题库</DatabasePath>
+    <RecentFiles>F:\易方得\题库\CRT-GWYXZ-CSPD-公务员行政能力常识判断.mdb</RecentFiles>
+    <ImageLibrary>F:\易方得\图库</ImageLibrary>
+    <MediaLibrary>F:\易方得\多媒体库</MediaLibrary>
+    <FinalPath>F:\易方得\最终版</FinalPath>
+    <SkinPath>F:\易方得\皮肤</SkinPath>
+    <InstallScript>F:\易方得\current.iss</InstallScript>
+    <PublishPath>F:\易方得\发布</PublishPath>
+    <KeyRegex>:.*?[A-D]</KeyRegex>
+    <AnalysisRegex>解题.*?\r</AnalysisRegex>
+    <ClearQuestionRegex>解题思路：</ClearQuestionRegex>
+  </ExamSys>
+</CTS>

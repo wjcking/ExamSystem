@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <link href="[#temp.PlatformStyle#]" type="text/css" rel="stylesheet" /> 
+	<script type="text/javascript" src="[#TempPath#]js\jquery.js"></script>
+	 <style type="text/css">
+        
+        [#temp.custStyle#]
+        
+         .buttonRectangle
+        {
+            font-family:黑体 ,宋体;
+            font-size: 14px;  
+            color:[#temp.ForeColor#];
+            background-color: [#temp.BackColor#]; 
+            border: 1px dashed [#temp.ForeColor#];
+        }
+        
+        select
+        { 
+			font-family:黑体;
+        	font-size:15px;
+            color:[#temp.ForeColor#];
+            background-color: [#temp.BackColor#]; 		 
+        }
+        
+     
+        /*[#temp.OptionColor#]*/
+    </style>
+    <title>[#temp.Name#]</title>
+
+</head>
+<body>
+    <form id="easyFoundForm">
+	
+	<span id="spanTempPath" style="display:none">[#TempPath#]</span>
+    <!-- topBar -->
+    <div id="topBar" >
+     <br/>
+    </div>
+    <!--content-->
+    <div id="content">
+        <div id="header">
+        </div>
+        <div id="bar">
+        </div>
+        <div id="mainTitle">
+            <span style="float: left; font-size: 20px; padding-top: 15px;" id="paperName">[#temp.Name#]
+            </span> <span style="float: right; font-weight: normal; padding-top: 25px; font-size: 12px;">
+                <img style="display: none;" src="images\hint.gif" title='点击显示/关闭试题说明' onclick="document.getElementById('examContent').style.display=(document.getElementById('examContent').style.display == '') ?'none' : '' " />
+				
+				<!--时间设置-->
+                <span id="timer"></span>
+                <!--试题总分：[#temp.Score#]-->
+            </span>
+            <!--分割线-->
+            <hr style="height: 1px; border: none; border-top: 1px dashed  [#temp.ForeColor#];
+                clear: both;" />
+            <div>
+                <div id="examContent" style="display: none; font-weight: normal; color: Gray; padding: 10px 20px 10px 30px">
+                    [#temp.Content#]
+                </div>
+                <div style="float: right;" id="controlPanel">
+				<!--字体大小设置-->
+				<!--控制面板-->
+		    <input type="button" class="buttonRectangle" value="打印" id="btnPrint" onclick="window.external.HandleFromScript('print');" />
+		    <input type="button" class="buttonRectangle" value="折叠" id="btnToggleInput" onclick="toggleInputs();" />
+		    <input type="button" class="buttonRectangle" value="关键字" id="btnKeyword" onclick="window.external.HandleFromScript('keyword');" />
+			<input type="button" class="buttonRectangle" value="答案" id="btnShowkey" onclick="window.external.HandleFromScript('displaykey')" />
+			<input type="button" class="buttonRectangle" value="检查" id="btnCheck" onclick="window.external.HandleFromScript('checkout');" />
+			<input type="button" class="buttonRectangle" value="重做" id="btnExam" onclick="window.external.HandleFromScript('examagain')" />
+			<input type="button" class="buttonRectangle" value="设置" id="btnSettings" title="确认设置后会清除作答" onclick="window.external.HandleFromScript('settings');" /> 
+			<input type="button" class="buttonRectangle" value="提交" id="btnHandin" onclick="window.external.HandleFromScript('handin');" />
+			  
+            <!--checkingOut();-->
+            <select id="drpSubject" onchange="showMainSubjectPanel();">
+            </select>
+            <select id="drpSubjectPanelIdList" onchange="controlSubject(0)">
+            </select>   
+				
+                </div>
+                <div style="clear: both">
+                </div>
+            </div>
+        </div>
+        <!--examArea-->
+        <div id="examArea">
+            [#temp.ExamArea#]
+            <div id="controlRegion" style="padding-right: 20px; text-align: right; display: none;">
+                <input type="button" class="buttonRectangle" value="     上一题     " id="btnPrev" style="display: none;" onclick="controlSubject(-1)" />
+                <input type="button" class="buttonRectangle" value="     下一题     " id="btnNext" onclick="controlSubject(1)" />
+            </div>
+        </div>
+    </div>
+	 <!--多媒体播放器-->
+	<object classid="clsid:6BF52A52-394A-11D3-B153-00C04F79FAA6" id="wmp" style="display:none;">
+    <param name="URL" value="" />                 
+    <param name="rate" value="1" />
+    <param name="balance" value="0" />            
+    <param name="currentPosition" value="0" />
+    <param name="playCount" value="1" /> 
+    <param name="autoStart" value="-1" />         
+    <param name="currentMarker" value="0" />
+    <param name="invokeURLs" value="-1" />
+    <param name="volume" value="70" />            
+    <param name="mute" value="0" />           
+    <param name="uiMode" value="invisible" />          
+    <param name="stretchToFit" value="0" />
+    <param name="windowlessVideo" value="0" />
+    <param name="enabled" value="-1" />
+    <param name="enableContextMenu" value="-1" />
+    <param name="fullScreen" value="0" />    
+    <param name="enableErrorDialogs" value="0" />
+    </object>
+ 
+    </form>
+
+	
+	<script type="text/javascript" src="[#TempPath#]images\head.png"></script>	
+	<script type="text/javascript" src="[#TempPath#]js\util.js"></script>
+    <script type="text/javascript"> 
+   
+
+	<%= disablePlatform %>
+     
+	<%= epVariants %>
+    
+    <%= scriptVariants %>
+    
+	var testWay = <%= TestWay %>;
+	var displayStyle = <%= DisplayStyle %>;
+	var maxtime =  <%= temp.LimitedTime %> * 60; 
+    </script>
+
+	<script type="text/javascript" src="[#TempPath#]images\foot.png"></script>
+</body>
+</html>

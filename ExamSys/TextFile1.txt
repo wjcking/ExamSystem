@@ -1,0 +1,22 @@
+﻿
+        function popupLayer(ins, divid, topX, leftY) {
+            // var id = "#" + ins.id;
+
+            //$(id).css("position", "relative");
+            // var offset = $(id).offset();
+
+            // var X = offset.top + $(id).height();
+            // var Y = offset.left + $(id).width();
+
+            // var undef = undefined;
+
+            // if (undef == topX || undef == leftY) {
+            //     topX = -4;
+            //     leftY = -128;
+            // }
+
+            // $("#" + divid).show();
+            // $("#" + divid).offset({ top: X + topX, left: Y - leftY });
+            //            $("#" + divid).focus();
+            $("#" + divid).toggle();
+        }

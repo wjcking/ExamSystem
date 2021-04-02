@@ -1,0 +1,233 @@
+using System;
+using System.Collections;
+using System.Collections.Specialized;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.IO;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading;
+using System.Windows.Forms;
+using System.Diagnostics;
+using System.Media;
+using Cts;
+using Model;
+
+namespace ExamSys
+{
+    public class Decorater
+    {
+        private Form mainForm;
+        private SoundPlayer vSoundPlayer = new System.Media.SoundPlayer();
+        private SoundPlayer bSoundPlayer = new System.Media.SoundPlayer();
+
+        public Decorater()
+        {
+
+        }
+
+        public Decorater(Form form)
+        {
+            mainForm = form;
+
+            mainForm.MouseDown += new MouseEventHandler(FormMove_MouseDown);
+            mainForm.FormClosed += new FormClosedEventHandler(mainForm_FormClosed);
+            mainForm.MaximumSizeChanged += delegate { mainForm.WindowState = FormWindowState.Normal; };
+
+
+            ImageButtonStyle(mainForm);
+            MenuOnStateBar();
+        }
+
+        void mainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (mainForm.Name == "MainCategory")
+            {
+                Application.Exit();
+                Environment.Exit(0);
+            }
+        }
+
+        public static void EnabledControls(Control parent, bool isEnabled)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                if (control != null)
+                    control.Enabled = isEnabled;
+            }
+        }
+
+        public PictureBox GetCurrentPictureBox(string imgName)
+        {
+            foreach (Control p in mainForm.Controls)
+            {
+                if (p.Name == imgName && p.GetType() == typeof(PictureBox))
+                    return p as PictureBox;
+
+                continue;
+            }
+
+            return null;
+        }
+ 
+        #region 导入拖动窗口, 任务栏右键菜单 导入win32
+        [DllImport("user32.dll", EntryPoint = "GetWindowLong", CharSet = CharSet.Auto)]
+        public static extern int GetWindowLong(HandleRef hWnd, int nIndex);
+
+        [DllImport("user32.dll", EntryPoint = "SetWindowLong", CharSet = CharSet.Auto)]
+        public static extern IntPtr SetWindowLong(HandleRef hWnd, int nIndex, int dwNewLong);
+
+        public void MenuOnStateBar()
+        {
+            int WS_SYSMENU = 0x00080000; // 系统菜单
+            int WS_MINIMIZEBOX = 0x10000; // 最大最小化按钮
+
+            int windowLong = (GetWindowLong(new HandleRef(mainForm, mainForm.Handle), -16));
+            SetWindowLong(new HandleRef(mainForm, mainForm.Handle), -16, windowLong | WS_SYSMENU | WS_MINIMIZEBOX);
+
+        }
+
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+        [DllImport("user32.dll")]
+        public static extern bool SendMessage(IntPtr hwnd, int wMsg, int wParam, int lParam);
+        const int WM_SYSCOMMAND = 0x0112;
+        const int SC_MOVE = 0xF010;
+        const int HTCAPTION = 0x0002;
+
+        public void FormMove_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(mainForm.Handle, WM_SYSCOMMAND, SC_MOVE + HTCAPTION, 0);
+        }
+
+        /// <summary>
+        /// 该函数设置由不同线程产生的窗口的显示状态。
+        /// </summary>
+        [DllImport("User32.dll")]
+        private static extern bool ShowWindowAsync(IntPtr hWnd, int cmdShow);
+        /// <summary>
+        /// 该函数将创建指定窗口的线程设置到前台，并且激活该窗口。键盘输入转向该窗口，并为用户改各种可视的记号。系统给创建前台窗口的线程分配的权限稍高于其他线程。
+        /// </summary>
+        [DllImport("User32.dll")]
+        private static extern bool SetForegroundWindow(IntPtr hWnd);
+        private const int WS_SHOWNORMAL = 1;
+
+        /// <summary>
+        /// 获取正在运行的实例，没有运行的实例返回null;
+        /// </summary>
+        public static Process RunningInstance()
+        {
+            Process current = Process.GetCurrentProcess();
+            Process[] processes = Process.GetProcessesByName(current.ProcessName);
+            foreach (Process process in processes)
+            {
+                if (process.Id != current.Id)
+                {
+                    if (Assembly.GetExecutingAssembly().Location.Replace("/", "\\") == current.MainModule.FileName)
+                    {
+                        return process;
+                    }
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 显示已运行的程序。
+        /// </summary>
+        public static void HandleRunningInstance(Process instance)
+        {
+            ShowWindowAsync(instance.MainWindowHandle, WS_SHOWNORMAL); //显示，可以注释掉
+            SetForegroundWindow(instance.MainWindowHandle);            //放到前端
+        }
+
+
+        #endregion
+
+        #region 打开窗口
+        public static void ShowDialog(Form form)
+        {
+            if (form != null)
+            {
+                //FileSys.PlaySound(SysConfig.SOUND_OPENWINDOW);
+                form.StartPosition = FormStartPosition.CenterScreen;
+                form.MaximizeBox = false;
+                form.MinimizeBox = false;
+                form.ShowInTaskbar = false;
+                form.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+                form.ShowDialog();
+                form.Dispose();
+            }
+        }
+        //public static void Show(Form form)
+        //{
+        //    if (!SysConfig.MATERIAL_SINGLE)
+        //    {
+        //        form.Activate();
+        //        return;
+        //    }
+
+        //    if (form != null)
+        //    { 
+
+        //        SysConfig.MATERIAL_SINGLE = false;
+        //        form.Show();
+        //        //FileSys.PlaySound(SysConfig.SOUND_OPENWINDOW);
+        //    }
+        //}
+        #endregion
+
+        #region 控件样式控制
+        public void ButtonStyle(Control parent)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                Type conType = control.GetType();
+                Button button = control as Button;
+
+                //if (button != null)
+                //    button.Cursor = Cursors.Hand;
+
+                if (conType == typeof(Panel) || conType == typeof(SplitterPanel) || conType == typeof(UserControl))
+                    ButtonStyle(control);
+            }
+        }
+
+        public void ImageButtonStyle(Control parent)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                Type conType = control.GetType();
+                PictureBox imgButton = control as PictureBox;
+                //Label lbInstruction  = control as Label;
+
+                if (imgButton != null && conType == typeof(PictureBox))
+                {
+                    imgButton.Cursor = Cursors.Hand;
+                    imgButton.MouseEnter += delegate
+                    {
+                        //vSoundPlayer.Play();
+                    };
+                    imgButton.MouseClick += delegate
+                    {
+                        // bSoundPlayer.Play(); 
+                    };
+                    //imgButton.MouseLeave += delegate
+                    //{
+
+                    //};
+                }
+
+                if (conType == typeof(Panel) || conType == typeof(SplitterPanel) || conType == typeof(UserControl) || conType == typeof(GroupBox))
+                    ImageButtonStyle(control);
+            }
+        }
+        #endregion
+
+
+    }
+}

@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{26FACC7B-4C47-4088-BA3F-A8C7ED7F360C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EFD.SysCenter</RootNamespace>
+    <AssemblyName>EFD.SysCenter</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>http://localhost/EFD.SysCenter/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x86|x86'">
+    <OutputPath>bin\x86\x86\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x86|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\x86\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MagicLibrary, Version=1.7.0.0, Culture=neutral, PublicKeyToken=3a6eb82f876a49bc">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\MagicLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>Library\Microsoft.Office.Interop.Word.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddExam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddExam.Designer.cs">
+      <DependentUpon>AddExam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddNode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNode.Designer.cs">
+      <DependentUpon>AddNode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Component\ListFile.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Component\ListFile.Designer.cs">
+      <DependentUpon>ListFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailWnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetailWnd.Designer.cs">
+      <DependentUpon>DetailWnd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TextProcessor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TextProcessor.Designer.cs">
+      <DependentUpon>TextProcessor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialWnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaterialWnd.Designer.cs">
+      <DependentUpon>MaterialWnd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TextInfo.cs" />
+    <Compile Include="Util\ExamBase.cs" />
+    <Compile Include="Component\ComboAdvanced.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Component\ComboAdvanced.Designer.cs">
+      <DependentUpon>ComboAdvanced.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Component\DataGridAdvanced.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Component\DataGridAdvanced.Designer.cs">
+      <DependentUpon>DataGridAdvanced.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Component\TextboxAdvanced.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Component\TextboxAdvanced.Designer.cs">
+      <DependentUpon>TextboxAdvanced.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Config.Designer.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Include\ControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Include\ControlBase.Designer.cs">
+      <DependentUpon>ControlBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Database.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Database.Designer.cs">
+      <DependentUpon>Database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Include\Export.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Include\Export.Designer.cs">
+      <DependentUpon>Export.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Include\FillBlank.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Include\FillBlank.Designer.cs">
+      <DependentUpon>FillBlank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Include\Judgement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Include\Judgement.Designer.cs">
+      <DependentUpon>Judgement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Include\MainSubject.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Include\MainSubject.Designer.cs">
+      <DependentUpon>MainSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Include\Media.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Include\Media.Designer.cs">
+      <DependentUpon>Media.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Include\Question.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Include\Question.Designer.cs">
+      <DependentUpon>Question.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Include\Statistic.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Include\Statistic.Designer.cs">
+      <DependentUpon>Statistic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Include\ModifyChoice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Include\ModifyChoice.Designer.cs">
+      <DependentUpon>ModifyChoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Component\SysTreeNode.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Component\SysTreeNode.Designer.cs">
+      <DependentUpon>SysTreeNode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Delegation\StatusEventArgs.cs" />
+    <Compile Include="Delegation\SubjectDetailEventArgs.cs" />
+    <Compile Include="MainSubjectBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainSubjectBoard.Designer.cs">
+      <DependentUpon>MainSubjectBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubjectDetailWnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubjectDetailWnd.Designer.cs">
+      <DependentUpon>SubjectDetailWnd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\Cache.cs" />
+    <Compile Include="Util\Constant.cs" />
+    <Compile Include="Util\Decorator.cs" />
+    <Compile Include="Include\Workspace.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Include\Workspace.Designer.cs">
+      <DependentUpon>Workspace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\List.cs" />
+    <Compile Include="Util\Resource.cs" />
+    <Compile Include="Util\Static.cs" />
+    <Compile Include="Util\Exam.cs" />
+    <Compile Include="Util\ExportPathInfo.cs" />
+    <Compile Include="Include\AddChoice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Include\AddChoice.Designer.cs">
+      <DependentUpon>AddChoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SysCenter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SysCenter.Designer.cs">
+      <DependentUpon>SysCenter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddExam.resx">
+      <DependentUpon>AddExam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddNode.resx">
+      <DependentUpon>AddNode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Component\ComboAdvanced.resx">
+      <DependentUpon>ComboAdvanced.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Component\DataGridAdvanced.resx">
+      <DependentUpon>DataGridAdvanced.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Component\ListFile.resx">
+      <DependentUpon>ListFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Component\SysTreeNode.resx">
+      <DependentUpon>SysTreeNode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Component\TextboxAdvanced.resx">
+      <DependentUpon>TextboxAdvanced.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Config.resx">
+      <DependentUpon>Config.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Database.resx">
+      <DependentUpon>Database.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailWnd.resx">
+      <DependentUpon>DetailWnd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Include\AddChoice.resx">
+      <DependentUpon>AddChoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Include\ControlBase.resx">
+      <DependentUpon>ControlBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Include\Export.resx">
+      <DependentUpon>Export.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Include\FillBlank.resx">
+      <DependentUpon>FillBlank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Include\Judgement.resx">
+      <DependentUpon>Judgement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Include\MainSubject.resx">
+      <DependentUpon>MainSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Include\Media.resx">
+      <DependentUpon>Media.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Include\Question.resx">
+      <DependentUpon>Question.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Include\Statistic.resx">
+      <DependentUpon>Statistic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Include\ModifyChoice.resx">
+      <DependentUpon>ModifyChoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TextProcessor.resx">
+      <DependentUpon>TextProcessor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Include\Workspace.resx">
+      <DependentUpon>Workspace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainSubjectBoard.resx">
+      <DependentUpon>MainSubjectBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialWnd.resx">
+      <DependentUpon>MaterialWnd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubjectDetailWnd.resx">
+      <DependentUpon>SubjectDetailWnd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SysCenter.resx">
+      <DependentUpon>SysCenter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="App.config" />
+    <None Include="bin\Debug\Apple.ssk" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="App_Data\db.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\favicon.ico" />
+    <Content Include="Library\MagicLibrary.dll" />
+    <Content Include="TextFile1.txt" />
+    <Content Include="副本 TextFile1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cts\EFD.CTS.csproj">
+      <Project>{297792DB-E51C-491C-A760-DB732384F4E5}</Project>
+      <Name>EFD.CTS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataUtility\EFD.DataUtility.csproj">
+      <Project>{4F051933-A6C2-4533-9952-50776EFC0E51}</Project>
+      <Name>EFD.DataUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\EFD.Entity.csproj">
+      <Project>{5DA8DD3F-DD7D-4FEF-9A03-D4D8B08E6E3F}</Project>
+      <Name>EFD.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

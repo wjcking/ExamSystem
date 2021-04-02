@@ -1,0 +1,259 @@
+<html>
+<head>
+    <!--    <link href="style/netresult.css" type="text/css" rel="stylesheet" />-->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/json2.js"></script>
+    <script type="text/javascript" src="js/init.js"></script>
+    <script type="text/javascript" src="js/netresult.js"></script>
+    <script type="text/javascript" src="js/taffy.js"></script>
+    <style type="text/css">
+        body
+        {
+            font-family: 黑体;
+            margin: 0px;
+            border: 0px;
+            -moz-border-radius: 5px 0 0 0;
+            overflow: auto;
+            border-radius: 5px 0 0 0;
+            background-color: #E7EBF4;
+            overflow: auto;
+            scrollbar-face-color: rgb(234,234,234);
+            scrollbar-arrow-color: gray;
+            scrollbar-track-color: rgb(234,234,234);
+            scrollbar-highlight-color: #C0C0C0;
+            scrollbar-3dlight-color: rgb(234,234,234);
+            scrollbar-shadow-color: #C0C0C0;
+            scrollbar-darkshadow-color: #000000;
+        }
+        #tbOutput
+        {
+            font-size: 15px;
+            width: 99%;
+        }
+        #tbOutput td
+        {
+            background-color: rgb(234,234,234);
+            border-right: 1px dashed gray;
+            border-bottom: 1px dashed gray;
+        }
+             #tbOutput img
+        {
+            width:20px;
+            height:20px;
+        }
+        #tbOutput thead
+        {
+            vertical-align: middle;
+            text-align: center;
+            height: 12px;
+            font-weight: bold;
+        }
+        .nframe
+        {
+            color: Red;
+            background: #FEFEFE;
+            padding: 5px 5px 5px 5px;
+            font-family: Microsoft Sans Serif;
+            text-align: center;
+            width: 30px;
+        }
+        ..eidframe
+        {
+            padding: 5px 5px 5px 5px;
+            font-family: Microsoft Sans Serif;
+            text-align: center;
+        }
+        .ctframe
+        {
+            padding: 5px 5px 5px 5px;
+            font-family: Microsoft Sans Serif;
+            text-align: center;
+        }
+        
+        .dframe
+        {
+            padding: 5px 5px 5px 5px;
+            font-family: Microsoft Sans Serif;
+            text-align: center;
+        }
+        .ctitle
+        {
+        }
+        .bar
+        {
+            border-bottom: 1px dashed gray;
+            text-align: right;
+            margin: 10px 10px 10px 10px;
+        }
+        .resDetail
+        {
+            
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    </div>
+    <table id="tbOutput" cellpadding="4" cellspacing="4">
+        <thead>
+            <tr>
+                <td colspan="9" style="text-align: right;">
+                    <input type="checkbox" id="chkDetail"  />
+                    <span style="cursor:pointer" id="spanDetail">查看详细</span>
+                    <select id="drpExamName" style="font-family: 黑体;">
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 34px;">
+                    排名
+                </td>
+                <td style="width: 32px;">
+                    题数
+                </td>
+                <td style="width: 32px;">
+                    正确
+                </td>
+                <td style="width: 32px;">
+                    用时
+                </td>
+                <td>
+                    [试卷编号]试卷标题
+                </td>
+                <td style="width: 45px;">
+                    署名
+                </td>
+                <td>
+                    省
+                </td>
+                <td>
+                    市
+                </td>
+                <td>
+                    区
+                </td>
+            </tr>
+        </thead>
+    </table>
+    <script type="text/javascript">
+
+        function getNetResult(examInfoID) {
+
+
+            $("#divOutput").html("");
+            var taffy = TAFFY(netResult);
+            var resultList = null;
+
+            var unDef = undefined;
+
+            if (examInfoID == unDef || examInfoID <= 0)
+                resultList = taffy({}).get();
+            else
+                resultList = taffy({ "ExamInfoID": examInfoID }).get();
+
+            var tableString = "";
+
+            for (var i = 0; i < resultList.length; i++) {
+
+                if (resultList[i].ExamInfoID <= 0)
+                    continue;
+
+                tableString += "<tr>";
+                tableString += "<td class=\"nframe\">" + resultList[i].ExamInfoID + " </td>"
+                tableString += "<td class=\"eidframe\">" + resultList[i].TotalCount + " </td>"
+                tableString += "<td class=\"ctframe\">" + resultList[i].Correctcount + " </td>"
+                tableString += "<td class=\"dframe\">" + resultList[i].Duration + " </td>"
+                tableString += "<td class=\"cTitle\">"
+                tableString += "[" + resultList[i].ExamInfoID + "]";
+                tableString += resultList[i].ExamName;
+                tableString += resultList[i].IsOneApp ? "<img src=\"images/oneapp.png\" title=\"绝对考试环境\" />" : "";
+                tableString += resultList[i].TestWay == "计时考试" ? "<img src=\"images/time.png\" title=\"计时考试\" />" : "";
+                tableString += "<br/>"
+                tableString += "</td>";
+                if (resultList[i].Gender == "男")
+                    tableString += "<td>" + resultList[i].Name + "</td>";
+                else
+                    tableString += "<td style=\"color:red;\">" + resultList[i].Name + "</td>";
+                tableString += "<td>" + resultList[i].ProvinceName + "&nbsp;</td>";
+                tableString += "<td>" + resultList[i].CityName + "&nbsp;</td>"
+                tableString += "<td>" + resultList[i].AreaName + "&nbsp;</td>";
+                tableString += "</tr>";
+                tableString += "<tr class='resDetail'>";
+                tableString += "<td colspan=\"4\">";
+                tableString += " " + resultList[i].Starttime;
+                tableString += "<br/>";
+                tableString += " " + resultList[i].Endtime;
+                tableString += "</td>";
+                tableString += "<td >";
+                tableString += "操作系统：" + resultList[i].OSversion;
+                tableString += "<br/>";
+                tableString += "试题类型：" + resultList[i].Questiontype;
+                tableString += "</td>";
+                tableString += "<td colspan='5'>";
+                tableString += "职业：" + resultList[i].Job;
+                tableString += " QQ： " + resultList[i].QQ;
+                tableString += "<br/>";
+                tableString += "留言：" + resultList[i].Remark;
+                tableString += "</td>";
+                tableString += "</tr>";
+
+            }
+
+            $("#tbOutput>tbody").html(tableString);
+
+            var resDetail = $("#chkDetail").attr("checked");
+
+
+            if (resDetail == "checked")
+                $(".resDetail").show();
+            else
+                $(".resDetail").hide();
+
+            //名次 
+            var examInfoArray = taffy().distinct("ExamInfoID");
+
+            for (var i = 0; i < examInfoArray.length; i++) {
+
+                var number = 1;
+                $(".nframe").each(function (ei) {
+
+                    if (examInfoArray[i] == $(this).text()) {
+                        $(this).text(number++);
+                    } else {
+                        number = 1;
+                    }
+                });
+            }
+
+
+        }
+
+        function loadExamOption() {
+            var taffy = TAFFY(netResult);
+            var examInfoArray = taffy().distinct("ExamInfoID");
+            var examNameArray = taffy().distinct("ExamName");
+
+
+            $("#drpExamName").html("<option value=\"0\">所有试卷</option>");
+
+            for (var i = 0; i < examInfoArray.length; i++) {
+                $("#drpExamName").append("<option value=\"" + examInfoArray[i] + "\">" + "[" + examInfoArray[i] + "]" + examNameArray[i] + "</option>");
+            }
+        }
+
+        getNetResult();
+        loadExamOption();
+
+        $("#spanDetail").click(function () {
+            var checked = $("#chkDettail").attr("checked");
+      
+            $("#chkDettail").attr("checked",checked);
+         });
+
+        $("#drpExamName").change(function () {
+            getNetResult(parseInt($(this).val()));
+        });     
+    </script>
+</body>
+</html>

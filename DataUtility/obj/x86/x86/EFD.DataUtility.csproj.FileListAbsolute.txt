@@ -1,0 +1,7 @@
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\bin\x86\x86\DataUtility.dll
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\bin\x86\x86\Model.dll
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\obj\x86\x86\ResolveAssemblyReference.cache
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\obj\x86\x86\DataUtility.Properties.Resources.resources
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\obj\x86\x86\GenerateResource-ResGen.read.1.tlog
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\obj\x86\x86\GenerateResource-ResGen.write.1.tlog
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\obj\x86\x86\DataUtility.dll

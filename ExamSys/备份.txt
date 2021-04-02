@@ -1,0 +1,1317 @@
+
+
+   txtOutput.AppendText(SysData.SubmitInfo.DurationTimeSpan.TotalMinutes.ToString() + "\r\n");
+            txtOutput.AppendText(SysData.SubmitInfo.DurationTimeSpan.TotalSeconds.ToString() + "\r\n");
+			       //$(document).keydown(function (e) {
+
+
+//    switch (e.keyCode) {
+//        //    case 48: break; // 0 equal braceright        
+//        case 49: window.external.Navigate("btnExam");
+//            break; // 1 exclam onesuperior
+//        case 50: window.external.Navigate("btnMaterial");
+//            break; // 2 quotedbl twosuperior
+//        case 51: window.external.Navigate("btnMyFile");
+//            break; // 3 section threesuperior
+//        case 52: window.external.Navigate("btnStartPage");
+//            break; // 4 dollar
+//        case 53: window.external.Navigate("btnSearch");
+//            break; // 5 percent
+//        case 54:
+//            window.external.Navigate("btnHistory");
+//            break; // 6 ampersand     
+//        case 55: window.external.Navigate("btnChart");
+//            break; // 7 slash braceleft     
+//        //    case 56 : break; // 8 parenleft bracketleft        
+//        //    case 57 : break; // 9 parenright bracketright      
+//            $(document).focus();
+//    }
+//});
+	   
+	   	  <embed id="emOption" src="[#TempOptionSound#]"  width="0" height="0" loop="false" autostart="false"></embed>  
+	  <embed id="emFav" src="[#TempFavSound#]"  width="0" height="0" loop="false" autostart="false"></embed>  
+	  <embed id="emShowKey" src="[#TempShowKeySound#]"  width="0" height="0" loop="false" autostart="false"></embed>  
+     
+	   
+	       //userAnswerID
+       function clsAnswer(msid)
+       {
+             return getGeneralID(msid, "userAnswerID");
+       }
+       //divkey
+       function clsKey(msid)
+       {
+           return getGeneralID(msid, "divkey");
+       }
+       
+       //subject
+       function clsSubject(msid)
+       {
+            return getGeneralID(msid, "subject");
+       }
+     
+       //mark
+        function clsMark(msid)
+       {
+              return getGeneralID(msid, "Mark");
+       }
+     
+       //an
+       function clsAnchor(msid)
+       {
+            return getGeneralID(msid, "an");
+       }
+		
+		
+		    if (lines.Length < 1)
+                return;
+            Graphics g = e.Graphics; //获得绘图对象
+            float linesPerPage = 0; //页面的行号
+            float yPosition = 0;   //绘制字符串的纵向位置
+            int count = 0; //行计数器
+            float leftMargin = e.MarginBounds.Left; //左边距
+            float topMargin = e.MarginBounds.Top; //上边距
+            string line = null;
+            string fontFaimly = SysConfig.SettingsHelper.GetValue(Options.PlatformStyle.PlatformFontFamily);
+            float fontSize = Convert.ToSingle(SysConfig.SettingsHelper.GetValue(Options.PlatformStyle.PlatformFontSize));
+            Font printFont = new Font(fontFaimly, fontSize, FontStyle.Regular, GraphicsUnit.Point, ((byte)(134)));
+
+            SolidBrush myBrush = new SolidBrush(Color.Black);//刷子
+            linesPerPage = e.MarginBounds.Height / printFont.GetHeight(g);//每页可打印的行数
+            //逐行的循环打印一页
+            while (count < linesPerPage && ((line = lineReader.ReadLine()) != null))
+            {
+                yPosition = topMargin + (count * printFont.GetHeight(g));
+                g.DrawString(line, printFont, myBrush, leftMargin, yPosition, new StringFormat(StringFormatFlags.NoFontFallback));
+                count++;
+            }
+            // 注意：使用本段代码前，要在该窗体的类中定义lineReader对象：
+            //       StringReader lineReader = null;
+            //如果本页打印完成而line不为空,说明还有没完成的页面,这将触发下一次的打印事件。在下一次的打印中lineReader会
+            //自动读取上次没有打印完的内容，因为lineReader是这个打印方法外的类的成员，它可以记录当前读取的位置
+            if (line != null)
+                e.HasMorePages = true;
+            else
+            {
+                e.HasMorePages = false;
+                // 重新初始化lineReader对象，不然使用打印预览中的打印按钮打印出来是空白页
+                lineReader = new System.IO.StringReader(PrintContent); // textBox是你要打印的文本框的内容
+            }
+
+
+
+	    /// <summary>
+        /// 生成考试历史记录HTML表
+        /// </summary>
+        public static void GetExamResultHtml(string examInfoID, System.Windows.Forms.WebBrowser webPanel)
+        {
+            List<MainSubjectInfo> msiHistoryList = new List<MainSubjectInfo>(SysData.MainSubjectList.Count);
+
+            string color = ConfigurationManager.AppSettings["CategoryColor"];
+
+            StringBuilder resultString = new StringBuilder();
+            resultString.Append("<table cellpadding=\"8\" cellspacing=\"8\" style=\"width: 100%;\">\r\n");
+            resultString.Append("<thead>\r\n");
+            resultString.Append("<tr>\r\n");
+            resultString.AppendFormat("<th colspan=\"3\" style=\"text-align: left; color: {0}; font-size: 16px;  font-weight: bold; border: dotted 1px {0};\">\r\n", color);
+
+            resultString.Append("</th>\r\n");
+            resultString.Append("</tr>\r\n");
+            resultString.Append("</thead>\r\n");
+
+            ExamResult er = new ExamResult();
+            List<ExamResultInfo> erlist = er.GetListArray("ExamInfoID = " + examInfoID + " ORDER BY PubDate DESC");
+
+            List<string> tdList = new List<string>();
+
+            int trCount = erlist.Count <= 3 ? 3 : (int)Math.Ceiling((double)erlist.Count / 3);
+            int tdCount = trCount * 3;
+
+            List<string> trString = new List<string>();
+
+            for (int i = 1; i <= trCount; i++)
+            {
+                trString.Add("<tr>{0}</tr>\r\n");
+            }
+
+            StringBuilder tdString = new StringBuilder();
+            int index = 0;
+
+            for (int i = 1; i <= tdCount; i++)
+            {
+                tdString.AppendFormat("<td id=\"tdResult{0}\" class=\"tdResultClass\" style=\"display:none;\">\r\n", i);
+                tdString.AppendFormat("<{0}><span id=\"spanTestTime{0}\">{0}</span>\r\n", i);
+                tdString.AppendFormat("<div id=\"divResult{0}\" style=\"border-top: dotted 1px white; padding: 2px 0 0px  0\">\r\n", i);
+                tdString.Append("</div>\r\n");
+                tdString.Append("</td>\r\n");
+
+                if (i % 3 == 0)
+                {
+                    trString[index] = String.Format(trString[index], tdString);
+                    index++;
+                    tdString.Remove(0, tdString.Length);
+                }
+            }
+
+            resultString.Append("<tbody>\r\n");
+
+            foreach (string s in trString)
+                resultString.Append(s);
+
+            resultString.Append("</tbody>\r\n");
+            resultString.Append("</table>\r\n");
+            webPanel.Document.InvokeScript("fillExamResult", new object[] { resultString.ToString() });
+
+            if (erlist.Count == 0)
+                return;
+
+            for (int i = 0; i < SysData.MainSubjectList.Count; i++)
+            {
+                MainSubjectInfo msi = new MainSubjectInfo();
+                msi = SysData.MainSubjectList[i];
+                ConstInfo.QuestionType qt = (ConstInfo.QuestionType)msi.Type;
+                msi.SubjectSum = Convert.ToInt32(SysData.AccessHelper.ExecuteScalar(string.Format("SELECT COUNT(*) FROM {0} WHERE MainSubjectID= {1} AND ExamInfoID={2}", qt, msi.ID, examInfoID)));
+                msi.ScoreSum = msi.EachPoint * msi.SubjectSum;
+                msiHistoryList.Add(msi);
+            }
+
+            for (int i = 0; i < erlist.Count; i++)
+            {
+                int seed = i + 1;
+                string[] ts = erlist[i].TestedSubject.Split(',');
+                string[] cn = erlist[i].CorrectNum.Split(',');
+                StringBuilder subjectList = new StringBuilder();
+
+                subjectList.Append("考试方式：");
+                subjectList.Append("<b>" + erlist[i].TestWay + "</b>");
+
+                if (erlist[i].IsLimitedTime)
+                    subjectList.Append("（限时）");
+
+                subjectList.Append("<br/>");
+
+                for (int s = 0; s < ts.Length; s++)
+                {
+                    if (string.IsNullOrEmpty(ts[s]))
+                        continue;
+
+                    subjectList.Append(ts[s]);
+                    subjectList.Append(" : ");
+
+                    foreach (MainSubjectInfo msi in msiHistoryList)
+                    {
+                        if (msi.Subject == ts[s])
+                        {
+                            subjectList.Append(Convert.ToSingle(cn[s]) * msi.EachPoint);
+                            subjectList.Append("/");
+                            subjectList.Append(msi.ScoreSum);
+                            break;
+                        }
+                    }
+                    subjectList.Append("分");
+                    subjectList.Append("<br />");
+                }
+                webPanel.Document.InvokeScript("fillResult", new object[] { seed, erlist[i].PubDate.ToString("yyyy-MM-dd HH:mm:ss"), subjectList.ToString() });
+            }
+        }
+
+
+  [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern bool ReleaseCapture();
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern bool SendMessage(IntPtr hwnd, int wMsg, int wParam, int lParam);
+
+        public static void DragForm(Form form)
+        {
+
+            const int WM_SYSCOMMAND = 0x0112;
+            const int SC_MOVE = 0xF010;
+            const int HTCAPTION = 0x0002;
+
+            ReleaseCapture();
+            SendMessage(form.Handle, WM_SYSCOMMAND, SC_MOVE + HTCAPTION, 0);
+
+        }
+
+   //string[] skinNames = Directory.GetFiles("Skin/");
+
+            //listBox1.Items.AddRange(skinNames);
+            //listBox1.SelectedIndex = 0;
+            //listBox1.SelectedIndexChanged += delegate { skinEngine.SkinFile = listBox1.Text.ToString(); };
+
+        /// <summary>
+        /// 执行examinfo.htm发送过来的参数
+        /// </summary>
+        /// <param name="para"></param>
+        public void ActiveScriptMethod(string para)
+        {
+
+            switch (para)
+            {
+
+
+                case "refreshanswer":
+                    SysData.ExamSysUtil.RefreshUserAnswersByExamInfoID(treeFileView.SelectedNode.Name);
+                    break;
+                case "refreshincorrect":
+                    SysData.ExamSysUtil.RefreshInCorrectNoByExamInfoID(treeFileView.SelectedNode.Name);
+                    break;
+                case "refreshfav":
+                    SysData.ExamSysUtil.RefreshFavByExamInfoID(treeFileView.SelectedNode.Name);
+                    break;
+                case "examresult":
+                    selectedExamFunction = 2;
+                    if (treeFileView.SelectedNode.Name == "-1")
+                    {
+                        MessageBox.Show("请选择左侧试题列表中的题目", "提示", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        return;
+                    }
+
+
+                    break;
+                case "examinfo":
+                    selectedExamFunction = 1;
+                    break;
+                case "clearhistory":
+                    if (MessageBox.Show("您确定要删除考试历史记录吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        SysData.AccessHelper.ExecuteNonQuery("DELETE * FROM ExamResult Where ExamInfoID = " + treeFileView.SelectedNode.Name);
+                        EFDDocument.GetExamResultHtml(treeFileView.SelectedNode.Name, webPanel);
+
+                    }
+                    break;
+                case "help":
+                    if (System.IO.File.Exists("help.chm"))
+                        System.Diagnostics.Process.Start("help.chm");
+                    break;
+
+
+                default:
+                    break;
+            }
+        }
+           //StringBuilder media = new StringBuilder();
+                    //media.Append("<html><body style=\"margin:0;\">");
+                    //media.Append("<object  classid=\"clsid:166B1BCA-3F9C-11CF-8075-444553540000\" codebase=\"http://download.macromedia.com/pub/shockwave/cabs/director/sw.cab#version=12,7,0,0\" >");
+                    //media.AppendFormat("<param name=\"src\" value=\"{0}\" /> ", tvEFD.SelectedNode.Name);
+                    //media.Append("<param name=\"autostart\" value=\"true\" />");
+                    //media.AppendFormat("<embed src=\"{0}\"", tvEFD.SelectedNode.Name);
+                    //media.Append("autostart=\"true\"");
+                    //media.Append("pluginspage=\"http://www.macromedia.com/shockwave/download/\"  ");
+                    //media.Append("width=\"100%\" height=\"100%\">");
+                    //media.Append("</object>");
+                    //media.Append("</body></html>");
+                    //webBrowser.DocumentText = media.ToString();
+  
+  
+  // 选择试卷列表事件       
+        //private void treeFileView_AfterSelect(object sender, TreeViewEventArgs e)
+        //{
+
+
+        //    ExamInfo ei = SystemData.ExamSysUtil.GetModel(int.Parse(treeFileView.SelectedNode.Name));
+        //    string lastExamSubject = SysConfig.SettingsHelper.GetValue(Settings.LastExamSubject);
+
+        //    StringBuilder examInfoString = new StringBuilder();
+
+        //    examInfoString.AppendFormat("《{0}》", treeFileView.SelectedNode.Text);
+        //    examInfoString.AppendFormat("；共测试 <span style='color:red'>{0}</span>次", ei.TestTimes);
+        //    examInfoString.AppendFormat("；上次考试是<br/>《{0}》", lastExamSubject);
+
+        //    webPanel.Document.GetElementById("spanSysInfo").InnerHtml = examInfoString.ToString();
+
+        //    if (selectedExamFunction == 2)
+        //        EFDDocument.GetExamResultHtml(treeFileView.SelectedNode.Name, webPanel);
+
+
+        //}
+
+
+      .fp_box5
+        {
+            float: left;
+            width: 160px;
+            margin: 0 25px 10px 5px;
+            padding: 4px;
+            text-align: center;
+            border: 2px solid rgb(232, 232, 227);
+            background: none repeat scroll 0% 0% rgb(200, 200, 189);
+            color: rgb(61, 61, 58);
+        }
+        
+        .fp_box5:hover
+        {
+            background: white;
+        }
+        
+        .fp_box5 h2 u
+        {
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        
+        .fp_box5 img
+        {
+            border: 5px solid rgb(228, 228, 224);
+        }
+        
+        .fp_box5 p
+        {
+            text-align: left;
+        }
+        
+        .fp_box5:hover.fp_box5 h2 b
+        {
+            font-size: 14px;
+            font-weight: 700;
+        }
+         <div class="fp_box5" ondblclick="location='t1.htm'">
+            <img src="images/preferences.png" alt="Image 01" />
+            <h2>
+                <u>试卷列表</u></h2>
+        </div>
+        <div class="fp_box5" ondblclick="location='t1.htm'">
+            <img src="images/preferences.png" alt="Image 01" />
+            <h2>
+                <u>试卷列表</u></h2>
+        </div>
+        <div class="fp_box5" ondblclick="location='t1.htm'">
+            <img src="images/preferences.png" alt="Image 01" />
+            <h2>
+                <u>试卷列表</u></h2>
+        </div>
+  ------------------------------
+     .gntd
+        {
+		 
+            padding-bottom: 5px;
+            margin: 5px;
+            overflow: hidden;
+            padding-top: 10px;
+            border-bottom: #d4d4d4 1px dashed;
+            height: 130px;
+        }
+        .gntd UL IMG
+        {  border: 5px solid rgb(228, 228, 224);
+            
+            float: left;
+        }
+        .gntd UL
+        {
+            float: left;
+            width: 29%;
+            height: auto;
+        }
+        .gntd UL LI
+        {
+            margin-top: 6px;
+            float: left;
+            color: #555;
+            line-height: 20px;
+        }
+     <div class="edit">
+        <div class="gntd">
+            <ul ondblclick="location='t1.htm'">
+                <img src="images/gn_01.gif" />
+                <b>免费升级</b>
+                <li>我们根据每年最新考试大纲提供及时更新升级服务，我们郑重承诺，只要您不更换电脑，我们将提供终身免费升级。 </li>
+            </ul>
+            <ul>
+                <img src="images/gn_02.gif" />
+                <b>模拟考场</b>
+                <li>可以根据需要指定试题科目、试题范围、试题来源、各种题型的题量进行自由组卷，可自主设置每种题型分值，测试结束后系统给出总分和答题正确率。 </li>
+            </ul>
+            <ul>
+                <img src="images/gn_08.gif" />
+                <b>解题思路</b>
+                <li>重点试题提供专业级的解题思路，让您掌握各类答题技巧。 </li>
+            </ul>
+        </div>
+        <div class="gntd">
+            <ul>
+                <img src="images/gn_03.gif" />
+                <b>人机对话</b>
+                <li>输入任意准考证号后进入全真模拟上机考试系统，仿真考试界面，无限次自动组卷，让您身临其境感受真实考场氛围。 </li>
+            </ul>
+            <ul>
+                <img src="images/gn_04.gif" />
+                <b>章节练习</b>
+                <li>按考试的科目进行分类练习，针对性强，覆盖了应考的全部知识点，可根据需要显示答案或隐藏答案，测试完毕给出答题正确率。 </li>
+            </ul>
+            <ul>
+                <img src="images/gn_11.gif" />
+                <b>温故知新</b>
+                <li>软件自动记录下您的每次答题数量、答题速度、正确率等信息，您可以重现当时的答题情景，达到反复练习的目的。 </li>
+            </ul>
+        </div>
+        <div class="gntd" style="border-bottom-width: 0px">
+            <ul>
+                <img src="images/gn_05.gif" />
+                <b>智能阅卷</b>
+                <li>答题完毕后，软件自动批阅并显示得分、用红色标记答错试题，并显示答题的正确率。 </li>
+            </ul>
+            <ul>
+                <img src="images/gn_06.gif" />
+                <b>错题重做</b>
+                <li>软件记录下每次答题情况，您可以将错题重新调出重做，反复刺激，加深印象。 </li>
+            </ul>
+            <ul ondblclick="window.external.Navigate(this.id)" id="btnChart">
+                <img src="images/gn_10.gif" />
+                <b>统计分析</b>
+                <li>软件以列表、走势图显示得分、正确率，可以按考试科目分类显示，使您可以针对薄弱环节进行加强训练。 </li>
+            </ul>
+        </div>
+    </div>
+   
+------------------
+   public static string SystemAddressWidth
+        {
+            get
+            {
+                try
+                {
+                    string addressWidth = String.Empty;
+                    ConnectionOptions mConnOption = new ConnectionOptions();
+                    ManagementScope mMs = new ManagementScope("\\\\localhost", mConnOption);
+                    ObjectQuery mQuery = new ObjectQuery("select AddressWidth from Win32_Processor");
+                    ManagementObjectSearcher mSearcher = new ManagementObjectSearcher(mMs, mQuery);
+                    ManagementObjectCollection mObjectCollection = mSearcher.Get();
+                    foreach (ManagementObject mObject in mObjectCollection)
+                    {
+                        addressWidth = mObject["AddressWidth"].ToString();
+                    }
+                    return addressWidth;
+                }
+                catch (Exception ex)
+                {
+                    return ex.Message;
+                }
+            }
+        }
+            //for (int i = 0; i < examPaper.Length; i++)
+            //{
+            //    StringBuilder sb = new StringBuilder();
+            
+            //   lines[i] = examPaper[i].ToString();
+            //}
+            //char[] param = { '\n' };
+
+            //lines = examPaper.Split(param);
+            //int i = 0;
+            //char[] trimParam = { '\r' };
+            //foreach (string s in lines)
+            //{
+            //    lines[i++] = s.TrimEnd(trimParam);
+            //}
+  
+            public static List<string> GetPrinters()
+        {
+            List<string> printerNames = new List<string>();
+
+            // Use the ObjectQuery to get the list of configured printers
+            System.Management.ObjectQuery oquery =
+                new System.Management.ObjectQuery("SELECT * FROM Win32_Printer");
+
+            System.Management.ManagementObjectSearcher mosearcher =
+                new System.Management.ManagementObjectSearcher(oquery);
+
+            System.Management.ManagementObjectCollection moc = mosearcher.Get();
+
+            foreach (ManagementObject mo in moc)
+            {
+                System.Management.PropertyDataCollection pdc = mo.Properties;
+                foreach (System.Management.PropertyData pd in pdc)
+                {
+                    if ((bool)mo["Network"])
+                    {
+                        printerNames.Add(mo[pd.Name].ToString());
+                    }
+                }
+            }
+
+            return printerNames;
+
+        }
+	  
+	     case "examagain":
+                    if (MessageBox.Show("您确定要重新考试吗，这将会清除您当前的作答？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        temp.WindowSize = this.WindowState.ToString();
+                        BuildPaper();
+                    }
+                    break;
+  private void btnExamList_Click(object sender, EventArgs e)
+        {
+            efdNode = (EFDNode)SysConfig.Decorater.Activate(typeof(EFDNode));
+            efdNode.AfterEFDNodeSelected -= efdNodeSelectEventHandle;
+            efdNode.AfterEFDNodeSelected += efdNodeSelectEventHandle;
+        }
+
+        private void efdNode_AfterEFDNodeSelected(object sender, Agency.EFDNodeSelectedEventArgs e)
+        {
+            if (e.SelectedExamInfo.ID == 0)
+            {
+                btnExamList.Text = "点击选择试卷";
+                return;
+            }
+
+            selectedExamInfo = e.SelectedExamInfo;
+            btnExamList.Text = e.SelectedExamInfo.Name;
+            GenerateChartByCorrectCount(); 
+        }
+
+  private void txtExamName_Click(object sender, EventArgs e)
+        {
+            efdNode = (EFDNode)SysConfig.Decorater.Activate(typeof(EFDNode));
+
+
+            efdNode.AfterEFDNodeSelected -= efdNodeSelectEventHandle;
+            efdNode.AfterEFDNodeSelected += efdNodeSelectEventHandle;
+
+        }
+        private void efdNode_AfterEFDNodeSelected(object sender, Agency.EFDNodeSelectedEventArgs e)
+        {
+
+          
+            txtExamName.Text = e.SelectedExamInfo.Name;
+            selectedExamInfo = e.SelectedExamInfo;
+            //MessageBox.Show(txtExamName.Text);
+        }
+
+            //foreach (ExamInfo ei in SystemData.ExamInfoList)
+            //{
+            //    if (ei.IsMaterial)
+            //        drpExamInfo.Items.Add(ei);
+            //}
+
+            //drpExamInfo.DisplayMember = "Name";
+            //drpExamInfo.ValueMember = "ID";
+            //drpExamInfo.SelectedIndex = 0;
+        /// <summary>
+        /// 不重复随机数是
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns></returns>
+        public static int[] RandNum(int from, int to)
+        {
+            Random mRandom = new Random();
+            System.Collections.ArrayList mArrayList = new System.Collections.ArrayList();
+
+            int mInt = 0;
+
+            while (mArrayList.Count < (to - from))
+            {
+                mInt = mRandom.Next(from, to);
+                if (!mArrayList.Contains(mInt))
+                    mArrayList.Add(mInt);
+            }
+
+            int[] randNum = (int[])mArrayList.ToArray(typeof(int));
+            return randNum;
+        }
+
+        public static int[] RandNum(int max)
+        {
+            return RandNum(0, max);
+        }
+
+
+
+       //获得注册信息
+       // public readonly static EasyInfo EasyInfo = Valid.GetValidEasyFound();
+         //调试验证密码
+        //public const string CONNECTION_PROVIDER = "Provider=Microsoft.Jet.OLEDB.4.0;  Data Source='EasyFound.dll';Jet OLEDB:Database Password=cursedhacker;";   
+       
+
+
+    private static TreeNode nodeMyFileList; 
+        
+            if (nodeMyFileList != null)
+            {
+                treeView.Nodes.Add(nodeMyFileList);
+                treeView.SelectedImageIndex = 1;
+
+                if (treeView.Nodes[0] != null)
+                    treeView.Nodes[0].Expand();
+
+                return;
+            } 
+   private static Dictionary<string, bool> initializedForm = new Dictionary<string, bool>();
+    
+        public static void ResetInitializedFormByClosing(Form form)
+        { 
+                form.FormClosing += delegate {  
+                    initializedForm[form.Name] = false; 
+                form.Dispose();
+                };
+
+        }
+        public static void Show(Form form)
+        {
+
+            bool isInitialized = initializedForm.ContainsKey(form.Name);
+
+            if (!isInitialized)
+            {
+                initializedForm.Add(form.Name, true);
+                form.Show();
+            }
+            else
+            { 
+                if (initializedForm[form.Name])
+                {
+                    form.Activate();
+                }
+                else
+                { if (form.GetType() == typeof(EFDNode))
+                        form = new EFDNode();
+
+                    form.Show();
+                    initializedForm[form.Name] = true;
+
+                }
+            }
+        }
+
+   <img src="[#TempImagePath#]min.gif" title='最小化' onclick="window.external.HandleFromScript('min')" /><img
+            src="[#TempImagePath#]max.gif" title='最大化/还原' onclick="resizeWindow();" /><img src="[#TempImagePath#]close.gif"
+                title='关闭' onclick="window.external.HandleFromScript('close')" />
+
+                case "close":
+                    Close();
+                    break;          case "min":
+                    WindowState = FormWindowState.Minimized;
+                    break;
+                case "normax":
+                    WindowState = (WindowState == FormWindowState.Normal) ? FormWindowState.Maximized : FormWindowState.Normal;
+                    break;
+
+  //writelog file
+        public static void WriterLog(string filename, string msg)
+        {
+            FileStream fs = new FileStream(filename, FileMode.Append, FileAccess.Write);
+            StreamWriter sw = new StreamWriter(fs);
+            sw.WriteLine("时间:" + DateTime.Now.ToString());
+            sw.WriteLine(msg.ToString());
+            sw.Close();
+            fs.Close();
+        }   
+        /// <summary>
+        /// 资料关键字验证
+        /// </summary>
+        /// <param name="searchText"></param>
+        /// <returns></returns>
+        public static int ValidSearchKey(string searchText)
+        {
+            if (string.IsNullOrEmpty(searchText))
+            {
+                MessageBox.Show("请输入检索关键字 。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return -1;
+            }
+
+            searchText = Cts.StrTool.ClearSpecialChar(searchText.Trim());
+
+            if (searchText.Length < 2)
+            {
+                MessageBox.Show("检索关键字必须大于 2 个字符 。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return -2;
+            }
+
+            string[] filter = ConfigurationManager.AppSettings["SearchFilter"].Split(',');
+
+            foreach (string f in filter)
+            {
+                if (f == searchText)
+                {
+                    MessageBox.Show("非法字符 。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
+                    return -3;
+                }
+            }
+
+            return 0;
+        }
+<script type="text/javascript">
+    var next = 1;
+    var text = "";
+    var intervalID = 0;
+    var typist = document.getElementById("divContent");
+    var typistPad = document.getElementById("divContent");
+  //  var padTitle = document.getElementById("padTitle");
+
+    function displayQuestionKey() {
+        typistPad.style.display = "";
+
+        if (next != text.length) {
+            next++
+            typist.innerHTML = text.substring(0, next);
+            typist.scrollTop = typist.scrollHeight
+        }
+        else
+            return;
+    }
+
+    function setQuestionKey( str, time) {
+        clearQuestionKey();
+  
+        text = str;
+        intervalID = setInterval("displayQuestionKey()", time);
+
+    }
+
+    function clearQuestionKey() {
+        typistPad.style.display = "none";
+        clearInterval(intervalID);
+        text = "";
+        next = 1;
+        padTitle.innerText = "";
+        typist.innerText = "";
+    }
+	 setQuestionKey(document.getElementById("divHiddenContent").innerHTML, 60);
+     
+</script>
+            string conn = System.Configuration.ConfigurationManager.ConnectionStrings["EFD"].ConnectionString;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dataField"></param>
+        /// <param name="encryptCount">加密后的使用次数</param>
+        /// <returns></returns>
+        public static int AddUsedNumber(string dataField, string encryptCount)
+        {
+            Rijndael rijndael = new Rijndael("wjcking");
+
+            if (string.IsNullOrEmpty(encryptCount))
+            {
+                string encryptOne = rijndael.Encrypt("1");
+                SysConfig.DataSys.ExecuteNonQuery(string.Format("UPDATE Easy SET {0} = '{1}'", dataField, encryptOne));
+                return 1;
+            }
+            else
+            {
+                int count = Convert.ToInt32(rijndael.Decrypt(encryptCount));
+                int incrementCount = count + 1;
+                string encryptIncrementCount = rijndael.Encrypt(incrementCount.ToString());
+                SysConfig.DataSys.ExecuteNonQuery(string.Format("UPDATE Easy SET {0} = '{1}'", dataField, encryptIncrementCount));
+                return incrementCount;
+            }
+        }
+
+===========================================
+
+          if (fileName == "pts.gif")
+                {
+                    MessageBox.Show("抱歉，您无权浏览此文件", "提示", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    return;
+                }
+
+
+/// <summary>
+        /// 打开帮助文件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainCategory_KeyUp(object sender, KeyEventArgs e)
+        {
+            MessageBox.Show("s");
+            if (e.KeyData == Keys.F1)
+            {
+                if (File.Exists("help.chm"))
+                    System.Diagnostics.Process.Start("help.chm");
+            }
+        }
+     尊敬的用户：试用版只能使用部分功能及题库，请注册正式版享受全部功能。
+
+
+=========================================
+	       private void rdoAll_CheckedChanged(object sender, EventArgs e)
+        {
+            //btnCancelTasks.Visible = true;
+            ////btnEnter.Enabled = true;
+
+            //RadioButton radio = (sender as RadioButton);
+
+            //if (radio == rdoAll)
+            //    btnCancelTasks.Visible = false;
+
+            ////if (radio == rdoCorrection)
+            ////    btnEnter.Enabled = false;
+
+            //btnCancelTasks.Text = "清空" + radio.Text;
+        }
+
+=========================================
+        private void listMessage_DrawItem(object sender, DrawItemEventArgs e)
+        {
+
+     //       Brush br;
+
+     //       int r;
+     //       Math.DivRem(e.Index, 2, out   r);
+     //       if (r == 0)
+     //           br = Brushes.Red;
+     //       else
+     //           br = Brushes.Blue;
+     //       e.DrawBackground();
+     ////       if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+     //           e.DrawFocusRectangle();
+
+     //       Brush b = Brushes.Black;
+     //       e.Graphics.FillRectangle(br, e.Bounds);
+     //       e.Graphics.DrawString(listMessage.Items[e.Index].ToString(), this.listMessage.Font, b, e.Bounds);   
+
+        }
+
+=========================================
+	        string dejs = File.ReadAllText(@"template\decryptedScript.js", System.Text.Encoding.Default);
+             Cts.Rijndael rijndael = new Cts.Rijndael("wjcking");
+             File.WriteAllText(@"template\EncryptedScript.js",rijndael.Encrypt(dejs));
+
+=========================================
+    <add key="MyFileDirect" value="htm,html,xml,jpg,png,jpeg,bmp,gif,swf,xslt,xsl,ico,asp,jsp,php,cpp,vb,java,sql,htt,mht,pht,pdf,doc"/>
+    <add key="MyFileText" value="css,js,ini,inf,lnk,log,m3u,lrc,url,vbs,inc,wpl,txt,reg,cfg,config,cst,csp,aspx,resx,ascx,class,dtd,cs"/>
+    <add key="MyFileMedia" value="mp3,mp4,wav,mid,mpeg,wma,wmv,mid,rmvb,mkv,avi,rm,mpg,csf"/>
+         ===============================================
+ void Bind()
+        {
+            Cts.ExamSys examSys = new Cts.ExamSys(treeFileView.SelectedNode.Name);
+            ExamInfo ei = examSys.GetExamInfo();
+
+            Settings.helper.SetSettingsElement(Settings.LastExamSubject, ei.Name);
+
+            Cts.MainSubject ms = new Cts.MainSubject(treeFileView.SelectedNode.Name);
+
+            HtmlElement txtName = webPanel.Document.GetElementById("txtName");
+            HtmlElement txtContent = webPanel.Document.GetElementById("txtContent");
+            HtmlElement txtTime = webPanel.Document.GetElementById("txtTime");
+
+            txtName.SetAttribute("value", ei.Name);
+            txtContent.SetAttribute("value", ei.Content);
+            txtTime.SetAttribute("value", ei.Time.ToString());
+        }            
+         ===============================================
+ Configuration cfg = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            ConnectionStringSettings css = new ConnectionStringSettings("f", "f");
+            cfg.ConnectionStrings.ConnectionStrings.Add(css);
+
+
+            ConfigurationManager.RefreshSection("connectionStrings");
+            
+         ===============================================
+            
+            //      Rijndael rijn = new Rijndael("Key");
+            //     rijn.Encrypt(@"C:\Documents and Settings\fengyun\桌面\history.mDB", @"C:\Documents and Settings\fengyun\桌面\history.pts");
+            //    rijn.Decrypt(@"C:\Documents and Settings\fengyun\桌面\history.pts", @"C:\Documents and Settings\fengyun\桌面\my.mdb");
+            //  Text = Path.GetTempPath();
+            // rijn.Decrypt("PtsUserValid.dll", "PtsUserValid.txt");
+
+            //if (SysConfig.IsPtsValid == -1)
+            //    MessageBox.Show("当前版本为演示版，请尽快购买试题注册。");
+            //   // drpDisplayStyle.SelectedIndex = 0;
+            
+   //string subjects = null;
+
+            //foreach (MainSubjectInfo msi in ms.GetList())
+            //{
+            //    subjects += msi.Subject + "<br>";
+            //}
+            //web.DocumentText = subjects;
+            //txtPublishDate.Text = ei.PublishDate;
+
+            //if (string.IsNullOrEmpty(ei.PublishDate))
+            //    txtPublishDate.Text = DateTime.Now.ToString("yyyy年MM月dd日");
+            //File.WriteAllText(@"F:\ExamSys\ExamSys\Template.html", BuildExamPaper.Build(e.Node.Name, @"F:\ExamSys\ExamSys\template\default.htm", @" F:\ExamSys\ExamSys\template\default_control.htm", string.Empty), System.Text.ASCIIEncoding.GetEncoding("gb2312"));
+
+            //web.Navigate(@"F:\ExamSys\ExamSys\Template.html");
+            
+======================================================
+              //void timer_Tick(object sender, EventArgs e)
+        //{
+        //    if (maxMinutes == -1)
+        //    {
+        //        timer.Enabled = false;
+        //        Close();
+        //    }
+
+        //    else
+        //    {
+        //        if (secondPointer != -1)
+        //        {
+        //            lbCountDown.Text = string.Format("{0}分 {1}秒", maxMinutes, secondPointer.ToString("00"));
+        //            secondPointer--;
+        //        }
+        //        else
+        //        {
+        //            secondPointer = 59;
+        //            maxMinutes--;
+        //        }
+        //    }
+        //}
+===================
+      //  private void btnSubmit_Click(object sender, EventArgs e)
+      //  {
+      //      web.Document.InvokeScript("GotoSearchEngine");
+      ////   MessageBox.Show(web.Document.);
+      //    //  MessageBox(web
+      //  }
+            // Rijndael rjindael = new Rijndael("key");
+            ////         web.Document.Encoding ="utf8";
+
+            ////RSA rsa =new RSA ();
+            //// rjindael.Encrypt(SysConfig.CurrentExamTemplate(), @"d:\Documents and Settings\Administrator\桌面\te.txt");
+
+            ////rjindael.Decrypt(@"d:\Documents and Settings\Administrator\桌面\te.txt", @"d:\Documents and Settings\Administrator\桌面\de.txt");
+            //// web.DocumentText =  (File.ReadAllText(@"d:\Documents and Settings\Administrator\桌面\de.txt", Encoding.Default));
+            ////   Text = web.DocumentTitle;
+            
+            
+        
+            //if (e.Node == null)
+            //    return;
+
+            //if (string.IsNullOrEmpty(e.Node.Name))
+            //    return;
+
+            //if (!File.Exists(e.Node.Name))
+            //    return;
+
+            //string fileType = Path.GetExtension(e.Node.Name);
+
+            //if (fileType != ".xml")
+            //{
+            //    //  webPanel.DocumentText = File.ReadAllText(e.Node.Name, Encoding.Default);
+            //    webPanel.ScrollBarsEnabled = true;
+            //    webPanel.Navigate(e.Node.Name);
+            //    return;
+            //}
+
+            //if (webPanel.Url.LocalPath != SysConfig.examOptions)
+            //{
+            //    webPanel.ScrollBarsEnabled = false;
+            //    webPanel.Navigate(SysConfig.examOptions);
+            //    webPanel.ProgressChanged += new WebBrowserProgressChangedEventHandler(webPanel_ProgressChanged);
+            //    return;
+            //}
+            //Bind();
+================================
+
+        private void web_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
+        {
+            //lbProgress.Visible = (e.CurrentProgress != e.MaximumProgress) ? true : false
+        }
+
+        private void web_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
+        }
+		======================
+		         //EasyInfo.Number_ExamTestTime = String.IsNullOrEmpty(easyInfo.ExamTestTime) ? 1 : Convert.ToInt32(rijndael.Decrypt(easyInfo.ExamTestTime));
+            //EasyInfo.Number_ExamTestOffical = String.IsNullOrEmpty(easyInfo.ExamTestOffical) ? 1 : Convert.ToInt32(rijndael.Decrypt(easyInfo.ExamTestOffical));
+            //EasyInfo.Number_ExamTestRandom = String.IsNullOrEmpty(easyInfo.ExamTestRandom) ? 1 : Convert.ToInt32(rijndael.Decrypt(easyInfo.ExamTestRandom));
+            //EasyInfo.Number_ExamTestFav = String.IsNullOrEmpty(easyInfo.ExamTestFav) ? 1 : Convert.ToInt32(rijndael.Decrypt(easyInfo.ExamTestFav));
+            ////限制资料添加数
+            //EasyInfo.Number_EasyOutline = String.IsNullOrEmpty(easyInfo.EasyOutline) ? 1 : Convert.ToInt32(rijndael.Decrypt(easyInfo.EasyOutline));
+
+            //EasyInfo.Number_SettingsMyFile = String.IsNullOrEmpty(easyInfo.SettingsMyFile) ? 1 : Convert.ToInt32(rijndael.Decrypt(easyInfo.SettingsMyFile));
+            //EasyInfo.Number_SettingsOutline = String.IsNullOrEmpty(easyInfo.SettingsOutline) ? 1 : Convert.ToInt32(rijndael.Decrypt(easyInfo.SettingsOutline));
+            //EasyInfo.Number_SettingsScore = String.IsNullOrEmpty(easyInfo.SettingsScore) ? 1 : Convert.ToInt32(rijndael.Decrypt(easyInfo.SettingsScore));
+            //EasyInfo.Number_SearchTypeIncorrect = String.IsNullOrEmpty(easyInfo.SearchTypeIncorrect) ? 1 : Convert.ToInt32(rijndael.Decrypt(easyInfo.SearchTypeIncorrect));
+            //EasyInfo.Number_SearchEnter = String.IsNullOrEmpty(easyInfo.SearchEnter) ? 1 : Convert.ToInt32(rijndael.Decrypt(easyInfo.SearchEnter));
+	============================
+	         //  File.WriteAllText(SysConfig.CurrentExamTemplate(), currentExam, System.Text.Encoding.Default);
+         //   web.Navigate(SysConfig.CurrentExamTemplate());
+
+
+		 //#region outline
+        //List<OutlineInfo> OutlineList(int currentpid)
+        //{
+        //    List<OutlineInfo> temp = new List<OutlineInfo>();
+
+        //    foreach (OutlineInfo oi in outlineList)
+        //        if (oi.PID == currentpid)
+        //            temp.Add(oi);
+
+        //    return temp;
+        //}
+
+        //private void AddOutlineInfo(int parentId, TreeNode parentNode)
+        //{
+        //    List<OutlineInfo> outlineList = OutlineList(parentId);
+
+        //    foreach (OutlineInfo oi in outlineList)
+        //    {
+        //        TreeNode myNode = new TreeNode(oi.ID.ToString());
+        //        //myNode.Expanded = false;
+        //        myNode.Name = oi.ID.ToString();
+        //        myNode.Text = oi.Title;
+        //        myNode.ImageIndex = 1;
+
+        //        parentNode.Nodes.Add(myNode);
+        //        AddOutlineInfo(oi.ID, myNode);
+        //    }
+        //}
+
+        //public void GetOutlineList()
+        //{
+        //    nodeType = NodeListType.Outline;
+        //    treeView.Nodes.Clear();
+
+        //    //cache node list
+        //    if (nodeOutlineList != null)
+        //    {
+        //        treeView.Nodes.Add(nodeOutlineList);
+        //        treeView.SelectedImageIndex = 3;
+        //        if (treeView.Nodes[0] != null)
+        //            treeView.Nodes[0].Expand();
+        //        return;
+        //    }
+
+
+        //    TreeNode rootNode = new TreeNode("大纲资料库");
+        //    rootNode.Name = "-1";
+        //    rootNode.ImageIndex = 1;
+        //    AddOutlineInfo(0, rootNode);
+        //    treeView.Nodes.Add(rootNode);
+        //    treeView.SelectedImageIndex = 3;
+
+        //    if (treeView.Nodes[0] != null)
+        //        treeView.Nodes[0].Expand();
+
+        //    nodeOutlineList = rootNode;
+        //}
+        //#endregion
+
+
+		//end
+
+        //public enum NCBCONST
+        //{
+        //    NCBNAMSZ = 16, /**//* absolute length of a net name */
+        //    MAX_LANA = 254, /**//* lana's in range 0 to MAX_LANA inclusive */
+        //    NCBENUM = 0x37, /**//* NCB ENUMERATE LANA NUMBERS */
+        //    NRC_GOODRET = 0x00, /**//* good return */
+        //    NCBRESET = 0x32, /**//* NCB RESET */
+        //    NCBASTAT = 0x33, /**//* NCB ADAPTER STATUS */
+        //    NUM_NAMEBUF = 30, /**//* Number of NAME's BUFFER */
+        //}
+
+        //[StructLayout(LayoutKind.Sequential)]
+        //public struct ADAPTER_STATUS
+        //{
+        //    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
+        //    public byte[] adapter_address;
+        //    public byte rev_major;
+        //    public byte reserved0;
+        //    public byte adapter_type;
+        //    public byte rev_minor;
+        //    public ushort duration;
+        //    public ushort frmr_recv;
+        //    public ushort frmr_xmit;
+        //    public ushort iframe_recv_err;
+        //    public ushort xmit_aborts;
+        //    public uint xmit_success;
+        //    public uint recv_success;
+        //    public ushort iframe_xmit_err;
+        //    public ushort recv_buff_unavail;
+        //    public ushort t1_timeouts;
+        //    public ushort ti_timeouts;
+        //    public uint reserved1;
+        //    public ushort free_ncbs;
+        //    public ushort max_cfg_ncbs;
+        //    public ushort max_ncbs;
+        //    public ushort xmit_buf_unavail;
+        //    public ushort max_dgram_size;
+        //    public ushort pending_sess;
+        //    public ushort max_cfg_sess;
+        //    public ushort max_sess;
+        //    public ushort max_sess_pkt_size;
+        //    public ushort name_count;
+        //}
+
+        //[StructLayout(LayoutKind.Sequential)]
+        //public struct NAME_BUFFER
+        //{
+        //    [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)NCBCONST.NCBNAMSZ)]
+        //    public byte[] name;
+        //    public byte name_num;
+        //    public byte name_flags;
+        //}
+
+        //[StructLayout(LayoutKind.Sequential)]
+        //public struct NCB
+        //{
+        //    public byte ncb_command;
+        //    public byte ncb_retcode;
+        //    public byte ncb_lsn;
+        //    public byte ncb_num;
+        //    public IntPtr ncb_buffer;
+        //    public ushort ncb_length;
+        //    [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)NCBCONST.NCBNAMSZ)]
+        //    public byte[] ncb_callname;
+        //    [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)NCBCONST.NCBNAMSZ)]
+        //    public byte[] ncb_name;
+        //    public byte ncb_rto;
+        //    public byte ncb_sto;
+        //    public IntPtr ncb_post;
+        //    public byte ncb_lana_num;
+        //    public byte ncb_cmd_cplt;
+        //    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
+        //    public byte[] ncb_reserve;
+        //    public IntPtr ncb_event;
+        //}
+
+        //[StructLayout(LayoutKind.Sequential)]
+        //public struct LANA_ENUM
+        //{
+        //    public byte length;
+        //    [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)NCBCONST.MAX_LANA)]
+        //    public byte[] lana;
+        //}
+
+        //[StructLayout(LayoutKind.Auto)]
+        //public struct ASTAT
+        //{
+        //    public ADAPTER_STATUS adapt;
+        //    [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)NCBCONST.NUM_NAMEBUF)]
+        //    public NAME_BUFFER[] NameBuff;
+        //}
+        //public class Win32API
+        //{
+        //    [DllImport("NETAPI32.DLL")]
+        //    public static extern char Netbios(ref NCB ncb);
+        //}
+
+        ////取网卡mac
+        //public static string MacAddress
+        //{
+        //    get
+        //    {
+        //        string addr = "";
+        //        try
+        //        {
+        //            int cb;
+        //            ASTAT adapter;
+        //            NCB Ncb = new NCB();
+        //            char uRetCode;
+        //            LANA_ENUM lenum;
+
+        //            Ncb.ncb_command = (byte)NCBCONST.NCBENUM;
+        //            cb = Marshal.SizeOf(typeof(LANA_ENUM));
+        //            Ncb.ncb_buffer = Marshal.AllocHGlobal(cb);
+        //            Ncb.ncb_length = (ushort)cb;
+        //            uRetCode = Win32API.Netbios(ref Ncb);
+        //            lenum = (LANA_ENUM)Marshal.PtrToStructure(Ncb.ncb_buffer, typeof(LANA_ENUM));
+        //            Marshal.FreeHGlobal(Ncb.ncb_buffer);
+        //            if (uRetCode != (short)NCBCONST.NRC_GOODRET)
+        //                return "";
+
+        //            for (int i = 0; i < lenum.length; i++)
+        //            {
+        //                Ncb.ncb_command = (byte)NCBCONST.NCBRESET;
+        //                Ncb.ncb_lana_num = lenum.lana[i];
+        //                uRetCode = Win32API.Netbios(ref Ncb);
+        //                if (uRetCode != (short)NCBCONST.NRC_GOODRET)
+        //                    return "";
+
+        //                Ncb.ncb_command = (byte)NCBCONST.NCBASTAT;
+        //                Ncb.ncb_lana_num = lenum.lana[i];
+        //                Ncb.ncb_callname[0] = (byte)'*';
+        //                cb = Marshal.SizeOf(typeof(ADAPTER_STATUS)) + Marshal.SizeOf(typeof(NAME_BUFFER)) * (int)NCBCONST.NUM_NAMEBUF;
+        //                Ncb.ncb_buffer = Marshal.AllocHGlobal(cb);
+        //                Ncb.ncb_length = (ushort)cb;
+        //                uRetCode = Win32API.Netbios(ref Ncb);
+        //                adapter.adapt = (ADAPTER_STATUS)Marshal.PtrToStructure(Ncb.ncb_buffer, typeof(ADAPTER_STATUS));
+        //                Marshal.FreeHGlobal(Ncb.ncb_buffer);
+
+        //                if (uRetCode == (short)NCBCONST.NRC_GOODRET)
+        //                {
+        //                    if (i > 0)
+        //                        addr += ":";
+        //                    addr = string.Format("{0,2:X}{1,2:X}{2,2:X}{3,2:X}{4,2:X}{5,2:X}",
+        //                    adapter.adapt.adapter_address[0],
+        //                    adapter.adapt.adapter_address[1],
+        //                    adapter.adapt.adapter_address[2],
+        //                    adapter.adapt.adapter_address[3],
+        //                    adapter.adapt.adapter_address[4],
+        //                    adapter.adapt.adapter_address[5]);
+        //                }
+        //            }
+        //        }
+        //        catch
+        //        {
+        //        }
+        //        return addr.Replace(' ', '0');
+        //    }
+        //}     //StringBuilder historyItemString = new StringBuilder();
+                    //historyItemString.Append("[试卷名]").Append(hi.ExamInfoName);
+                    //historyItemString.Append(" [大题名]").Append(hi.MainSubject);
+                    //historyItemString.Append(" [创建时间]").Append(hi.PubDate);
+                    //historyItemString.Append(" [测试次数]").Append(hi.TestTimes);
+                    //AddMessage(historyItemString.ToString());
+                    //historyItemString.Remove(0, historyItemString.Length);
+                    //if (!string.IsNullOrEmpty(hi.Keyword))
+                    //    historyItemString.Append("[关键字]").Append(hi.Keyword);
+                    //historyItemString.Append(" [考试方式]").Append(hi.Testway);
+                    //historyItemString.Append(" [试题个数]").Append(hi.QuestionCount);
+                    //historyItemString.Append(" [考试分数]").Append(hi.Score);
+
+                    //AddMessage(historyItemString.ToString());
+
+        //public void GenerateChartByDisplayStyle()
+        //{
+        //    GetChartType(CHARTTYPE_PIE, String.Empty);
+
+        //    DataTable dt = new DataTable();
+
+        //    DataColumn cDisplayStyle = new DataColumn("试题显示方式", typeof(string));
+        //    DataColumn cDisplayNum = new DataColumn("使用次数", typeof(string));
+
+        //    dt.Columns.Add(cDisplayStyle);
+        //    dt.Columns.Add(cDisplayNum);
+
+        //    string sqlDisplayStyle = "SELECT displaystyle as 试题显示方式, count(displaystyle) as  使用次数 FROM examresult GROUP BY displaystyle";
+
+        //    dt = SystemData.ExamSysUtil.ExecuteDataSet(sqlDisplayStyle).Tables[0];
+
+        //    if (dt == null)
+        //        return;
+
+        //    chart.BindChartData(dt);
+        //    chart.Refresh();
+        //}
+
+        //public void GenerateChartByTestway()
+        //{
+        //    GetChartType(CHARTTYPE_BAR, CHARTTYPE_PIE);
+
+        //    DataTable dt = new DataTable();
+
+        //    DataColumn cTestWay = new DataColumn("试题考试方式", typeof(string));
+        //    DataColumn cNum = new DataColumn("使用次数", typeof(string));
+
+        //    dt.Columns.Add(cTestWay);
+        //    dt.Columns.Add(cNum);
+
+        //    string sqlTestway = "SELECT  TestWay as 试题考试方式, count(TestWay) as  使用次数 FROM examresult GROUP BY TestWay";
+
+        //    dt = SystemData.ExamSysUtil.ExecuteDataSet(sqlTestway).Tables[0];
+
+        //    if (dt == null)
+        //        return;
+
+        //    chart.BindChartData(dt);
+        //    chart.Refresh();
+        //}
+
+
+		
+ /*
+     var formWindowState = '<%= temp.WindowState%>';
+
+     if (formWindowState == 'Maximized') {
+            IsNormalState = false;
+            divExamArea.style.height = (screen.height - 210) + "px";
+            $("content").style.height =maxContentHeight;
+     }*/

@@ -1,0 +1,308 @@
+﻿
+  public static int Register( )
+        {
+
+            try
+            {
+                using (System.Windows.Forms.OpenFileDialog reg = new System.Windows.Forms.OpenFileDialog())
+                {
+                    reg.RestoreDirectory = true;
+
+                    if (reg.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                        return 30000;
+
+                    string encryptedXml = File.ReadAllText(reg.FileName, System.Text.Encoding.Default);
+
+                    VerifyInfo vi = Encrypt.DecryptVerifyXml( encryptedXml);
+
+                    if (Valid.MachineID == "")
+                        return 10000;
+
+                    if (vi.MachineID != Valid.MachineID)
+                        return 10001;
+
+                    if (vi.CategoryID != AccessRegisterInfo.CategoryID)
+                        return 10002;
+
+                    vi.SelectionCount = SelectionCount;
+                    vi.JudgementCount = JudgementCount;
+                    vi.QuestionCount = QuestionCount;
+                    vi.FillCount = FillCount;
+                    vi.ExamPaperCount = ExamPaperCount;
+
+                    string xml = Encrypt.EncryptVerifyXml(vi, true);
+                    SysData.ExamSysUtil.UpdateRegisterInfo(xml, vi.ProductName);
+                    return 0;
+                }
+            }
+            catch//(Exception e)
+            { 
+                return 30000;
+            }
+        }
+//window.onload =  changeTextarea();
+	//如果是问答题 则根据答案高度来规定文本框高度
+	function changeTextarea() {
+		for (var i = 0; i < mainSubjectID.length;i++) {
+			if (typeID[i] == 4) {
+				var divKeyArray =getGeneralID(mainSubjectID[i], "divKey");
+				 var textareaArray =getGeneralID(mainSubjectID[i], "userAnswerID");
+			
+				for (var c = 0; c < divKeyArray.length; c++) {
+				 	alert(divKeyArray[c].style.height);
+				}
+			}
+		}
+	}
+
+namespace ExamSys.Util
+{
+    public class Valid
+    {
+        //机器号
+        public readonly static string MachineID = Hardware.MachineID;
+
+        public readonly static int ExamSysSelectionCount = Convert.ToInt32(SystemData.AccessHelper.ExecuteScalar("SELECT COUNT(*) FROM Selection"));
+        public readonly static int ExamSysJudgementCount =  Convert.ToInt32(SystemData.AccessHelper.ExecuteScalar("SELECT COUNT(*) FROM Judgement"));
+        public readonly static int ExamSysFillCount =  Convert.ToInt32(SystemData.AccessHelper.ExecuteScalar("SELECT COUNT(*) FROM Fill"));
+        public readonly static int ExamSysQuestionCount =  Convert.ToInt32(SystemData.AccessHelper.ExecuteScalar("SELECT COUNT(*) FROM Question"));
+        public readonly static int ExamSysMsCount =  Convert.ToInt32(SystemData.AccessHelper.ExecuteScalar("SELECT COUNT(*) FROM MainSubject"));
+        public readonly static EasyInfo EfdInfo = SystemData.ExamSysUtil.GetEasyInfo();
+        public readonly static VerifyCidInfo EfdCid = new VerifyCidInfo();
+        //调试注册
+        public readonly static int RegisterResultValue = (SysConfig.DebugRegisterCode.Equals(SysConfig.DEBUGE_CODE) ? 0 : VerifyRegistered());
+        public readonly static bool IsRegistered = RegisterResultValue == 0 ? true : false;
+
+
+
+        /// <summary>
+        /// 注册验证
+        /// </summary>
+        /// <returns>
+        /// -1 选择题数量有误
+        /// -2 判断题数据有误
+        /// -3 填空题数据有误
+        /// -4 简答或论述题数据有误
+        /// -5 试卷大题数据有误
+        /// -6 机器号验证失败
+        /// -7 注册码验证失败
+        /// -101 注册程序出现异常
+        /// 0 注册成功
+        /// </returns>
+        public static int VerifyRegistered()
+        {
+
+            //获得解密后的数据
+            EasyInfo easyInfo = GetValidEasyFound();
+
+            if (EasyInfo.Number_ExamSysSelectionCount != ExamSysSelectionCount)
+                return -1;
+            if (EasyInfo.Number_ExamSysJudgementCount != ExamSysJudgementCount)
+                return -2;
+            if (EasyInfo.Number_ExamSysFillCount != ExamSysFillCount)
+                return -3;
+            if (EasyInfo.Number_ExamSysQuestionCount != ExamSysQuestionCount)
+                return -4;
+            if (EasyInfo.Number_ExamSysMsCount != ExamSysMsCount)
+                return -5;
+
+            try
+            {
+                //解码数据库中的xml
+                CustomerInfo cust = GetCustomerInfo(easyInfo.ValidXML);
+
+                if (cust.Machineid != Valid.MachineID)
+                    return -6;
+
+                if (cust.RegisterCode != easyInfo.RegCode)
+                    return -7;
+            }
+            catch
+            {
+                return -101;
+            }
+
+
+            return 0;
+        }
+
+        /// <summary>
+        /// 获得注册信息(解码xml）
+        /// </summary>
+        /// <param name="encryptString"></param>
+        /// <returns></returns>
+        private static CustomerInfo GetCustomerInfo(string encryptString)
+        {
+            try
+            {
+                Rijndael rijndael = new Rijndael(SysConfig.WJCKING);
+                string decryptXml = rijndael.Decrypt(encryptString);
+
+                XmlDocument xmldoc = new XmlDocument();
+                xmldoc.LoadXml(decryptXml);
+                XmlNode node = xmldoc.SelectSingleNode("EasyFound/ExamSys");
+
+                CustomerInfo cust = new CustomerInfo();
+                cust.ID = node["ID"] == null ? -1 : Convert.ToInt32(node["ID"].InnerText);
+                cust.Customerid = node["CustomerID"] == null ? -1 : Convert.ToInt32(node["CustomerID"].InnerText);
+                cust.CustomerName = node["CustomerName"] == null ? System.Windows.Forms.SystemInformation.ComputerName : node["CustomerName"].InnerText;
+                cust.Cellphone = node["Cellphone"] == null ? "": node["Cellphone"].InnerText;
+                cust.Idcard = node["Idcard"] == null ? "" : node["Idcard"].InnerText;
+
+                cust.ProductID =  int.Parse(node["ProductID"].InnerText);
+                cust.ProductName =  node["ProductName"].InnerText;
+                cust.Cid = node["Cid"].InnerText;
+                cust.Category = node["Category"].InnerText;
+                cust.Email = node["Email"] == null ? "" : node["Email"].InnerText;
+
+                //cust.OrderDate = node["OrderDate"].InnerText;
+                cust.Zip = node["Zip"] == null ? "" : node["Zip"].InnerText;
+                cust.Province = node["Province"] == null ? "" : node["Province"].InnerText;
+                cust.Address = node["Address"] == null ? "" : node["Address"].InnerText;
+                cust.Machineid = node["MachineID"] == null ? "[MachineID=NULL]" : node["MachineID"].InnerText;
+                cust.RegisterCode = node["RegisterCode"] == null ? "" : node["RegisterCode"].InnerText;
+                //产品类别分类码
+                cust.CategoryCode = cust.Cid + "#" + cust.ProductID.ToString();
+                return cust;
+            }
+            catch (Exception e)
+            {
+                throw e;
+                //  return new CustomerInfo();
+            }
+        }
+        /// <summary>
+        /// 获得分类码 cid.cab 文件(解码xml）
+        /// </summary>
+        /// <param name="encryptString"></param>
+        /// <returns></returns>
+        //private static VerifyCidInfo GetVerifyCidInfo()
+        //{
+        //    if (!File.Exists("cid.cab"))
+        //    {
+        //        VerifyCidInfo v = new VerifyCidInfo();
+        //        v.Title = "易方得[未注册]";
+        //        v.ProductID = "0";
+        //        v.Cid = "000";
+        //        v.CategoryCode = "000#0";
+        //        v.Category = "";
+
+        //        return v;
+        //    }
+
+        //    string encryptCidXml = File.ReadAllText("cid.cab", System.Text.Encoding.Default);
+
+        //    Rijndael rijndael = new Rijndael(SysConfig.WJCKING);
+        //    string decryptXml = rijndael.Decrypt(encryptCidXml);
+
+        //    XmlDocument xmldoc = new XmlDocument();
+        //    xmldoc.LoadXml(decryptXml);
+        //    XmlNode node = xmldoc.SelectSingleNode("EasyFound/ExamSys");
+        //    VerifyCidInfo vc = new VerifyCidInfo();
+
+        //    vc.Title = node["Title"].InnerText;
+        //    vc.ProductID = node["ProductID"].InnerText;
+        //    vc.Cid = node["Cid"].InnerText;
+        //    vc.CategoryCode = vc.Cid + "#" + vc.ProductID;
+        //    vc.Category = node["Category"].InnerText;
+        //    //新增备用
+        //    vc.Version = (string.IsNullOrEmpty(node["Version"].InnerText) ? "1.0" : node["Version"].InnerText);
+        //    vc.PubTime = node["PubTime"].InnerText;
+        //    vc.VoiceInfo = node["VoiceInfo"].InnerText;
+        //    vc.Content = node["Content"].InnerText;
+        //    vc.ParentCid = node["ParentCid"].InnerText;
+        //    vc.ParentCategory = node["ParentCategory"].InnerText;
+
+        //    return vc;
+        //}
+
+        /// <summary>
+        /// 注册验证
+        /// </summary>
+        /// <param name="registerCode"></param>
+        /// <param name="encryptString"></param>
+        /// <returns>-100 注册码错误； -200 机器码错误 -300分类码错误</returns>
+        public static int Register(string registerCode, string encryptString)
+        {
+            //解码用户提供的xml加密文件（。cab）
+            CustomerInfo cust = GetCustomerInfo(encryptString);
+
+            //if (registerCode != cust.RegisterCode)
+            //    return -100;
+
+            if (cust.Machineid != Valid.MachineID)
+                return -200;
+
+            if (cust.CategoryCode != EfdCid.CategoryCode)
+                return -300;
+
+            //重新注册纪录个数
+            RegSubjectNumber();
+            //写入机器码，和注册密文
+            SystemData.AccessHelper.ExecuteNonQuery(string.Format("UPDATE Easy SET RegCode='{0}', ValidXML = '{1}'", registerCode, encryptString));
+
+            return 100;
+        }
+
+        /// <summary>
+        /// 获得解密后的试题总数,解密的分类码
+        /// </summary>
+        /// <returns></returns>
+        public static EasyInfo GetValidEasyFound()
+        {
+            EasyInfo easyInfo = EfdInfo;
+
+            Rijndael rijndael = new Rijndael("wjcking");
+
+            //试题总数
+            EasyInfo.Number_ExamSysSelectionCount = String.IsNullOrEmpty(easyInfo.ExamSysSelectionCount) ? 1 : Convert.ToInt32(rijndael.Decrypt(easyInfo.ExamSysSelectionCount));
+            EasyInfo.Number_ExamSysJudgementCount = String.IsNullOrEmpty(easyInfo.ExamSysJudgementCount) ? 1 : Convert.ToInt32(rijndael.Decrypt(easyInfo.ExamSysJudgementCount));
+            EasyInfo.Number_ExamSysFillCount = String.IsNullOrEmpty(easyInfo.ExamSysFillCount) ? 1 : Convert.ToInt32(rijndael.Decrypt(easyInfo.ExamSysFillCount));
+            EasyInfo.Number_ExamSysQuestionCount = String.IsNullOrEmpty(easyInfo.ExamSysQuestionCount) ? 1 : Convert.ToInt32(rijndael.Decrypt(easyInfo.ExamSysQuestionCount));
+            EasyInfo.Number_ExamSysMsCount = String.IsNullOrEmpty(easyInfo.ExamSysMsCount) ? 1 : Convert.ToInt32(rijndael.Decrypt(easyInfo.ExamSysMsCount));
+
+            return easyInfo;
+        }
+
+
+        /// <summary>
+        /// 注册后，存储记录个数
+        /// </summary>
+        /// <returns></returns>
+        public static int RegSubjectNumber()
+        {
+            Rijndael rijndael = new Rijndael("wjcking");
+            int executedRows = 0;
+
+            string encryptSysSelectionCount = rijndael.Encrypt(ExamSysSelectionCount.ToString());
+            string encryptSysJudgementCount = rijndael.Encrypt(ExamSysJudgementCount.ToString());
+            string encryptSysFillCount = rijndael.Encrypt(ExamSysFillCount.ToString());
+            string encryptSysQuestionCount = rijndael.Encrypt(ExamSysQuestionCount.ToString());
+            string encryptSysMsCount = rijndael.Encrypt(ExamSysMsCount.ToString());
+
+            EasyInfo easyInfo = SystemData.ExamSysUtil.GetEasyInfo();
+
+            easyInfo.ExamSysSelectionCount = encryptSysSelectionCount;
+            easyInfo.ExamSysJudgementCount = encryptSysJudgementCount;
+            easyInfo.ExamSysFillCount = encryptSysFillCount;
+            easyInfo.ExamSysQuestionCount = encryptSysQuestionCount;
+            easyInfo.ExamSysMsCount = encryptSysMsCount;
+
+            SystemData.ExamSysUtil.UpdateEasyInfo(easyInfo);
+
+            return executedRows;
+        }
+
+        /// <summary>
+        /// 重置注册信息
+        /// </summary>
+        public static void ResetRegisterInfo()
+        {
+            EasyInfo ei = new EasyInfo();
+
+            SystemData.ExamSysUtil.UpdateEasyInfo(ei);
+        }
+
+
+    }
+}

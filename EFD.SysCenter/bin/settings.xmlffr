@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CTS>
+  <ExamSys>
+    <DatabasePath>D:\题库</DatabasePath>
+    <RecentFiles>D:\题库\DEG-ZK-HRM-自考人力资源管理与开发.mdb</RecentFiles>
+    <ImageLibrary>D:\图库</ImageLibrary>
+    <MediaLibrary>D:\多媒体库</MediaLibrary>
+    <FinalPath>D:\最终版</FinalPath>
+    <SkinPath>d:\皮肤</SkinPath>
+    <InstallScript>d:\current.iss</InstallScript>
+    <PublishPath>d:\发布</PublishPath>
+    <KeyRegex>:.*?[A-F]</KeyRegex>
+    <AnalysisRegex>解题思路.*?\r</AnalysisRegex>
+    <ClearQuestionRegex>:</ClearQuestionRegex>
+  </ExamSys>
+</CTS>

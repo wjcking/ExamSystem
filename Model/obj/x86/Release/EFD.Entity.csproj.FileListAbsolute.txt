@@ -1,0 +1,17 @@
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Model\bin\x86\Release\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Model\bin\x86\Release\Model.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Model\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Model\obj\x86\Release\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Model\obj\x86\Release\Model.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Model\bin\x86\Release\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Model\bin\x86\Release\Model.pdb
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Model\bin\x86\Release\Model.dll
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Model\bin\x86\Release\Model.pdb
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Model\obj\x86\Release\ResolveAssemblyReference.cache
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Model\obj\x86\Release\Model.dll
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\Model\obj\x86\Release\Model.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Model\bin\debug\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Model\bin\debug\Model.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Model\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Model\obj\x86\Release\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\Model\obj\x86\Release\Model.pdb

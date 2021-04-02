@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ExamSys.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="g" Type="System.String" Scope="User">
+      <Value Profile="(Default)">document</Value>
+    </Setting>
+    <Setting Name="d" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="config" Type="System.Windows.Forms.FormStartPosition" Scope="User">
+      <Value Profile="(Default)">CenterScreen</Value>
+    </Setting>
+    <Setting Name="CenterScreen" Type="System.Windows.Forms.FormStartPosition" Scope="User">
+      <Value Profile="(Default)">CenterScreen</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title></title>
+    <script type="text/javascript" src="js/util.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <link href="style/Outline.css" rel="stylesheet" type="text/css" />  
+ 
+</head>
+<body>
+   
+  
+<span id="efdTitle"></span>
+<input type="hidden" id="hidFamily"/>
+<div style="display:none;" id="divForbidden"></div>
+
+    <div id="divContent">
+
+    </div>
+
+    <script type="text/javascript">
+   
+
+        $("#divContent").css("font-family", $("#hidFamily").val());
+        $("body").mousedown(function (e) {
+
+             if (e.button == 2)
+               window.external.MarkByKeyword();
+        });
+    </script>
+    <script type="text/javascript" id="scriptForbidden">
+    </script>
+</body> 
+</html>

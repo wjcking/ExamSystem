@@ -1,0 +1,40 @@
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\DataUtility\bin\Debug\DataUtility.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\DataUtility\bin\Debug\DataUtility.pdb
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\DataUtility\bin\Debug\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\DataUtility\bin\Debug\Model.pdb
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\DataUtility\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\DataUtility\obj\Debug\DataUtility.Properties.Resources.resources
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\DataUtility\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\DataUtility\obj\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\DataUtility\obj\Debug\DataUtility.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\DataUtility\obj\Debug\DataUtility.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\DataUtility\bin\Debug\DataUtility.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\DataUtility\bin\Debug\DataUtility.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\DataUtility\bin\Debug\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\DataUtility\bin\Debug\Model.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\DataUtility\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\DataUtility\obj\Debug\DataUtility.Properties.Resources.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\DataUtility\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\DataUtility\obj\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\DataUtility\obj\Debug\DataUtility.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\DataUtility\obj\Debug\DataUtility.pdb
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\bin\Debug\DataUtility.dll
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\bin\Debug\DataUtility.pdb
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\bin\Debug\Model.dll
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\bin\Debug\Model.pdb
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\obj\Debug\ResolveAssemblyReference.cache
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\obj\Debug\DataUtility.Properties.Resources.resources
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\obj\Debug\GenerateResource-ResGen.read.1.tlog
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\obj\Debug\GenerateResource-ResGen.write.1.tlog
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\obj\Debug\DataUtility.dll
+E:\我的文档\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\obj\Debug\DataUtility.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\bin\Debug\DataUtility.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\bin\Debug\DataUtility.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\bin\Debug\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\bin\Debug\Model.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\obj\Debug\DataUtility.Properties.Resources.resources
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\obj\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\obj\Debug\DataUtility.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys_vs2010\DataUtility\obj\Debug\DataUtility.pdb

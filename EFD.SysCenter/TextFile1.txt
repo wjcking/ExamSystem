@@ -1,0 +1,73 @@
+﻿
+
+              //      List<StatisticInfo> statisticList = StatisticDAL.GetCountByMainSubjectType(database);
+
+                    //vci.SelectionCount = statisticList[0].Total.ToString();
+                    //vci.JudgementCount = statisticList[1].Total.ToString();
+                    //vci.FillCount = statisticList[2].Total.ToString();
+                    //vci.QuestionCount = statisticList[3].Total.ToString();
+                    //vci.ExamPaperCount = statisticList[4].Total.ToString();
+ 
+   string[] hiddenColumnNames = new string[] {
+                "Index", "CurrentID", "UserAnswer", "Answer", 
+                "PubDate", "Fav", "Mark", "MainSubject",
+                "Image", "SImage", "AImage", "SMedia", "AMedia",
+                "Note", "IsCorrect","ExamInfoID","MainSubjectID",
+                "CorrectionType","InCorrectNo", "MainSubjectTitle","ExamInfoName"
+                ,"CurrentMainSubject"};
+            DataSource = Exam.Question.GetListArray(eq.Query);
+             
+            foreach (string columnName in hiddenColumnNames)
+            {
+                foreach (DataGridViewColumn c in Columns)
+                {
+                    if (c.HeaderText.ToLower() == columnName.ToLower())
+                        c.Visible = false;
+                }
+            }
+ 
+        // 屏蔽或开启试题菜单项
+        private void ExamMenu(bool isEnabled)
+        {
+            for (int i = 0; i < tsmExam.DropDownItems.Count; i++)
+            {
+                tsmExam.DropDownItems[i].Enabled = isEnabled;
+            }
+
+
+        }
+             //listNodeInfo.Items.Add("编号：" + examInfo.ID.ToString());
+            //listNodeInfo.Items.Add("父类：" + examInfo.PID.ToString());
+            //listNodeInfo.Items.Add("标题：" + examInfo.Name);
+            //listNodeInfo.Items.Add("类型：" + );
+            ////   listNodeInfo.Items.Add("创建时间：" + examInfo.PubDate.ToString(Constant.Date_Format_CHS));
+            //listNodeInfo.Items.Add("随机试题：" + examInfo.CanRandom.ToString());
+   FormClosing += delegate
+            {
+                System.Text.StringBuilder recentFiles = new System.Text.StringBuilder();
+                object[] o = Cache.RecentFiles.ToArray();
+                for (int i = 0; i < o.Length; i++)
+                {
+                    if (o[i].ToString().Trim() == "")
+                        continue;
+                    recentFiles.Append(o[i]);
+                }
+                SysConfig.Settings.SetValue("RecentFiles", recentFiles.ToString());
+            };
+
+
+			    string[] recentFiles = SysConfig.Settings.GetValue(SysConfig.RecentFiles).Split("\r\n".ToCharArray());
+
+            foreach (string files in recentFiles)
+            {
+                if (files.Trim() == "")
+                    continue;
+                Cache.RecentFiles.Push(files + "\r\n");
+                tsmRecent.DropDownItems.Add(files);
+            }
+
+			     //string[] recentFiles = SysConfig.Settings.GetValue(SysConfig.RecentFiles).Split("\r\n".ToCharArray());
+            //foreach (string files in recentFiles)
+            Cache.RecentFiles.Push(lbDetail.Text + "\r\n");
+
+          //  SysConfig.Settings.SetValue(SysConfig.RecentFiles, lbDetail.Text + "\r\n");

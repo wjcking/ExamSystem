@@ -1,0 +1,98 @@
+D:\PrivateProject\ExamSys\Publish\bin\Publish.dll
+D:\PrivateProject\ExamSys\Publish\bin\Publish.pdb
+D:\PrivateProject\ExamSys\Publish\obj\Debug\ResolveAssemblyReference.cache
+D:\PrivateProject\ExamSys\Publish\obj\Debug\Publish.dll
+D:\PrivateProject\ExamSys\Publish\obj\Debug\Publish.pdb
+I:\研发\PrivateProject\ExamSys\Publish\bin\Publish.dll
+I:\研发\PrivateProject\ExamSys\Publish\bin\Publish.pdb
+I:\研发\PrivateProject\ExamSys\Publish\obj\Debug\ResolveAssemblyReference.cache
+I:\研发\PrivateProject\ExamSys\Publish\obj\Debug\Publish.dll
+I:\研发\PrivateProject\ExamSys\Publish\obj\Debug\Publish.pdb
+I:\研发\PrivateProject\ExamSys\Publish\bin\Cts.dll
+I:\研发\PrivateProject\ExamSys\Publish\bin\Model.dll
+I:\研发\PrivateProject\ExamSys\Publish\bin\Model.pdb
+I:\研发\PrivateProject\ExamSys\Publish\bin\Cts.pdb
+F:\ExamSys\Publish\bin\Publish.dll
+F:\ExamSys\Publish\bin\Publish.pdb
+F:\ExamSys\Publish\bin\Cts.dll
+F:\ExamSys\Publish\bin\Model.dll
+F:\ExamSys\Publish\bin\Model.pdb
+F:\ExamSys\Publish\bin\Cts.pdb
+F:\ExamSys\Publish\obj\Debug\ResolveAssemblyReference.cache
+F:\ExamSys\Publish\obj\Debug\Publish.dll
+F:\ExamSys\Publish\obj\Debug\Publish.pdb
+F:\ExamSys\Publish\bin\DataUtility.dll
+F:\ExamSys\Publish\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+F:\ExamSys\Publish\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
+F:\ExamSys\Publish\bin\Microsoft.Practices.ObjectBuilder.dll
+F:\ExamSys\Publish\bin\DataUtility.pdb
+C:\Users\wjcking\Documents\Visual Studio 2008\Projects\ExamSys\Publish\bin\Publish.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Projects\ExamSys\Publish\bin\Publish.pdb
+C:\Users\wjcking\Documents\Visual Studio 2008\Projects\ExamSys\Publish\bin\Cts.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Projects\ExamSys\Publish\bin\DataUtility.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Projects\ExamSys\Publish\bin\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Projects\ExamSys\Publish\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Projects\ExamSys\Publish\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Projects\ExamSys\Publish\bin\Microsoft.Practices.ObjectBuilder.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Projects\ExamSys\Publish\bin\DataUtility.pdb
+C:\Users\wjcking\Documents\Visual Studio 2008\Projects\ExamSys\Publish\bin\Cts.pdb
+C:\Users\wjcking\Documents\Visual Studio 2008\Projects\ExamSys\Publish\bin\Model.pdb
+C:\Users\wjcking\Documents\Visual Studio 2008\Projects\ExamSys\Publish\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\wjcking\Documents\Visual Studio 2008\Projects\ExamSys\Publish\obj\Debug\Publish.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Projects\ExamSys\Publish\obj\Debug\Publish.pdb
+E:\ExamSys\Publish\bin\Publish.dll
+E:\ExamSys\Publish\bin\Publish.pdb
+E:\ExamSys\Publish\bin\Cts.dll
+E:\ExamSys\Publish\bin\DataUtility.dll
+E:\ExamSys\Publish\bin\Model.dll
+E:\ExamSys\Publish\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
+E:\ExamSys\Publish\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\ExamSys\Publish\bin\Microsoft.Practices.ObjectBuilder.dll
+E:\ExamSys\Publish\bin\Cts.pdb
+E:\ExamSys\Publish\bin\DataUtility.pdb
+E:\ExamSys\Publish\bin\Model.pdb
+E:\ExamSys\Publish\obj\Debug\ResolveAssemblyReference.cache
+E:\ExamSys\Publish\obj\Debug\Publish.dll
+E:\ExamSys\Publish\obj\Debug\Publish.pdb
+D:\ExamSys\Publish\bin\Publish.dll
+D:\ExamSys\Publish\bin\Publish.pdb
+D:\ExamSys\Publish\bin\Cts.dll
+D:\ExamSys\Publish\bin\DataUtility.dll
+D:\ExamSys\Publish\bin\Model.dll
+D:\ExamSys\Publish\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\ExamSys\Publish\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\ExamSys\Publish\bin\Microsoft.Practices.ObjectBuilder.dll
+D:\ExamSys\Publish\bin\Cts.pdb
+D:\ExamSys\Publish\bin\DataUtility.pdb
+D:\ExamSys\Publish\bin\Model.pdb
+D:\ExamSys\Publish\obj\Debug\ResolveAssemblyReference.cache
+D:\ExamSys\Publish\obj\Debug\Publish.dll
+D:\ExamSys\Publish\obj\Debug\Publish.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Publish\bin\Publish.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Publish\bin\Publish.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Publish\bin\Cts.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Publish\bin\DataUtility.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Publish\bin\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Publish\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Publish\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Publish\bin\Microsoft.Practices.ObjectBuilder.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Publish\bin\Cts.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Publish\bin\DataUtility.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Publish\bin\Model.pdb
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Publish\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Publish\obj\Debug\Publish.dll
+C:\Users\wjcking\Documents\Visual Studio 2010\Projects\ExamSys\Publish\obj\Debug\Publish.pdb
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Publish\bin\Publish.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Publish\bin\Publish.pdb
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Publish\bin\Cts.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Publish\bin\DataUtility.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Publish\bin\Model.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Publish\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Publish\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Publish\bin\Microsoft.Practices.ObjectBuilder.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Publish\bin\Cts.pdb
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Publish\bin\DataUtility.pdb
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Publish\bin\Model.pdb
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Publish\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Publish\obj\Debug\Publish.dll
+C:\Users\wjcking\Documents\Visual Studio 2008\Visual Studio 2010\Projects\ExamSys\Publish\obj\Debug\Publish.pdb
